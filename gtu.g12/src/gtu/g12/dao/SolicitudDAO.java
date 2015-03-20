@@ -22,11 +22,11 @@ public interface SolicitudDAO {
 	public List<Solicitud> getSolEstampImp(String userId);
 	
 	//cambiar estado solicitud:
-	public void changeSol (String estado);
+	public void changeEstadoSol (long id, String estado);
 	//añadir datos bancanrios solicitud:
-	public void addBan (int cuentaBan, int pin, int cv2);
+	public void addBan (long id, int cuentaBan, int pin, int cv2);
 	//añadir datos estampacion solicitud:
-	public void addEstamp (int numTarjeta);
+	public void addEstamp (long id, int numTarjeta);
 	
 	//administrador:
 	public List<Solicitud> listSol();
