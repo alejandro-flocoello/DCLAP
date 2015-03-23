@@ -25,77 +25,79 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	public void addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, String password, String categoria, int expediente) {
+			String correoUniv, String password, String categoria, int expediente,boolean monedero) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
 			Solicitud solicitud = new Solicitud(nombre,apellido1,apellido2,
 					tipoDoc,codDoc,nacionalidad,domicilio,nomUniv,centroUniv,
-					correoUniv,password,categoria,expediente);
+					correoUniv,password,categoria,expediente,monedero);
 			em.persist(solicitud);
 			em.close();
 		}
 	}
 
 	@Override
-	public List<Solicitud> getSolUnivAprob(String userId) {
+	public List<Solicitud> getSolUnivAprob() {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
 				.createQuery("select t from Solicitud t where t.estado = 'SOLICITADA' order by id");
-		q.setParameter("userId", userId);
 		List<Solicitud> solUnivAprob = q.getResultList();
 		return solUnivAprob;
 	}
 
 	@Override
-	public List<Solicitud> getSolBancoAprob(String userId) {
+	public List<Solicitud> getSolBancoAprob() {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
 				.createQuery("select t from Solicitud t where t.estado = 'ACEPTADA' order by id");
-		q.setParameter("userId", userId);
 		List<Solicitud> solBancoAprob = q.getResultList();
 		return solBancoAprob;
 	}
 
 	@Override
-	public List<Solicitud> getSolEstampAprob(String userId) {
+	public List<Solicitud> getSolEstampAprob() {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
 				.createQuery("select t from Solicitud t where t.estado = 'ASOCIADA' order by id");
-		q.setParameter("userId", userId);
 		List<Solicitud> solEstampAprob = q.getResultList();
 		return solEstampAprob;
 	}
 
 	@Override
-	public List<Solicitud> getSolUnivImp(String userId) {
+	public List<Solicitud> getSolUnivImp() {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
 				.createQuery("select t from Solicitud t where t.estado = 'REMITIDA_UNIV' order by id");
-		q.setParameter("userId", userId);
 		List<Solicitud> solUnivImp = q.getResultList();
 		return solUnivImp;
 	}
 
 	@Override
-	public List<Solicitud> getSolBancoImp(String userId) {
+	public List<Solicitud> getSolBancoImp() {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
 				.createQuery("select t from Solicitud t where t.estado = 'REMITIDA_BANCO' order by id");
-		q.setParameter("userId", userId);
 		List<Solicitud> solBancoImp = q.getResultList();
 		return solBancoImp;
 	}
 
 	@Override
-	public List<Solicitud> getSolEstampImp(String userId) {
+	public List<Solicitud> getSolEstampImp() {
 		EntityManager em = EMFService.get().createEntityManager();
 		Query q = em
 				.createQuery("select t from Solicitud t where t.estado = 'IMPRESA' order by id");
-		q.setParameter("userId", userId);
 		List<Solicitud> solEstampImp = q.getResultList();
 		return solEstampImp;
 	}
-
+	
+	public Solicitud getSol(long id){
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em
+				.createQuery("select t from Solicitud t where t.id = :id");
+		Solicitud sol = (Solicitud) q.getSingleResult();
+		return sol;
+	}
+	
 	@Override
 	public void changeEstadoSol(long id, String estado) {
 		EntityManager em = EMFService.get().createEntityManager();
@@ -134,20 +136,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	public void removeSol(long id) {
 		EntityManager em = EMFService.get().createEntityManager();
 		try {
-			Solicitud todo = em.find(Solicitud.class, id);
-			em.remove(todo);
+			Solicitud solicitud = em.find(Solicitud.class, id);
+			em.remove(solicitud);
 		} finally {
 			em.close();
 		}
 	}
-	//Dudas sobre que esté bien (¿usr?)
-	@Override
-	public List<String> getUsers() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select distinct t.author from Solicitud t");
-		List<String> users = q.getResultList();
-		return users;
-	}
-
 }

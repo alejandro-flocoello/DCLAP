@@ -41,7 +41,7 @@ public class Solicitud implements Serializable {
 		
 		public Solicitud(String nombre,String apellido1,String apellido2,String tipoDoc,String codDoc,
 				String nacionalidad,String domicilio,String nomUniv,String centroUniv,String correoUniv,
-				String password,String categoria,int expediente) {
+				String password,String categoria,int expediente, boolean monerdero) {
 			this.setNombre(nombre);
 			this.setApellido1(apellido1);
 			this.setApellido2(apellido2);
@@ -55,13 +55,13 @@ public class Solicitud implements Serializable {
 			this.setPassword(password);
 			this.setCategoria(categoria);
 			this.setExpediente(expediente);
+			this.setMonedero(monerdero);
 			
-			setMonedero(false);
 			setCuentaBan(0);
 			setPin(0);
 			setCv2(0);
 			setNumTarjeta(0);
-			setEstado("NADA");
+			setEstado("SOLICITADA");
 		}
 
 		public String getNombre() {
