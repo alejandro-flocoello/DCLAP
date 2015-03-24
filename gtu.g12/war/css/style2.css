@@ -1317,11 +1317,7 @@ section * {
     margin: 25px 0 10px;
   }
 }
-.header-11-sub .background {
-  background-image: url("[mfassetpath]/Brazil_002.png");
-  opacity: 0.8;
-  filter: alpha(opacity=80);
-}
+
 @media (max-width: 767px) {
   .header-11-sub .background {
     background: #f6f6f2;
