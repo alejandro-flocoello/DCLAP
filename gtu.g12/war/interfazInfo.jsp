@@ -66,7 +66,7 @@
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li class="active"><a href="SolicitudAppliaction.jsp">Home</a></li>
+                        <li class="active"><a href="SolicitudApplication.jsp">Home</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>
