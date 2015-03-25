@@ -44,7 +44,7 @@ public class MainServlet extends HttpServlet {
 		req.getSession().setAttribute("url", url);
 		req.getSession().setAttribute("urlLinktext", urlLinktext);
 		*/
-		RequestDispatcher view = req.getRequestDispatcher("SolicitudApplication.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("interfazInicio.jsp");
         view.forward(req, resp);
 		
 	}
