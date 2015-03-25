@@ -59,10 +59,13 @@ h2,
 h3,
 .h3 {
   font-size: 39.998000000000005px /* 40px */;
+  background-color: #ffffff;
 }
 h4,
 .h4 {
   font-size: 28.994000000000003px /* 29px */;
+  background-color: #ffffff;
+    color: #7f8c8d
 }
 h5,
 .h5 {
@@ -405,6 +408,9 @@ h1 {
   font-weight: normal;
 }
 h3 {
+  font-weight: normal;
+}
+h4 {
   font-weight: normal;
 }
 img {
@@ -826,8 +832,8 @@ section * {
   }
 }
 .header-11-sub {
-  padding-top: 50px;
-  padding-bottom: 180px;
+  padding-top: 90px;
+  padding-bottom: 20px;
   /*color: #bdc3c7;*/
   color:#000000;
   position: relative;
@@ -835,7 +841,7 @@ section * {
 .header-11-sub h3 {
   font-size: 33px;
   font-weight: normal;
-  color: #bdc3c7;
+  color: #FFFFFF;
   margin-bottom: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
