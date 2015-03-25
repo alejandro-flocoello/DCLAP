@@ -59,13 +59,10 @@ h2,
 h3,
 .h3 {
   font-size: 39.998000000000005px /* 40px */;
-  background-color: #ffffff;
 }
 h4,
 .h4 {
   font-size: 28.994000000000003px /* 29px */;
-  background-color: #ffffff;
-    color: #7f8c8d
 }
 h5,
 .h5 {
@@ -408,9 +405,6 @@ h1 {
   font-weight: normal;
 }
 h3 {
-  font-weight: normal;
-}
-h4 {
   font-weight: normal;
 }
 img {
@@ -832,8 +826,8 @@ section * {
   }
 }
 .header-11-sub {
-  padding-top: 90px;
-  padding-bottom: 20px;
+  padding-top: 50px;
+  padding-bottom: 180px;
   /*color: #bdc3c7;*/
   color:#000000;
   position: relative;
@@ -841,7 +835,7 @@ section * {
 .header-11-sub h3 {
   font-size: 33px;
   font-weight: normal;
-  color: #FFFFFF;
+  color: #bdc3c7;
   margin-bottom: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -1323,7 +1317,11 @@ section * {
     margin: 25px 0 10px;
   }
 }
-
+/*.header-11-sub .background {
+  background-image: url("[mfassetpath]/Brazil_002.png");
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}*/
 @media (max-width: 767px) {
   .header-11-sub .background {
     background: #f6f6f2;
