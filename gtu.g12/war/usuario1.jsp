@@ -5,13 +5,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
-    <title>Gestión de Tarjetas Universitarias</title>
-    
+    <title>Usuario</title>
   </head>
-
-  <body>
+  
+  
+<body>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
@@ -26,6 +27,7 @@
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
                                 <li><a href="interfazInfo.jsp">INFO</a></li>
+                                <li><a href="interfazInicio.jsp">HOME</a></li>
                             </ul>
                         </div>
                     </div>
@@ -33,54 +35,42 @@
             </div>
         </header>
 
-    
-    
 
-         <section class="header-11-sub bg-midnight-blue">
+
+
+        <section class="header-11-sub bg-azul-clarito">
             <div class="background">&nbsp;</div>
             <div class="container">
-                <div class="row">
-                    <div class="span5">
-                        <h4>Gestión de tarjetas Universitarias</h4>
-                       <p>
-                            Si es alumno o personal de la universidad, y quiere solicitar la tarjeta universitaria con opción de función monedero:</p>
-                        <p>
+                <div class="row clearfix">
+                    <div class="span15">
+                        <h1 class="text-center">Bienvenido Usuario</h1>
                         
+                        <p>No existe solicitud en proceso</p>
+
+                        <p>
+                        	<h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5>
+                        </p>
+
                         <div class="signup-form">
+                                                    
                             <form>
-                                <div class="controls">
-                                    <input class="span4" type="text" placeholder="E-mail">
+
+                                <div class="checkbox">
+                                    <label><input type="checkbox" style="font-weight: bold"/> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
                                 </div>
                                 
-                                <div class="controls">
-                                    <div>
-                                        <input class="span4" type="password" placeholder="Contraseña">
-                                    </div>
-                                </div>
+
                                 <div class="controls controls-row">
-                                    <input  type="button" value="Solicitar" class="btn btn-block btn-info" onClick=" window.location.href='/Users/clara/Desktop/HTML/Usuario/usuario1.html' ">
+                                    <input type="button" value="Solicitar" class="btn btn-block btn-primary" onClick=" window.location.href='/Users/clara/Desktop/HTML/Usuario/usuario2.html' ">
                                 </div>
                             </form>
-                        </div>
-                      
-                    </div>
-                        <div class="span6" "offset10">
-                        <img src="/img/tarjetas.jpg" width="300" height="500" align="right">
+                        
                         </div>
                     </div>
+                </div>        
             </div>
         </section>
-
-                
-        <footer class="footer-2 bg-midnight-blue">
-            <div class="container">
-                <nav class="pull-left">
-                    <ul>
-                        <li><a href="interfazInfo.jsp">Nuestro equipo</a></li>
-                        <li><a href="#">Contactar</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </footer>
   </body>
 </html>
+
+
