@@ -28,11 +28,11 @@
                         <a class="brand"><img src="img/logo@2.jpg" width="75" height="75"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
-                                <li><a href="usuarioInicio.jsp">ALUMNO</a></li>
-                                <li><a href="universidadInicio.jsp">UNIVERSIDAD</a></li>
-                                <li><a href="bancoInicio.jsp">BANCO</a></li>
+                                <li><a href="/alumno">ALUMNO</a></li>
+                                <li><a href="/universidad">UNIVERSIDAD</a></li>
+                                <li><a href="/banco">BANCO</a></li>
                                
-                                <li><a href="estampadoraInicio.jsp">EMPRESA</a></li>
+                                <li><a href="/estampadora">EMPRESA</a></li>
                                 <li><a href="interfazInfo.jsp">INFORMACIÓN</a></li>
                             </ul>
                         </div>
@@ -70,8 +70,8 @@
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li><a href="SolicitudApplication.jsp">Home</a></li>
-                        <li><a href="interfazInfo.jsp">Nuestro equipo</a></li>
+                        <li><a href="/main">Home</a></li>
+                        <li><a href="/info">Nuestro equipo</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>

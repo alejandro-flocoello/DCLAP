@@ -24,7 +24,7 @@
                         <a class="brand"><img src="img/logo@2.jpg" width="75" height="75"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
-                                <li><a href="SolicitudApplication.jsp">HOME</a></li>
+                                <li><a href="/main">HOME</a></li>
                      
                             </ul>
                         </div>
@@ -45,18 +45,18 @@
                         </p>
                         
                         <div class="signup-form">
-                            <form>
+                            <form action="/login" method="post">
                                 <div class="controls controls-row">
-                                    <input class="span4" type="text" placeholder="E-mail">
+                                    <input name="usuario" class="span4" type="text" placeholder="E-mail">
                                 </div>
                                 
                                 <div class="controls controls-row">
                                     <div>
-                                        <input class="span4" type="password" placeholder="Contraseña">
+                                        <input name="password" class="span4" type="password" placeholder="Contraseña">
                                     </div>
                                 </div>
                                 <div class="controls controls-row">
-                                    <input  type="button" value="Solicitar" class="btn btn-block btn-info" onClick=" window.location.href='/Users/clara/Desktop/HTML/Usuario/usuario1.html' ">
+                                    <input  type="submit" value="Solicitar" class="btn btn-block btn-info" >
                                 </div>
                             </form>
                         </div>
@@ -74,8 +74,8 @@
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li class="active"><a href="SolicitudApplication.jsp">Home</a></li>
-                        <li><a href="interfazInfo.jsp">Nuestro equipo</a></li>
+                        <li class="active"><a href="/main">Home</a></li>
+                        <li><a href="/info">Nuestro equipo</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>

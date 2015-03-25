@@ -24,7 +24,7 @@
                         <a class="brand"><img src="img/logo@2.jpg" width="75" height="75"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
-                                <li><a href="SolicitudApplication.jsp">HOME</a></li>
+                                <li><a href="/main">HOME</a></li>
                      
                             </ul>
                         </div>
@@ -71,8 +71,8 @@
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li class="active"><a href="SolicitudApplication.jsp">Home</a></li>
-                        <li><a href="interfazInfo.jsp">Nuestro equipo</a></li>
+                        <li class="active"><a href="/main">Home</a></li>
+                        <li><a href="/info">Nuestro equipo</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>

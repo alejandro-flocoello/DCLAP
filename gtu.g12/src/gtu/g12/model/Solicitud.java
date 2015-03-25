@@ -25,8 +25,8 @@ public class Solicitud implements Serializable {
 		private String nomUniv;
 		private String centroUniv;
 		private String correoUniv;
-		
-		private String categoria;
+		//private String password; //quiza no es conveniente que esté aquí
+		private String categoria; //alunmno, profeor, PAS
 		private int expediente;
 		private boolean monedero;
 		
@@ -52,7 +52,7 @@ public class Solicitud implements Serializable {
 			this.setNomUniv(nomUniv);
 			this.setCentroUniv(centroUniv);
 			this.setCorreoUniv(correoUniv);
-			this.setPassword(password);
+			//this.setPassword(password);
 			this.setCategoria(categoria);
 			this.setExpediente(expediente);
 			this.setMonedero(monerdero);
@@ -144,14 +144,7 @@ public class Solicitud implements Serializable {
 			this.correoUniv = correoUniv;
 		}
 
-		public String getPassword() {
-			return password;
-		}
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
+		
 		public int getExpediente() {
 			return expediente;
 		}
