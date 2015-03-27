@@ -18,5 +18,4 @@ public interface UsuarioDAO {
 	
 	// muestra lista con todos los usuarios en la bd
 	public List<Usuario> listaUsuarios();
-	
 }

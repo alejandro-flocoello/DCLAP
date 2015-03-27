@@ -40,34 +40,41 @@ public class LoginServlet extends HttpServlet {
 
 		String user = request.getParameter("usuario");
 		String password = request.getParameter("password");
+		
+		
 
-		// String test = user + password; //comprobar que se guardan los datos
-
-		// Comprobar en la base de datos que ese email y password corresponde
-		// con un usuario y ver que rol tiene.
+		// Comprobar en la base de datos que ese email y password corresponde con un usuario y ver que rol tiene.
 		// en funcion de ese rol, lo mandare a un servlet o a otro
-		// String rol;
+		
 		UsuarioDAO daous = UsuarioDAOImpl.getInstance();
+		
+		if(!(user.isEmpty()) || !(password.isEmpty())){
+			
+			Usuario usIden = daous.getUserPassword(user, password);
+			
+			if (usIden != null) {
+				String rolUsIdentif = usIden.getRol();
+				if (usIden.getRol().equals("solicitante")) {
+					response.sendRedirect("/usuario1");
+				} else if (usIden.getRol().equals("universidad")) {
+					response.sendRedirect("/universidad");
+				} else if (usIden.getRol().equals("banco")) {
+					response.sendRedirect("/banco");
+				} else if (usIden.getRol().equals("estampadora")) {
+					response.sendRedirect("/estampadora");
+				} else if (usIden.getRol().equals("gestor")) {
+					response.sendRedirect("/gestor");
+				}
 
-		Usuario usIden = daous.getUserPassword(user, password);
-		if (usIden != null) {
-			String rolUsIdentif = usIden.getRol();
-			if (usIden.getRol().equals("solicitante")) {
-				response.sendRedirect("/usuario1");
-			} else if (usIden.getRol().equals("universidad")) {
-				response.sendRedirect("/universidad");
-			} else if (usIden.getRol().equals("banco")) {
-				response.sendRedirect("/banco");
-			} else if (usIden.getRol().equals("estampadora")) {
-				response.sendRedirect("/estampadora");
-			} else if (usIden.getRol().equals("gestor")) {
-				response.sendRedirect("/gestor");
+			} else {
+				response.sendRedirect("/error");
 			}
-
-		} else {
+		
+		}else{
 			response.sendRedirect("/error");
-		}
-
+		}	
 	}
+}			
 
-}
+
+
