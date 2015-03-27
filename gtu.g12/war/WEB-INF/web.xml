@@ -40,12 +40,36 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/banco</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>InitBd</servlet-name>
+		<servlet-class>gtu.g12.InitBdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitBd</servlet-name>
+		<url-pattern>/initBd</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Estampadora</servlet-name>
 		<servlet-class>gtu.g12.EstampadoraServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Estampadora</servlet-name>
 		<url-pattern>/estampadora</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Gestor</servlet-name>
+		<servlet-class>gtu.g12.GestorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Gestor</servlet-name>
+		<url-pattern>/gestor</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Usuario</servlet-name>
+		<servlet-class>gtu.g12.UsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Usuario</servlet-name>
+		<url-pattern>/usuario1</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Login</servlet-name>

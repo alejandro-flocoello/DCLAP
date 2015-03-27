@@ -18,7 +18,7 @@ import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
 import gtu.g12.model.Solicitud;
 
-public class UniversidadServlet extends HttpServlet {
+public class UsuarioServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -26,8 +26,25 @@ public class UniversidadServlet extends HttpServlet {
 			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 
+		/*UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+
+		String url = userService.createLoginURL(req.getRequestURI());
+		String urlLinktext = "Login";
+		List<Todo> todos = new ArrayList<Todo>();
+		            
+		if (user != null){
+		    url = userService.createLogoutURL(req.getRequestURI());
+		    urlLinktext = "Logout";
+		    todos = dao.getTodos(user.getNickname());
+		}
 		
-		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
+		req.getSession().setAttribute("user", user);
+		req.getSession().setAttribute("todos", new ArrayList<Todo>(todos));
+		req.getSession().setAttribute("url", url);
+		req.getSession().setAttribute("urlLinktext", urlLinktext);
+		*/
+		RequestDispatcher view = req.getRequestDispatcher("usuario1.jsp");
         view.forward(req, resp);
 		
 	}

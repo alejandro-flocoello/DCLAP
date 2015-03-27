@@ -16,7 +16,10 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
+import gtu.g12.dao.UsuarioDAO;
+import gtu.g12.dao.UsuarioDAOImpl;
 import gtu.g12.model.Solicitud;
+import gtu.g12.model.Usuario;
 
 public class LoginServlet extends HttpServlet {
 	
@@ -26,24 +29,6 @@ public class LoginServlet extends HttpServlet {
 			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 
-		/*UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-
-		String url = userService.createLoginURL(req.getRequestURI());
-		String urlLinktext = "Login";
-		List<Todo> todos = new ArrayList<Todo>();
-		            
-		if (user != null){
-		    url = userService.createLogoutURL(req.getRequestURI());
-		    urlLinktext = "Logout";
-		    todos = dao.getTodos(user.getNickname());
-		}
-		
-		req.getSession().setAttribute("user", user);
-		req.getSession().setAttribute("todos", new ArrayList<Todo>(todos));
-		req.getSession().setAttribute("url", url);
-		req.getSession().setAttribute("urlLinktext", urlLinktext);
-		*/
 		RequestDispatcher view = req.getRequestDispatcher("universidadInicio.jsp");
         view.forward(req, resp);
 		
@@ -60,35 +45,36 @@ public class LoginServlet extends HttpServlet {
 				//Comprobar en la base de datos que ese email y password corresponde con un usuario y ver que rol tiene.
 				//en funcion de ese rol, lo mandare a un servlet o a otro
 				//String rol;
+				UsuarioDAO daous = UsuarioDAOImpl.getInstance();
 				
-				/*
-				if (user.getPassword!=password){
-					request.setAttribute("tipoError", "passwordNoMatch");
-					request.getRequestDispatcher("ErrorServlet").forward(request, response);			
-				}
-				
-				if (user.getPassword==null){
-					request.setAttribute("tipoError", "passswordVacio");
-					request.getRequestDispatcher("ErrorServlet").forward(request, response);			
-				}
-				if (user no esta en la tabla){
-					request.setAttribute("tipoError", "noExisteUsuario");
-					request.getRequestDispatcher("ErrorServlet").forward(request, response);			
-				}
-				if (user.getrol()==solicitante){
-				request.getRequestDispatcher("UsuarioServlet").forward(request, response);
-				}
-				
-				else if (user.getrol()==universidad){
-					request.getRequestDispatcher("UniversidadServlet").forward(request, response);
-				}
-				else if (user.getrol()==banco){
-					request.getRequestDispatcher("BancoServlet").forward(request, response);
-				}
-				else if (user.getrol()==estampadora){
-					request.getRequestDispatcher("EstampadoraServlet").forward(request, response);
+				Usuario usIden  = daous.getUserPassword(user, password);
+				if (usIden!= null){
+					String rolUsIdentif=usIden.getRol();
+					if (usIden.getRol().equals("solicitante")){
+						response.sendRedirect("/usuario1");
+					}				
+					else if (usIden.getRol().equals("universidad")){
+						response.sendRedirect("/universidad");
+					}
+					else if (usIden.getRol().equals("banco")){
+						response.sendRedirect("/banco");
+					}
+					else if (usIden.getRol().equals("estampadora")){
+						response.sendRedirect("/estampadora");
+					}
+					else if (usIden.getRol().equals("gestor")){
+						response.sendRedirect("/gestor");
+					} 
+					
 				}
 				
-				*/
+				else{
+					//mandar mensaje de error
+				}
+						
+						
+				
+				
+				
 	}
 }

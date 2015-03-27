@@ -44,7 +44,7 @@ public class BancoServlet extends HttpServlet {
 		req.getSession().setAttribute("url", url);
 		req.getSession().setAttribute("urlLinktext", urlLinktext);
 		*/
-		RequestDispatcher view = req.getRequestDispatcher("bancoInicio.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("banco.jsp");
         view.forward(req, resp);
 		
 	}

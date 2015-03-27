@@ -8,7 +8,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Gestión de Tarjetas Universitarias</title>
+    <title>Banco</title>
   </head>
 
   <body>
@@ -38,21 +38,8 @@
             <div class="container">
                 <div class="row">
                     <div class="span4">
-                        <h1>¿Quienes somos?</h1>
-                        <p>
-                            Equipo de desarrollo:</p>
-                        <p>
-                            PRODUCT OWNER: Paula Fernández
-                        </p>
-                        <p>
-                            SCRUM MASTER: Daniel Gordo
-                        </p>
-                        <p>
-                            TEAM MEMBERS: <p>Alejandro Flores</p>
-                                          <p>Laura Gómez</p>
-                                          <p> Clara Madrigal</p> 
-                                         
-                        </p>
+                        <h1>Banco</h1>
+                        
                       
                     </div>
                         <div class="span6" "offset10" href='#' >

@@ -25,7 +25,7 @@
                         <a class="brand"><img src="/img/logo@2.jpg" width="60" height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
-                                <li><a href="interfazInfo.jsp">INFO</a></li>
+                                <li><a href="/info">INFO</a></li>
                             </ul>
                         </div>
                     </div>
@@ -43,22 +43,22 @@
                     <div class="span5">
                         <h4>Gestión de tarjetas Universitarias</h4>
                        <p>
-                            Si es alumno o personal de la universidad, y quiere solicitar la tarjeta universitaria con opción de función monedero:</p>
+                            Introduzca sus datos para acceder al sistema </p>
                         <p>
                         
                         <div class="signup-form">
-                            <form>
+                            <form method="post" action="/login">
                                 <div class="controls">
-                                    <input class="span4" type="text" placeholder="E-mail">
+                                    <input class="span4" type="e-mail" placeholder="E-mail" name="usuario" >
                                 </div>
                                 
                                 <div class="controls">
                                     <div>
-                                        <input class="span4" type="password" placeholder="Contraseña">
+                                        <input class="span4" type="password" placeholder="Contraseña" name="password">
                                     </div>
                                 </div>
                                 <div class="controls controls-row">
-                                    <input  type="button" value="Solicitar" class="btn btn-block btn-info" onClick=" window.location.href='/Users/clara/Desktop/HTML/Usuario/usuario1.html' ">
+                                    <input  type="submit" value="Acceder" class="btn btn-block btn-info" >
                                 </div>
                             </form>
                         </div>
@@ -76,7 +76,7 @@
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li><a href="interfazInfo.jsp">Nuestro equipo</a></li>
+                        <li><a href="/info">Nuestro equipo</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>

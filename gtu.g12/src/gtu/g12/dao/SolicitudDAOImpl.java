@@ -1,11 +1,14 @@
 package gtu.g12.dao;
 
-//import gtu.g12.dao.EMFService;
 import gtu.g12.model.Solicitud;
+import gtu.g12.model.Usuario;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SolicitudDAOImpl implements SolicitudDAO {
@@ -21,125 +24,144 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 		return instance;
 	}
 	
+	
 	@Override
-	public void addSol(String nombre, String apellido1, String apellido2,
+	public boolean removeSolicitudes() {
+		synchronized (this) {
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery(Solicitud.class);
+			try{
+				q.deletePersistentAll();
+			}
+			catch (Exception e){
+				return false;
+			}
+			return true;
+		}
+	}
+	@Override
+	public boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, String password, String categoria, int expediente,boolean monedero) {
+			String correoUniv, String categoria, int expediente,boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado ) {
 		synchronized (this) {
-			EntityManager em = EMFService.get().createEntityManager();
-			Solicitud solicitud = new Solicitud(nombre,apellido1,apellido2,
-					tipoDoc,codDoc,nacionalidad,domicilio,nomUniv,centroUniv,
-					correoUniv,password,categoria,expediente,monedero);
-			em.persist(solicitud);
-			em.close();
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
+					estado);
+			try{
+				pmf.makePersistent(solicitud);
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+				return false;
+			}
+			pmf.close();
+			return true;
 		}
 	}
 
 	@Override
-	public List<Solicitud> getSolUnivAprob() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.estado = 'SOLICITADA' order by id");
-		List<Solicitud> solUnivAprob = q.getResultList();
-		return solUnivAprob;
+	public List<Solicitud> getSolPorEstado(String estado) {
+		synchronized (this) {
+			List<Solicitud> soli = new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery(Solicitud.class);
+			try{
+				soli = (List<Solicitud>) q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			// read the existing entries
+			return soli;
+			}
 	}
 
-	@Override
-	public List<Solicitud> getSolBancoAprob() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.estado = 'ACEPTADA' order by id");
-		List<Solicitud> solBancoAprob = q.getResultList();
-		return solBancoAprob;
-	}
-
-	@Override
-	public List<Solicitud> getSolEstampAprob() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.estado = 'ASOCIADA' order by id");
-		List<Solicitud> solEstampAprob = q.getResultList();
-		return solEstampAprob;
-	}
-
-	@Override
-	public List<Solicitud> getSolUnivImp() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.estado = 'REMITIDA_UNIV' order by id");
-		List<Solicitud> solUnivImp = q.getResultList();
-		return solUnivImp;
-	}
-
-	@Override
-	public List<Solicitud> getSolBancoImp() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.estado = 'REMITIDA_BANCO' order by id");
-		List<Solicitud> solBancoImp = q.getResultList();
-		return solBancoImp;
-	}
-
-	@Override
-	public List<Solicitud> getSolEstampImp() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.estado = 'IMPRESA' order by id");
-		List<Solicitud> solEstampImp = q.getResultList();
-		return solEstampImp;
-	}
-	
-	public Solicitud getSol(long id){
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.id = :id");
-		Solicitud sol = (Solicitud) q.getSingleResult();
-		return sol;
+	public List<Solicitud> getSol(long id){
+		synchronized (this) {
+			List<Solicitud> solId= new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery(Solicitud.class);
+			try{
+				solId = (List<Solicitud>) q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			// read the existing entries
+			return solId;
+			}
 	}
 	
 	@Override
 	public void changeEstadoSol(long id, String estado) {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.id = :id");
-		q.setParameter("estado", estado);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        sol.setEstado(estado);
+	       
+	    } finally {
+	        pm.close();
+	    }
 	}
 
 	@Override
 	public void addBan(long id, int cuentaBan, int pin, int cv2) {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.id = :id");
-		q.setParameter("cuentaBan",cuentaBan);
-		q.setParameter("pin",pin);
-		q.setParameter("cv2",cv2);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        sol.setCuentaBan(cuentaBan);
+	        sol.setPin(pin);
+	        sol.setCv2(cv2);
+	       
+	    } finally {
+	        pm.close();
+	    }
 	}
 
 	@Override
 	public void addEstamp(long id, int numTarjeta) {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em
-				.createQuery("select t from Solicitud t where t.id = :id");
-		q.setParameter("numTarjeta",numTarjeta);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        sol.setNumTarjeta(numTarjeta);
+	       
+	    } finally {
+	        pm.close();
+	    }
 	}
 
 	@Override
 	public List<Solicitud> listSol() {
-		EntityManager em = EMFService.get().createEntityManager();
-		// read the existing entries
-		Query q = em.createQuery("select m from Solicitud m");
-		List<Solicitud> solicitudes = q.getResultList();
-		return solicitudes;
+		synchronized (this) {
+			List<Solicitud> solicitudes= new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery(Solicitud.class);
+			try{
+				solicitudes = (List<Solicitud>) q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			return solicitudes;
+			}
 	}
 	@Override
-	public void removeSol(long id) {
-		EntityManager em = EMFService.get().createEntityManager();
-		try {
-			Solicitud solicitud = em.find(Solicitud.class, id);
-			em.remove(solicitud);
-		} finally {
-			em.close();
+	public boolean removeSol(long id) {
+		synchronized (this) {
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery(Solicitud.class);
+			try{
+				q.deletePersistentAll();
+			}
+			catch (Exception e){
+				return false;
+			}
+			return true;
 		}
+		
 	}
 }

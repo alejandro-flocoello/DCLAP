@@ -8,7 +8,8 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Usuario</title>
+    
+    <title>Solicitud</title>
   </head>
   
   
@@ -41,33 +42,49 @@
         <section class="header-11-sub bg-azul-clarito">
             <div class="background">&nbsp;</div>
             <div class="container">
-                <div class="row clearfix">
-                    <div class="span15">
-                        <h1 class="text-center">Bienvenido Usuario</h1>
-                        
-                        <p>No existe solicitud en proceso</p>
-
-                        <p>
-                        	<h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5>
-                        </p>
-
-                        <div class="signup-form">
-                                                    
-                            <form>
-
-                                <div class="checkbox">
-                                    <label><input type="checkbox" style="font-weight: bold"/> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
-                                </div>
-                                
-
-                                <div class="controls controls-row">
-                                    <input type="button" value="Solicitar" class="btn btn-block btn-primary" onClick=" window.location.href='/Users/clara/Desktop/HTML/Usuario/usuario2.html' ">
-                                </div>
-                            </form>
-                        
-                        </div>
-                    </div>
-                </div>        
+                <table class="table" style="width: 60%;" align="center">
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido1</th>
+			<th>Apellido2</th>
+			<th>Tipo Doc</th>
+			<th>CodigoDoc</th>
+			<th>Nacionalidad</th>
+			<th>Universidad</th>
+			<th>Centro</th>
+			<th>Correo</th>
+			<th>Categoria</th>
+			<th>Expediente</th>
+			<th>Monedero</th>
+			<th>NumeroCuenta</th>
+			<th>Pin</th>
+			<th>CV2</th>
+			<th>NumTarjeta</th>
+			<th>Estado</th>
+		</tr>
+		<c:forEach items="${solicitudes}" var="solicitud">
+			<tr>
+				<td><c:out value="${solicitud.nombre}" /></td>
+				<td><c:out value="${solicitud.apellido1}" /></td>
+				<td><c:out value="${solicitud.apellido2}" /></td>
+				<td><c:out value="${solicitud.tipoDoc}" /></td>
+				<td><c:out value="${solicitud.codDoc}" /></td>
+				<td><c:out value="${solicitud.nacionalidad}" /></td>
+				<td><c:out value="${solicitud.domicilio}" /></td>
+				<td><c:out value="${solicitud.nomUniv}" /></td>
+				<td><c:out value="${solicitud.centroUniv}" /></td>
+				<td><c:out value="${solicitud.correoUniv}" /></td>
+				<td><c:out value="${solicitud.categoria}" /></td>
+				<td><c:out value="${solicitud.expediente}" /></td>
+				<td><c:out value="${solicitud.monedero}" /></td>
+				<td><c:out value="${solicitud.cuentaBan}" /></td>
+				<td><c:out value="${solicitud.pin}" /></td>
+				<td><c:out value="${solicitud.cv2}" /></td>
+				<td><c:out value="${solicitud.numTarjeta}" /></td>
+				<td><c:out value="${solicitud.estado}" /></td>
+			</tr>
+		</c:forEach>
+	</table>      
             </div>
         </section>
   </body>

@@ -18,7 +18,7 @@ import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
 import gtu.g12.model.Solicitud;
 
-public class UniversidadServlet extends HttpServlet {
+public class GestorServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,7 @@ public class UniversidadServlet extends HttpServlet {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 
 		
-		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("gestor.jsp");
         view.forward(req, resp);
 		
 	}

@@ -9,22 +9,17 @@ public interface SolicitudDAO {
 	//No está claro si los parámetro tiene que coger userId
 	
 	//usuario añade solicitud:
-	public void addSol (String nombre,String apellido1,String apellido2,String tipoDoc,String codDoc,
-			String nacionalidad,String domicilio,String nomUniv,String centroUniv,String correoUniv,
-			String password,String categoria,int expediente, boolean monedero);
-	
-	//lista de solicitudes para aprobar:
-	public List<Solicitud> getSolUnivAprob();
-	public List<Solicitud> getSolBancoAprob();
-	public List<Solicitud> getSolEstampAprob();
-	
-	//lista de solicitudes para notificar que esta impresa:
-	public List<Solicitud> getSolUnivImp();
-	public List<Solicitud> getSolBancoImp();
-	public List<Solicitud> getSolEstampImp();
+	boolean addSol(String nombre, String apellido1, String apellido2,
+			String tipoDoc, String codDoc, String nacionalidad,
+			String domicilio, String nomUniv, String centroUniv,
+			String correoUniv, String categoria, int expediente,
+			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
+			String estado);
+	//lista de solicitudes dependiendo del estado:
+	List<Solicitud> getSolPorEstado(String estado);
 	
 	//Obtener datos de la solicitud:
-	public Solicitud getSol(long id);
+	public List<Solicitud> getSol(long id);
 	
 	//cambiar estado solicitud:
 	public void changeEstadoSol (long id, String estado);
@@ -35,5 +30,10 @@ public interface SolicitudDAO {
 	
 	//administrador:
 	public List<Solicitud> listSol();
-	public void removeSol (long id);
+	public boolean removeSol (long id);
+	boolean removeSolicitudes();
+
+	
+
+	
 }

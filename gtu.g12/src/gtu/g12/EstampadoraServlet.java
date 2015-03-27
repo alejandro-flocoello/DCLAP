@@ -26,25 +26,7 @@ public class EstampadoraServlet extends HttpServlet {
 			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 
-		/*UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-
-		String url = userService.createLoginURL(req.getRequestURI());
-		String urlLinktext = "Login";
-		List<Todo> todos = new ArrayList<Todo>();
-		            
-		if (user != null){
-		    url = userService.createLogoutURL(req.getRequestURI());
-		    urlLinktext = "Logout";
-		    todos = dao.getTodos(user.getNickname());
-		}
-		
-		req.getSession().setAttribute("user", user);
-		req.getSession().setAttribute("todos", new ArrayList<Todo>(todos));
-		req.getSession().setAttribute("url", url);
-		req.getSession().setAttribute("urlLinktext", urlLinktext);
-		*/
-		RequestDispatcher view = req.getRequestDispatcher("estampadoraInicio.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("estampadora.jsp");
         view.forward(req, resp);
 		
 	}
