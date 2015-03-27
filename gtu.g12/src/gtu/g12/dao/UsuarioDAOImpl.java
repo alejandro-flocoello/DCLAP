@@ -60,7 +60,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	
 	//Comprueba que el usuario introducido está en la bd y que la contraseña corresponde a dicho usuario.
-	
 	@Override
 	public Usuario getUserPassword(String username, String password) {
 		PersistenceManager pmf = PMF.get().getPersistenceManager();

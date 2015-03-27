@@ -29,10 +29,6 @@ public class InitBdServlet extends HttpServlet {
 			throws IOException, ServletException {
 		
 		
-		
-		
-		
-		
 		 UsuarioDAO daous = UsuarioDAOImpl.getInstance();
 		 List<Usuario> lista = daous.listaUsuarios();
 		//elimina todos los datos de la bd
@@ -47,6 +43,7 @@ public class InitBdServlet extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("usuarios", new ArrayList<Usuario>(lista));
         view.forward(req, resp);
+   
 		
 		/*
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
@@ -58,8 +55,7 @@ public class InitBdServlet extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
         view.forward(req, resp);
-        */
-		
+		*/
 	}
 
 }

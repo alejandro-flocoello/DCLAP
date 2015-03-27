@@ -79,14 +79,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>Error</servlet-name>
 		<servlet-class>gtu.g12.ErrorServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>Error</servlet-name>
 		<url-pattern>/error</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>Info</servlet-name>
 		<servlet-class>gtu.g12.InfoServlet</servlet-class>

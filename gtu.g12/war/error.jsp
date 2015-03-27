@@ -5,79 +5,62 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Gestión de Tarjetas Universitarias</title>
-    
-  </head>
+<head>
+<meta charset="utf-8">
+<title>Gestión de Tarjetas Universitarias</title>
+</head>
 
-  <body>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="/css/style2.css">
+<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" href="/css/style2.css">
 
-    <header class="header-11">
-            <div class="container">
-                <div class="navbar span12">
-                    <div class="navbar-inner">
-                        <button type="button" class="btn btn-navbar"> </button>
-                        <a class="brand"><img src="/img/logo@2.jpg" width="60" height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
-                        <div class="nav-collapse collapse pull-right">
-                            <ul class="nav">
-                                <li><a href="/info">INFO</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+	<header class="header-11">
+		<div class="container">
+			<div class="navbar span12">
+				<div class="navbar-inner">
+					<button type="button" class="btn btn-navbar"></button>
+					<a class="brand"><img src="/img/logo@2.jpg" width="60"
+						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
+					<div class="nav-collapse collapse pull-right">
+						<ul class="nav">
+							<li><a href="/info">INFO</a></li>
+							<li><a href="/main"></a>
+							<li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 
-    
-    
 
-         <section class="header-11-sub bg-midnight-blue">
-            <div class="background">&nbsp;</div>
-            <div class="container">
-                <div class="row">
-                    <div class="span5">
-                        <h4>ERROR</h4>
-                             
-                        <div class="signup-form">
-                            <form method="post" action="/error">
-                                <div class="controls">
-                                    <input class="span4" type="e-mail" placeholder="E-mail" name="usuario" >
-                                </div>
-                                
-                                <div class="controls">
-                                    <div>
-                                        <input class="span4" type="password" placeholder="Contraseña" name="password">
-                                    </div>
-                                </div>
-                                <div class="controls controls-row">
-                                    <input  type="submit" value="Acceder" class="btn btn-block btn-info" >
-                                </div>
-                            </form>
-                        </div>
-                      
-                    </div>
-                        <div class="span6" "offset10">
-                        <img src="/img/tarjetas.jpg" width="300" height="500" align="right">
-                        </div>
-                    </div>
-            </div>
-        </section>
+	<section class="header-11-sub bg-midnight-blue">
+		<div class="background">&nbsp;</div>
+		<div class="container">
+			<div class="row">
+				<div>
+					<img src="/img/images.jpg" width="800" height="800" align="center">
+				</div>
+			</div>
+		</div>
+	</section>
 
-                
-        <footer class="footer-2 bg-midnight-blue">
-            <div class="container">
-                <nav class="pull-left">
-                    <ul>
-                        <li><a href="/info">Nuestro equipo</a></li>
-                        <li><a href="#">Contactar</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </footer>
-  </body>
+	<script>
+		alert("ERROR:\n Introduce tus datos correctamente ");
+		window.location = ("/main")
+	</script>
+
+	<footer class="footer-2 bg-midnight-blue">
+		<div class="container">
+			<nav class="pull-left">
+				<ul>
+					<li><a href="/info">Nuestro equipo</a></li>
+					<li><a href="#">Contactar</a></li>
+				</ul>
+			</nav>
+		</div>
+	</footer>
+</body>
 </html>
