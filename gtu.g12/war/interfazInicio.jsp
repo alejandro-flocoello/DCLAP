@@ -48,11 +48,11 @@
                         
                         <div class="signup-form">
                             <form method="post" action="/login">
-                                <div class="controls">
-                                    <input class="span4" type="e-mail" placeholder="E-mail" name="usuario" >
+                               <div class="controls controls-row">
+                                    <input class="span4" type="text" placeholder="E-mail" name="usuario">
                                 </div>
                                 
-                                <div class="controls">
+                                <div class="controls controls-row">
                                     <div>
                                         <input class="span4" type="password" placeholder="Contraseña" name="password">
                                     </div>
