@@ -118,6 +118,28 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	        pm.close();
 	    }
 	}
+	
+	@Override
+	public List<Solicitud> getSolPorCorreo (String correo){
+		
+		synchronized (this){
+			
+			List<Solicitud> sole = new ArrayList<Solicitud>();
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			Query q = pm.newQuery("select from Solicitud" + "where centroUniv == correoParam" + "parameters");
+			
+			try{
+				sole = (List<Solicitud>) q.execute (correo);
+			}
+			
+			catch (Exception e ){
+				return null;
+			}
+			
+			return sole;
+			
+		}
+	}
 
 	@Override
 	public void addBan(long id, int cuentaBan, int pin, int cv2) {

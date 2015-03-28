@@ -32,8 +32,6 @@ public class LoginServlet extends HttpServlet {
 		String user = request.getParameter("usuario");
 		String password = request.getParameter("password");
 		
-		request.getSession().setAttribute("user", user);
-
 		// Comprobar en la base de datos que ese email y password corresponde con un usuario y ver que rol tiene.
 		// en funcion de ese rol, lo mandare a un servlet o a otro
 
@@ -49,13 +47,15 @@ public class LoginServlet extends HttpServlet {
 
 				if (usIden != null) {
 					if (usIden.getRol().equals("solicitante")) {
-						HttpSession session=request.getSession();  
+						HttpSession session= request.getSession();  
 				        session.setAttribute("usuario",user);  
 						response.sendRedirect("/usuario1");
+					
 					} else if (usIden.getRol().equals("universidad")) {
 						HttpSession session=request.getSession();  
 				        session.setAttribute("usuario",user);
 						response.sendRedirect("/universidad");
+					
 					} else if (usIden.getRol().equals("banco")) {
 						HttpSession session=request.getSession();  
 				        session.setAttribute("usuario",user);

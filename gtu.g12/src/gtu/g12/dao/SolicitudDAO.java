@@ -31,6 +31,7 @@ public interface SolicitudDAO {
 	public boolean removeSol (long id);
 	boolean removeSolicitudes();
 	void changeMonerderoSol(long id, boolean monedero);
+	List<Solicitud> getSolPorCorreo(String correo);
 
 	
 
