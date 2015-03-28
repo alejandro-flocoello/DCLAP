@@ -35,46 +35,41 @@ public class LoginServlet extends HttpServlet {
 
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String user = request.getParameter("usuario");
 		String password = request.getParameter("password");
-		
-		
 
 		// Comprobar en la base de datos que ese email y password corresponde con un usuario y ver que rol tiene.
 		// en funcion de ese rol, lo mandare a un servlet o a otro
-		
+
 		UsuarioDAO daous = UsuarioDAOImpl.getInstance();
-		
-		if(!(user.isEmpty()) || !(password.isEmpty())){
-			
-			Usuario usIden = daous.getUserPassword(user, password);
-			
-			if (usIden != null) {
-				String rolUsIdentif = usIden.getRol();
-				if (usIden.getRol().equals("solicitante")) {
-					response.sendRedirect("/usuario1");
-				} else if (usIden.getRol().equals("universidad")) {
-					response.sendRedirect("/universidad");
-				} else if (usIden.getRol().equals("banco")) {
-					response.sendRedirect("/banco");
-				} else if (usIden.getRol().equals("estampadora")) {
-					response.sendRedirect("/estampadora");
-				} else if (usIden.getRol().equals("gestor")) {
-					response.sendRedirect("/gestor");
-				}
 
-			} else {
-				response.sendRedirect("/error");
-			}
-		
-		}else{
-			response.sendRedirect("/error");
-		}	
+		if (!(user.isEmpty()) || !(password.isEmpty())) {
+
+			Usuario nombreUser = daous.getUserName(user);
+
+			if (nombreUser != null) {
+
+				Usuario usIden = daous.getUserPassword(user, password);
+
+				if (usIden != null) {
+					if (usIden.getRol().equals("solicitante")) {
+						response.sendRedirect("/usuario1");
+					} else if (usIden.getRol().equals("universidad")) {
+						response.sendRedirect("/universidad");
+					} else if (usIden.getRol().equals("banco")) {
+						response.sendRedirect("/banco");
+					} else if (usIden.getRol().equals("estampadora")) {
+						response.sendRedirect("/estampadora");
+					} else if (usIden.getRol().equals("gestor")) {
+						response.sendRedirect("/gestor");
+					}
+
+				} else { response.sendRedirect("/error"); }
+			
+			} else{ response.sendRedirect("/error"); }
+
+		} else { response.sendRedirect("/error"); }
 	}
-}			
-
-
-
+}

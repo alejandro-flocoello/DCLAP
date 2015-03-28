@@ -24,7 +24,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return instance;
 	}
 
-	// elimina todos los usuario. Pone la base de datos a cero.
+	// Elimina todos los usuario. Pone la base de datos a cero.
 	@Override
 	public boolean removeUsuarios() {
 		synchronized (this) {
@@ -39,7 +39,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 
-	// añade un usuario a la base de datos. Si no encuentra ningun problema
+	// Añade un usuario a la base de datos. Si no encuentra ningun problema
 	// devuelve true.
 	@Override
 	public boolean addUsuario(String username, String password, String rol) {
@@ -56,22 +56,42 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			return true;
 		}
 	}
+	
+	
 
-	// Comprueba que el usuario introducido está en la bd y que la contraseña
-	// corresponde a dicho usuario.
+	//Comprueba y extrae el username del usuario.
 	@Override
-    public Usuario getUserPassword(String username, String password) {
-		
-        PersistenceManager pmf = PMF.get().getPersistenceManager();
-        
-        Usuario u = pmf.getObjectById(Usuario.class, username);
-        
-        	if(u.getPassword().equals(password) && u.getUsuario().equals(username)){
-                return u;
-        	}
-        return null;
-    }
+	public Usuario getUserName(String username) {
 
+		PersistenceManager pmf = PMF.get().getPersistenceManager();
+		try{
+			Usuario u = pmf.getObjectById(Usuario.class, username);
+			return u;
+		} catch (Exception e){
+			return null;
+		}
+	}
+
+	// Comprueba que el usuario introducido está en la bd y que la contraseña corresponde a dicho usuario.
+	@Override
+	public Usuario getUserPassword(String username, String password) {
+
+		PersistenceManager pmf = PMF.get().getPersistenceManager();
+
+		Usuario u = pmf.getObjectById(Usuario.class, username);
+		
+		if (u.getPassword().equals(password)) {
+			return u;
+		}
+		
+		return null;
+	}
+
+
+	
+	
+	
+	//Muestra una lista con todos los usuarios de la BD
 	@Override
 	public List<Usuario> listaUsuarios() {
 		synchronized (this) {

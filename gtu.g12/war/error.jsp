@@ -26,7 +26,7 @@
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/info">INFO</a></li>
-							<li><a href="/main"></a>
+							<li><a href="/main">HOME</a>
 							<li>
 						</ul>
 					</div>

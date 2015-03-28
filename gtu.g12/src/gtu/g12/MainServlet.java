@@ -22,8 +22,8 @@ public class MainServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException, ServletException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 
 		/*UserService userService = UserServiceFactory.getUserService();

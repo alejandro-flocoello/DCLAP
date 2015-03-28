@@ -43,8 +43,8 @@ public class InitBdServlet extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("usuarios", new ArrayList<Usuario>(lista));
         view.forward(req, resp);
+       
    
-		
 		/*
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		List<Solicitud> lista = dao.listSol();
@@ -55,7 +55,7 @@ public class InitBdServlet extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
         view.forward(req, resp);
-		*/
+        */
 	}
 
 }

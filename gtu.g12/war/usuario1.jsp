@@ -53,15 +53,15 @@
 
                         <div class="signup-form">
                                                     
-                            <form>
+                            <form method="post" action="/estadoCheckBox">
 
                                 <div class="checkbox">
-                                    <label><input type="checkbox" style="font-weight: bold"/> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
+                                    <label><input type="checkbox" name="checkbox" value="Solicitud" style="font-weight: bold"/> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
                                 </div>
                                 
-
+                                
                                 <div class="controls controls-row">
-                                    <input type="button" value="Solicitar" class="btn btn-block btn-primary" onClick=" window.location.href='/Users/clara/Desktop/HTML/Usuario/usuario2.html' ">
+                                    <input type="button" value="Solicitar" class="btn btn-block btn-primary">
                                 </div>
                             </form>
                         
