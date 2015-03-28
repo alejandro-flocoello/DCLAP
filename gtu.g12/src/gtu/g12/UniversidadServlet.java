@@ -26,9 +26,11 @@ public class UniversidadServlet extends HttpServlet {
 			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		List<Solicitud> lista = dao.getSolPorEstado("SOLICITADA");
+		List<Solicitud> lista2 = dao.getSolPorEstado("REMITIDA_UNIV");
 		
 		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
+		req.getSession().setAttribute("solicitudes2", new ArrayList<Solicitud>(lista2));
         view.forward(req, resp);
 		
 	}

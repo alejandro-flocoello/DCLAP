@@ -66,7 +66,6 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
 			
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			//Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == 'SOLICITADA'");
 			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado2 + "'");
 			try{
 				soli = (List<Solicitud>)q.execute();
@@ -81,13 +80,32 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	
 	
 	@Override
-	public List<Solicitud> getSolPorEstadoYBanco(String estado2) {
+	public List<Solicitud> getSolPorEstadoYBanco(String estado) {
 		synchronized (this) {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
 			
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado2 + "' & monedero == true");
-		
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "' & monedero == true");
+	
+			try{
+				soli = (List<Solicitud>)q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			// read the existing entries
+			return soli;
+			}
+	}
+	
+	@Override
+	public List<Solicitud> getSolPorEstadoYNOBanco(String estado) {
+		synchronized (this) {
+			List<Solicitud> soli = new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "' & monedero == false");
+	
 			try{
 				soli = (List<Solicitud>)q.execute();
 			}

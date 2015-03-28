@@ -55,6 +55,14 @@
 								<td><c:out value="${solicitud.estado}" /></td>
 							</tr>
 							</c:forEach>
+							<c:forEach items="${solicitudes2}" var="solicitud">
+							<tr>
+								<td><c:out value="${solicitud.nombre}" /></td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+								<td><c:out value="${solicitud.estado}" /></td>
+							</tr>
+							</c:forEach>
 						</table>  
 						<table class="table" style="width: 60%;" align="center">
 						<p> Tarjetas pendientes de entregar: </p>
@@ -64,6 +72,14 @@
 								<th>Apellido2</th>
 								<th>Estado</th>
 							</tr>
+							<c:forEach items="${solicitudes3}" var="solicitud">
+							<tr>
+								<td><c:out value="${solicitud.nombre}" /></td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+								<td><c:out value="${solicitud.estado}" /></td>
+							</tr>
+							</c:forEach>
 						</table>
                         
                       

@@ -64,6 +64,14 @@
 								<th>Apellido2</th>
 								<th>Estado</th>
 							</tr>
+							<c:forEach items="${solicitudes2}" var="solicitud">
+							<tr>
+								<td><c:out value="${solicitud.nombre}" /></td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+								<td><c:out value="${solicitud.estado}" /></td>
+							</tr>
+							</c:forEach>
 						</table>
                         
                       
