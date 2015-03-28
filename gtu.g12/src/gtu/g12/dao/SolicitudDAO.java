@@ -14,24 +14,23 @@ public interface SolicitudDAO {
 			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
 			String estado);
 	//lista de solicitudes dependiendo del estado:
-	List<Solicitud> getSolPorEstado(String estado);
+	public List<Solicitud> getSolPorEstado(String estado);
 	
-	//Obtener datos de la solicitud:
-	public List<Solicitud> getSol(long id);
+	//Obtener datos de la solicitud (por correo):
+	public Solicitud getSol(String correo);
 	
 	//cambiar estado solicitud:
-	public void changeEstadoSol (long id, String estado);
+	public void changeEstadoSol (String correo, String estado);
 	//añadir datos bancanrios solicitud:
-	public void addBan (long id, int cuentaBan, int pin, int cv2);
+	public void addBan (String correo, int cuentaBan, int pin, int cv2);
 	//añadir datos estampacion solicitud:
-	public void addEstamp (long id, int numTarjeta);
+	public void addEstamp (String correo, int numTarjeta);
 	
 	//administrador:
 	public List<Solicitud> listSol();
-	public boolean removeSol (long id);
+	public boolean removeSol (String correo);
 	boolean removeSolicitudes();
-	void changeMonerderoSol(long id, boolean monedero);
-	List<Solicitud> getSolPorCorreo(String correo);
+	boolean removeSol();
 
 	
 

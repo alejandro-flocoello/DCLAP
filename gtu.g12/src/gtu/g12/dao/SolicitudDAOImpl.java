@@ -66,9 +66,9 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
 			
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery(Solicitud.class);
+			Query q = pmf.newQuery("select from Solicitud" + "where estado == estadoParam" + "parameters String estadoParam" + "order by id desc"); //query
 			try{
-				soli = (List<Solicitud>) q.execute();
+				soli = (List<Solicitud>) q.execute(estado);
 			}
 			catch (Exception e){
 				return null;
@@ -77,75 +77,30 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			return soli;
 			}
 	}
-
-	public List<Solicitud> getSol(long id){
-		synchronized (this) {
-			List<Solicitud> solId= new ArrayList<Solicitud>();
-			
-			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery(Solicitud.class);
-			try{
-				solId = (List<Solicitud>) q.execute();
-			}
-			catch (Exception e){
-				return null;
-			}
-			// read the existing entries
-			return solId;
-			}
+	
+	public Solicitud getSol(String correo){
+		PersistenceManager pmf = PMF.get().getPersistenceManager();
+		Solicitud s = pmf.getObjectById(Solicitud.class, correo);
+		return s;        
 	}
 	
 	@Override
-	public void changeEstadoSol(long id, String estado) {
+	public void changeEstadoSol(String correo, String estado) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo );
 	        sol.setEstado(estado);
 	       
 	    } finally {
 	        pm.close();
 	    }
 	}
-	
-	@Override
-	public void changeMonerderoSol(long id, boolean monedero) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
-	        sol.setMonedero(monedero);
-	       
-	    } finally {
-	        pm.close();
-	    }
-	}
-	
-	@Override
-	public List<Solicitud> getSolPorCorreo (String correo){
-		
-		synchronized (this){
-			
-			List<Solicitud> sole = new ArrayList<Solicitud>();
-			PersistenceManager pm = PMF.get().getPersistenceManager();
-			Query q = pm.newQuery("select from Solicitud" + "where centroUniv == correoParam" + "parameters");
-			
-			try{
-				sole = (List<Solicitud>) q.execute (correo);
-			}
-			
-			catch (Exception e ){
-				return null;
-			}
-			
-			return sole;
-			
-		}
-	}
 
 	@Override
-	public void addBan(long id, int cuentaBan, int pin, int cv2) {
+	public void addBan(String correo, int cuentaBan, int pin, int cv2) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo );
 	        sol.setCuentaBan(cuentaBan);
 	        sol.setPin(pin);
 	        sol.setCv2(cv2);
@@ -156,10 +111,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 
 	@Override
-	public void addEstamp(long id, int numTarjeta) {
+	public void addEstamp(String correo, int numTarjeta) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo );
 	        sol.setNumTarjeta(numTarjeta);
 	       
 	    } finally {
@@ -184,18 +139,23 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	@Override
-	public boolean removeSol(long id) {
+	public boolean removeSol() {
 		synchronized (this) {
-			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery(Solicitud.class);
-			try{
-				q.deletePersistentAll();
+				PersistenceManager pmf = PMF.get().getPersistenceManager();
+				Query q = pmf.newQuery(Solicitud.class);
+				try {
+					q.deletePersistentAll();
+				} catch (Exception e) {
+					return false;
+				}
+				return true;
 			}
-			catch (Exception e){
-				return false;
-			}
-			return true;
-		}
-		
+			
+	}
+
+	@Override
+	public boolean removeSol(String correo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -33,12 +33,14 @@ public class userSolServlet extends HttpServlet {
 		
 	    String[] solDual = req.getParameterValues("tipoSolicitud");
 	    
+	    /*
 	    if( !(solDual.equals(""))){
 	    	
 	    	dao.changeMonerderoSol(id, true);	    	
 	    }else{
 	    	dao.changeMonerderoSol(id, false);		
 	    }
+	    */
 				
 	    RequestDispatcher view = req.getRequestDispatcher("usuario2.jsp");
         view.forward(req, resp);

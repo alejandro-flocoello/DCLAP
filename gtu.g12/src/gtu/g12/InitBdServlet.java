@@ -28,7 +28,7 @@ public class InitBdServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		
-		/*
+		
 		 UsuarioDAO daous = UsuarioDAOImpl.getInstance();
 		 List<Usuario> lista = daous.listaUsuarios();
 		//elimina todos los datos de la bd
@@ -36,7 +36,7 @@ public class InitBdServlet extends HttpServlet {
 	
 		daous.addUsuario("paula@alumnos.com", "paulaisst", "estampadora");
 		daous.addUsuario("laura@alumnos.com", "lauraisst", "solicitante"); //ALUMNA
-		daous.addUsuario("paula2@profesores.com", "paula2isst", solicitante); //PROFESOR 
+		daous.addUsuario("paula2@profesores.com", "paula2isst", "solicitante"); //PROFESOR 
 		daous.addUsuario("alejandro@alumnos.com", "alejandroisst", "universidad");
 		daous.addUsuario("clara@alumnos.com", "claraisst", "banco");
 		daous.addUsuario("daniel@alumnos.com", "danielisst", "gestor");
@@ -44,9 +44,9 @@ public class InitBdServlet extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("usuarios", new ArrayList<Usuario>(lista));
         view.forward(req, resp);
-       */
+       
    
-		
+		/*
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		List<Solicitud> lista = dao.listSol();
 		dao.removeSolicitudes();
@@ -57,6 +57,7 @@ public class InitBdServlet extends HttpServlet {
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
         view.forward(req, resp);
+        */
         
 	}
 
