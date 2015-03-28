@@ -30,6 +30,7 @@ public interface SolicitudDAO {
 	public List<Solicitud> listSol();
 	public boolean removeSol (long id);
 	boolean removeSolicitudes();
+	void changeMonerderoSol(long id, boolean monedero);
 
 	
 

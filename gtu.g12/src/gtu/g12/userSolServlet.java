@@ -24,11 +24,20 @@ public class userSolServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
+		String id1 = req.getParameter("id");
+		Long id = Long.parseLong(id1);
+		
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
-		
-		
-		
+		// extracting data from the checkbox field
+	    String[] solDual = req.getParameterValues("tipoSolicitud");
+	    
+	    if( solDual != null){
+	    	
+	    	dao.changeMonerderoSol(id, true);	    	
+	    }else{
+	    	dao.changeMonerderoSol(id, true);		
+	    }
 				
 		RequestDispatcher view = req.getRequestDispatcher("usuario2.jsp");
         view.forward(req, resp);

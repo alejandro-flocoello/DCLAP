@@ -56,7 +56,7 @@
                             <form method="post" action="/userSol">
 
                                 <div class="checkbox">
-                                    <label><input type="checkbox" name="checkbox" value="Solicitud" style="font-weight: bold"/> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
+                                    <label><input type="checkbox" name="tipoSolicitud" value="SolicitudDual" style="font-weight: bold"/> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
                                 </div>
                                 
                                 

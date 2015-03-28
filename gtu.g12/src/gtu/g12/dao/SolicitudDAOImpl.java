@@ -106,6 +106,18 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	        pm.close();
 	    }
 	}
+	
+	@Override
+	public void changeMonerderoSol(long id, boolean monedero) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        sol.setMonedero(monedero);
+	       
+	    } finally {
+	        pm.close();
+	    }
+	}
 
 	@Override
 	public void addBan(long id, int cuentaBan, int pin, int cv2) {
