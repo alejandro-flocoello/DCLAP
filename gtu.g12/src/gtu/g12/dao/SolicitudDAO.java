@@ -6,8 +6,6 @@ import gtu.g12.model.Solicitud;
 
 public interface SolicitudDAO {
 	
-	//No está claro si los parámetro tiene que coger userId
-	
 	//usuario añade solicitud:
 	boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,

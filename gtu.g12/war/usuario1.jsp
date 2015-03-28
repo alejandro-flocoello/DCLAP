@@ -53,7 +53,7 @@
 
                         <div class="signup-form">
                                                     
-                            <form method="post" action="/estadoCheckBox">
+                            <form method="post" action="/userSol">
 
                                 <div class="checkbox">
                                     <label><input type="checkbox" name="checkbox" value="Solicitud" style="font-weight: bold"/> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
@@ -61,7 +61,7 @@
                                 
                                 
                                 <div class="controls controls-row">
-                                    <input type="button" value="Solicitar" class="btn btn-block btn-primary">
+                                    <input type="submit" value="Solicitar" class="btn btn-block btn-primary">
                                 </div>
                             </form>
                         

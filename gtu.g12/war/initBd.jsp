@@ -62,6 +62,7 @@
 			<th>NumTarjeta</th>
 			<th>Estado</th>
 		</tr>
+		
 		<c:forEach items="${solicitudes}" var="solicitud">
 			<tr>
 				<td><c:out value="${solicitud.nombre}" /></td>

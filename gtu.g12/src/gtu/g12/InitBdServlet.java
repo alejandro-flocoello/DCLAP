@@ -25,17 +25,18 @@ public class InitBdServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		
-		
+		/*
 		 UsuarioDAO daous = UsuarioDAOImpl.getInstance();
 		 List<Usuario> lista = daous.listaUsuarios();
 		//elimina todos los datos de la bd
 		daous.removeUsuarios();
 	
 		daous.addUsuario("paula@alumnos.com", "paulaisst", "estampadora");
-		daous.addUsuario("laura@alumnos.com", "lauraisst", "solicitante");
+		daous.addUsuario("laura@alumnos.com", "lauraisst", "solicitante"); //ALUMNA
+		daous.addUsuario("paula2@profesores.com", "paula2isst", solicitante); //PROFESOR 
 		daous.addUsuario("alejandro@alumnos.com", "alejandroisst", "universidad");
 		daous.addUsuario("clara@alumnos.com", "claraisst", "banco");
 		daous.addUsuario("daniel@alumnos.com", "danielisst", "gestor");
@@ -43,19 +44,20 @@ public class InitBdServlet extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("usuarios", new ArrayList<Usuario>(lista));
         view.forward(req, resp);
-       
+       */
    
-		/*
+		
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		List<Solicitud> lista = dao.listSol();
 		dao.removeSolicitudes();
-		dao.addSol("Paula", "Fernandez", "Perez", "DNI", "53654635", "Esp", "Gomar", "UPM", "ETSIT", "paula@alumnos.com", "estampadora", 12341234, true, 0,0,0,0,"solicitada");
-		dao.addSol("Paula2", "Fernandez2", "Perez2", "DNI2", "536546352", "Esp2", "Gomar2", "UPM2", "ETSIT2", "paula2@alumnos.com", "alumna2", 123412342, false,0,0,0,0,"aceptada por uni");
+		dao.addSol("Paula", "Fernandez", "Perez", "DNI", "53654635", "Esp", "Gomar", "UPM", "ETSIT", "paula2@profesores.com", "profesor", 12341234, true, 0,0,0,0,"");
+		dao.addSol("Laura", "Gomez", "Rodriguez", "DNI", "536546352", "Española", "Casa", "UPM", "ETSIT", "laura@alumnos.com", "alumno", 123412342, false,0,0,0,0,"");
 		
-		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
+		
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
+		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
         view.forward(req, resp);
-        */
+        
 	}
 
 }

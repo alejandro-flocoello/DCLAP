@@ -26,7 +26,6 @@ public class Solicitud implements Serializable {
 		private String nomUniv;
 		private String centroUniv;
 		private String correoUniv;
-		//private String password; //quiza no es conveniente que esté aquí
 		private String categoria; //alunmno, profeor, PAS
 		private int expediente;
 		private boolean monedero;
