@@ -61,14 +61,15 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 
 	@Override
-	public List<Solicitud> getSolPorEstado(String estado) {
+	public List<Solicitud> getSolPorEstado(String estado2) {
 		synchronized (this) {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
 			
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery(Solicitud.class);
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == 'SOLICITADA'");
+		
 			try{
-				soli = (List<Solicitud>) q.execute();
+				soli = (List<Solicitud>)q.execute();
 			}
 			catch (Exception e){
 				return null;
@@ -77,7 +78,7 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			return soli;
 			}
 	}
-
+	
 	public List<Solicitud> getSol(long id){
 		synchronized (this) {
 			List<Solicitud> solId= new ArrayList<Solicitud>();

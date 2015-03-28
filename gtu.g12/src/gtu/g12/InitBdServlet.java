@@ -29,7 +29,8 @@ public class InitBdServlet extends HttpServlet {
 			throws IOException, ServletException {
 		
 		
-		 UsuarioDAO daous = UsuarioDAOImpl.getInstance();
+		/* 
+		UsuarioDAO daous = UsuarioDAOImpl.getInstance();
 		 List<Usuario> lista = daous.listaUsuarios();
 		//elimina todos los datos de la bd
 		daous.removeUsuarios();
@@ -43,19 +44,21 @@ public class InitBdServlet extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("usuarios", new ArrayList<Usuario>(lista));
         view.forward(req, resp);
+        */
        
    
-		/*
+		
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		List<Solicitud> lista = dao.listSol();
 		dao.removeSolicitudes();
-		dao.addSol("Paula", "Fernandez", "Perez", "DNI", "53654635", "Esp", "Gomar", "UPM", "ETSIT", "paula@alumnos.com", "estampadora", 12341234, true, 0,0,0,0,"solicitada");
-		dao.addSol("Paula2", "Fernandez2", "Perez2", "DNI2", "536546352", "Esp2", "Gomar2", "UPM2", "ETSIT2", "paula2@alumnos.com", "alumna2", 123412342, false,0,0,0,0,"aceptada por uni");
+		dao.addSol("Paula", "Fernandez", "Perez", "DNI", "53654635", "Esp", "Gomar", "UPM", "ETSIT", "paula@alumnos.com", "estampadora", 12341234, true, 0,0,0,0,"SOLICITADA");
+		dao.addSol("Paula2", "Fernandez2", "Perez2", "DNI2", "536546352", "Esp2", "Gomar2", "UPM2", "ETSIT2", "paula2@alumnos.com", "alumna2", 123412342, false,0,0,0,0,"REMITIDA_UNIV");
+		dao.addSol("Laura", "Gomez", "Rodriguez", "DNI", "47234046", "Esp", "Gomar", "UPM", "ETSIT", "laura@alumnos.com", "alumna", 123412342, false,0,0,0,0,"SOLICITADA");
 		
 		RequestDispatcher view = req.getRequestDispatcher("initBd.jsp");
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
         view.forward(req, resp);
-        */
+        
 	}
 
 }

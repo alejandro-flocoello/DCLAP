@@ -40,6 +40,33 @@
                     <div class="span4">
                         <h1>Universidad</h1>
                         
+ 						<table class="table" style="width: 60%;" align="center">
+  						<p> Solicitudes pendientes de aprobar: </p>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+							<c:forEach items="${solicitudes}" var="solicitud">
+							<tr>
+								<td><c:out value="${solicitud.nombre}" /></td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+								<td><c:out value="${solicitud.estado}" /></td>
+							</tr>
+							</c:forEach>
+						</table>  
+						<table class="table" style="width: 60%;" align="center">
+						<p> Tarjetas pendientes de entregar: </p>
+      						<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+						</table>
+                        
                       
                     </div>
                         <div class="span6" "offset10" href='#' >
@@ -48,13 +75,14 @@
                     </div>
             </div>
         </section>
-
+        
+      
 
         <footer class="footer-2 bg-midnight-blue">
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li class="active"><a href="i/info">Home</a></li>
+                        <li class="active"><a href="/info">Home</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>
