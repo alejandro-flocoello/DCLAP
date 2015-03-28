@@ -18,6 +18,8 @@ public interface SolicitudDAO {
 	//lista de solicitudes dependiendo del estado:
 	List<Solicitud> getSolPorEstado(String estado);
 	
+	public List<Solicitud> getSolPorEstadoYBanco(String estado2);
+	
 	//Obtener datos de la solicitud:
 	public List<Solicitud> getSol(long id);
 	

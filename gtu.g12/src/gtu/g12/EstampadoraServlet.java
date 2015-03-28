@@ -25,8 +25,12 @@ public class EstampadoraServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
+		//List<Solicitud> lista" = dao.getSolPorEstadoYBanco("ACEPTADA_UNIV");
+		List<Solicitud> lista = dao.getSolPorEstado("ASOCIADA_BANCO");
 
 		RequestDispatcher view = req.getRequestDispatcher("estampadora.jsp");
+		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
+		//req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista2));
         view.forward(req, resp);
 		
 	}
