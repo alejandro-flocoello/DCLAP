@@ -10,10 +10,10 @@ import javax.persistence.Id;
 @Entity
 public class Solicitud implements Serializable {
 		private static final long serialVersionUID = 1L;
+		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		
-		private Long id;
+		private String correoUniv;
 		
 		private String nombre;
 		private String apellido1;
@@ -25,7 +25,7 @@ public class Solicitud implements Serializable {
 		//private String fotografia;
 		private String nomUniv;
 		private String centroUniv;
-		private String correoUniv;
+		
 		//private String password; //quiza no es conveniente que esté aquí
 		private String categoria; //alunmno, profeor, PAS
 		private int expediente;

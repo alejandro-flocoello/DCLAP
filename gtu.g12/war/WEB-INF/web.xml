@@ -48,6 +48,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/initBd</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>ShowBd</servlet-name>
+		<servlet-class>gtu.g12.ShowBdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowBd</servlet-name>
+		<url-pattern>/showBd</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Estampadora</servlet-name>
 		<servlet-class>gtu.g12.EstampadoraServlet</servlet-class>
 	</servlet>
