@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -24,22 +25,13 @@ import gtu.g12.model.Usuario;
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException, ServletException {
-		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
-
-		RequestDispatcher view = req
-				.getRequestDispatcher("universidadInicio.jsp");
-		view.forward(req, resp);
-
-	}
-
+	
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String user = request.getParameter("usuario");
 		String password = request.getParameter("password");
-
+		
 		// Comprobar en la base de datos que ese email y password corresponde con un usuario y ver que rol tiene.
 		// en funcion de ese rol, lo mandare a un servlet o a otro
 
@@ -55,14 +47,26 @@ public class LoginServlet extends HttpServlet {
 
 				if (usIden != null) {
 					if (usIden.getRol().equals("solicitante")) {
+						HttpSession session= request.getSession();  
+				        session.setAttribute("usuario",user);  
 						response.sendRedirect("/usuario1");
+					
 					} else if (usIden.getRol().equals("universidad")) {
+						HttpSession session=request.getSession();  
+				        session.setAttribute("usuario",user);
 						response.sendRedirect("/universidad");
+					
 					} else if (usIden.getRol().equals("banco")) {
+						HttpSession session=request.getSession();  
+				        session.setAttribute("usuario",user);
 						response.sendRedirect("/banco");
 					} else if (usIden.getRol().equals("estampadora")) {
+						HttpSession session=request.getSession();  
+				        session.setAttribute("usuario",user);
 						response.sendRedirect("/estampadora");
 					} else if (usIden.getRol().equals("gestor")) {
+						HttpSession session=request.getSession();  
+				        session.setAttribute("usuario",user);
 						response.sendRedirect("/gestor");
 					}
 
