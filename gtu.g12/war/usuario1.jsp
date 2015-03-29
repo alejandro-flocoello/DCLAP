@@ -2,15 +2,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page isELIgnored="false"%>
+<%@ page session="true"%>
 
 
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <title>Usuario</title>
-  </head>
+<head>
+<meta charset="utf-8">
+<title>Usuario</title>
+
+<%
+	String usuario = "";
+	HttpSession sesionOk = request.getSession();
+	if (sesionOk.getAttribute("usuario") == null) {
+%>
+<jsp:forward page="interfazInicio.jsp">
+	<jsp:param name="error" value="Esobligatorio identificarse" />
+</jsp:forward>
+<%
+	} else {
+		usuario = (String) sesionOk.getAttribute("usuario");
+	}
+%>
+</head>
   
   
 <body>
