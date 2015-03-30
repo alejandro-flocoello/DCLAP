@@ -2,14 +2,10 @@ package gtu.g12.model;
 
 import java.io.Serializable;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 @PersistenceCapable
 public class Usuario implements Serializable {
@@ -48,6 +44,4 @@ public class Usuario implements Serializable {
 		public void setRol(String rol) {
 			this.rol = rol;
 		}
-		
-		
 }

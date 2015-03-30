@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 
 
 	<servlet>
@@ -30,7 +30,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Universidad</servlet-name>
 		<url-pattern>/universidad</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Banco</servlet-name>
 		<servlet-class>gtu.g12.BancoServlet</servlet-class>
@@ -87,17 +87,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Error</servlet-name>
 		<servlet-class>gtu.g12.ErrorServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>Error</servlet-name>
 		<url-pattern>/error</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Info</servlet-name>
 		<servlet-class>gtu.g12.InfoServlet</servlet-class>
@@ -106,6 +106,37 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Info</servlet-name>
 		<url-pattern>/info</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Universidad2</servlet-name>
+		<servlet-class>gtu.g12.Universidad2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Universidad2</servlet-name>
+		<url-pattern>/gestionU</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Usuario2</servlet-name>
+		<servlet-class>gtu.g12.userSolServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Usuario2</servlet-name>
+		<url-pattern>/solUser</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ChangeState</servlet-name>
+		<servlet-class>gtu.g12.changeStateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangeState</servlet-name>
+		<url-pattern>/changeState</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 	
 	<welcome-file-list>
 		<welcome-file>main</welcome-file>

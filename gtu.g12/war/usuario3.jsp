@@ -4,13 +4,13 @@
 <%@ page isELIgnored="false"%>
 <%@ page session="true"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 <meta charset="utf-8">
-<title>Usuario</title>
+<title>Usuario2</title>
 
 <%
 	String usuario = "";
@@ -25,10 +25,7 @@
 		usuario = (String) sesionOk.getAttribute("usuario");
 	}
 %>
-
-
 </head>
-
 
 <body>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,39 +52,14 @@
 	</header>
 
 
-
-
-	<section class="header-11-sub bg-azul-clarito">
-		<div class="background">&nbsp;</div>
-		<div class="container">
-			<div class="row clearfix">
-				<div class="span15">
-					
-					<h1 class="text-center">Bienvenido Usuario</h1>
-
-					<p>No existe solicitud en proceso</p>
-
-					<p><h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5></p>
-
-					<div class="signup-form">
-					<form method="post" action="/solUser">
-							
-							<div class="checkbox">
-								<label><input type="checkbox" name="checkbox"
-									value="Solicitud" style="font-weight: bold" /> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
-							</div>
-						
-							<div class="controls controls-row">
-								<input type="submit" value="Solicitar" class="btn btn-block btn-primary">
-							</div>
-						</form>
-
-					</div>
-				</div>
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-6">
+				<h3>Bienvenido usuario <c:out value="${solicitud.nombre}"/></h3>
+				<h6><c:out value="${solicitud.nombre}"/> el estado de solicitud es <c:out value="${solicitud.estado}"/></h6>
 			</div>
+
 		</div>
-	</section>
+	</div>
 </body>
 </html>
-
-

@@ -16,9 +16,9 @@
 	HttpSession sesionOk = request.getSession();
 	if (sesionOk.getAttribute("banco") == null) {
 %>
-		<jsp:forward page="interfazInicio.jsp">
-			<jsp:param name="error" value="Esobligatorio identificarse" />
-		</jsp:forward>
+<jsp:forward page="interfazInicio.jsp">
+	<jsp:param name="error" value="Esobligatorio identificarse" />
+</jsp:forward>
 <%
 	} else {
 		usuario = (String) sesionOk.getAttribute("banco");
@@ -49,51 +49,62 @@
 			</div>
 		</div>
 	</header>
-	<section class="header-11-sub bg-midnight-blue">
+
+	<section class="header-11-sub bg-azul-clarito">
 		<div class="background">&nbsp;</div>
 		<div class="container">
-			<div class="row">
-				<div class="span4">
-					<h1>Banco</h1>
-					<table class="table" style="width: 60%;" align="center">
-						<p>Solicitudes pendientes de aprobar:</p>
-						<tr>
-							<th>Nombre</th>
-							<th>Apellido1</th>
-							<th>Apellido2</th>
-							<th>Estado</th>
-						</tr>
-						<c:forEach items="${solicitudes}" var="solicitud">
-							<tr>
-								<td><c:out value="${solicitud.nombre}" /></td>
-								<td><c:out value="${solicitud.apellido1}" /></td>
-								<td><c:out value="${solicitud.apellido2}" /></td>
-								<td><c:out value="${solicitud.estado}" /></td>
-							</tr>
-						</c:forEach>
-					</table>
-					<table class="table" style="width: 60%;" align="center">
-						<p>Tarjetas pendientes de entregar:</p>
-						<tr>
-							<th>Nombre</th>
-							<th>Apellido1</th>
-							<th>Apellido2</th>
-							<th>Estado</th>
-						</tr>
-						<c:forEach items="${solicitudes2}" var="solicitud">
-							<tr>
-								<td><c:out value="${solicitud.nombre}" /></td>
-								<td><c:out value="${solicitud.apellido1}" /></td>
-								<td><c:out value="${solicitud.apellido2}" /></td>
-								<td><c:out value="${solicitud.estado}" /></td>
-							</tr>
-						</c:forEach>
-					</table>
+			<div class="row clearfix">
 
+				<div class="col-md-4 column">
+					<h3>Solicitudes pendientes de aprobar:</h3>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
 
+						<tbody>
+
+							<tr class="success">
+								<c:forEach items="${solicitudes}" var="solicitud">
+									<td><c:out value="${solicitud.nombre}" /></td>
+									<td><c:out value="${solicitud.apellido1}" /></td>
+									<td><c:out value="${solicitud.apellido2}" /></td>
+									<td><c:out value="${solicitud.estado}" /></td>
+								</c:forEach>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<div class="span6" "offset10" href='#'>
-					<img src="/img/equipo.png" width="400" height="1000" align="right">
+
+
+				<div class="col-md-4 column">
+					<h3>Tarjetas pendientes de entregar:</h3>
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="warning">
+								<c:forEach items="${solicitudes2}" var="solicitud">
+									<td><c:out value="${solicitud.nombre}" /></td>
+									<td><c:out value="${solicitud.apellido1}" /></td>
+									<td><c:out value="${solicitud.apellido2}" /></td>
+									<td><c:out value="${solicitud.estado}" /></td>
+								</c:forEach>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

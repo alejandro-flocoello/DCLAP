@@ -6,4 +6,4 @@ gaeHrdEnabled=true
 gaeLaunchAppInBrowser=true
 googleCloudSqlEnabled=false
 localDevMySqlEnabled=false
-ormEnhancementInclusions=src/|src/gtu/
+ormEnhancementInclusions=src/|src/gtu/|src/gtu/g12/model/Solicitud.java

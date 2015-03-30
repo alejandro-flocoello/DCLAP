@@ -1,12 +1,8 @@
 package gtu.g12.dao;
 
 import gtu.g12.model.Solicitud;
-import gtu.g12.model.Usuario;
-
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
-import javax.persistence.EntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,22 +55,35 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			return true;
 		}
 	}
-
+	
+	
 	@Override
-	public List<Solicitud> getSolPorEstado(String estado2) {
+	public Solicitud getSol(String email) {
+		PersistenceManager pmf = PMF.get().getPersistenceManager();
+		try{
+			Solicitud s = pmf.getObjectById(Solicitud.class, email);
+			return s;
+		} catch (Exception e){
+			return null;
+		}
+	}
+	
+	//Extrae la solicitud por el estado
+	@Override
+	public List<Solicitud> getSolPorEstado(String estado) {
 		synchronized (this) {
-			List<Solicitud> soli = new ArrayList<Solicitud>();
+			List<Solicitud> sol = new ArrayList<Solicitud>();
 			
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado2 + "'");
+			//Query q = pmf.newQuery(Solicitud.class, estado);
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "'");
 			try{
-				soli = (List<Solicitud>)q.execute();
+				sol = (List<Solicitud>) q.execute();
 			}
 			catch (Exception e){
 				return null;
 			}
-			// read the existing entries
-			return soli;
+			return sol;
 			}
 	}
 	
@@ -99,6 +108,18 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 	
 	@Override
+	public void changeMonederoSol(String correo, boolean monedero) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
+	        sol.setMonedero(monedero);
+	       
+	    } catch (Exception e) {
+	    	pm.close();
+	    }
+	}
+	
+	@Override
 	public List<Solicitud> getSolPorEstadoYNOBanco(String estado) {
 		synchronized (this) {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
@@ -117,26 +138,9 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	
+		
 	
-
 	
-	
-	public List<Solicitud> getSol(long id){
-		synchronized (this) {
-			List<Solicitud> solId= new ArrayList<Solicitud>();
-			
-			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery(Solicitud.class);
-			try{
-				solId = (List<Solicitud>) q.execute();
-			}
-			catch (Exception e){
-				return null;
-			}
-			// read the existing entries
-			return solId;
-			}
-	}
 	
 	@Override
 	public void changeEstadoSol(long id, String estado) {

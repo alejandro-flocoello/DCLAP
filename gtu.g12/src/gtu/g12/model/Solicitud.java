@@ -2,210 +2,233 @@ package gtu.g12.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
-@Entity
+
+
+@PersistenceCapable
 public class Solicitud implements Serializable {
-		private static final long serialVersionUID = 1L;
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private String correoUniv;
-		
-		private String nombre;
-		private String apellido1;
-		private String apellido2;
-		private String tipoDoc;
-		private String codDoc;
-		private String nacionalidad;
-		private String domicilio;
-		//private String fotografia;
-		private String nomUniv;
-		private String centroUniv;
-		
-		//private String password; //quiza no es conveniente que esté aquí
-		private String categoria; //alunmno, profeor, PAS
-		private int expediente;
-		private boolean monedero;
-		
-		private int cuentaBan;
-		private int pin;
-		private int cv2;
-		
-		//private String fotoFondo;
-		private int numTarjeta;
-		
-		private String estado;
-		
-		public Solicitud(String nombre,String apellido1,String apellido2,String tipoDoc,String codDoc,
-				String nacionalidad,String domicilio,String nomUniv,String centroUniv,String correoUniv,String categoria, int expediente, boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado) {
-			this.setNombre(nombre);
-			this.setApellido1(apellido1);
-			this.setApellido2(apellido2);
-			this.setTipoDoc(tipoDoc);
-			this.setCodDoc(codDoc);
-			this.setNacionalidad(nacionalidad);
-			this.setDomicilio(domicilio);
-			this.setNomUniv(nomUniv);
-			this.setCentroUniv(centroUniv);
-			this.setCorreoUniv(correoUniv);
-			//this.setPassword(password);
-			this.setCategoria(categoria);
-			this.setExpediente(expediente);
-			this.setMonedero(monedero);
-			
-			this.setCuentaBan(cuentaBan);
-			this.setPin(pin);
-			this.setCv2(cv2);
-			this.setNumTarjeta(numTarjeta);
-			this.setEstado(estado);
-		}
+	private static final long serialVersionUID = 1L;
 
-		public String getNombre() {
-			return nombre;
-		}
+	// El identificador es el usuario, asi nos aseguramos de que el correo es único.
+	@PrimaryKey
+	@Persistent
+	private String correoUniv;
+	@Persistent
+	private String nombre;
+	@Persistent
+	private String apellido1;
+	@Persistent
+	private String apellido2;
+	@Persistent
+	private String tipoDoc;
+	@Persistent
+	private String codDoc;
+	@Persistent
+	private String nacionalidad;
+	@Persistent
+	private String domicilio;
+	@Persistent
+	private String nomUniv;
+	@Persistent
+	private String centroUniv;
+	
+	// private String fotografia;
+	// private String password; //quiza no es conveniente que esté aquí
+	
+	@Persistent
+	private String categoria; // alunmno, profeor, PAS
+	@Persistent
+	private int expediente;
+	@Persistent
+	private boolean monedero;
+	
+	
+	@Persistent
+	private int cuentaBan;
+	@Persistent
+	private int pin;
+	@Persistent
+	private int cv2;
+	
+	// private String fotoFondo;
+	
+	@Persistent
+	private int numTarjeta;
+	@Persistent
+	private String estado;
+	
+	
+	public Solicitud(String nombre, String apellido1, String apellido2,
+			String tipoDoc, String codDoc, String nacionalidad,
+			String domicilio, String nomUniv, String centroUniv,
+			String correoUniv, String categoria, int expediente,
+			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
+			String estado) {
+		this.setNombre(nombre);
+		this.setApellido1(apellido1);
+		this.setApellido2(apellido2);
+		this.setTipoDoc(tipoDoc);
+		this.setCodDoc(codDoc);
+		this.setNacionalidad(nacionalidad);
+		this.setDomicilio(domicilio);
+		this.setNomUniv(nomUniv);
+		this.setCentroUniv(centroUniv);
+		this.setCorreoUniv(correoUniv);
+		this.setCategoria(categoria);
+		this.setExpediente(expediente);
+		this.setMonedero(monedero);
 
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
+		this.setCuentaBan(cuentaBan);
+		this.setPin(pin);
+		this.setCv2(cv2);
+		this.setNumTarjeta(numTarjeta);
+		this.setEstado(estado);
+	}
 
-		public String getApellido1() {
-			return apellido1;
-		}
+	public String getNombre() {
+		return nombre;
+	}
 
-		public void setApellido1(String apellido1) {
-			this.apellido1 = apellido1;
-		}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-		public String getApellido2() {
-			return apellido2;
-		}
+	public String getApellido1() {
+		return apellido1;
+	}
 
-		public void setApellido2(String apellido2) {
-			this.apellido2 = apellido2;
-		}
+	public void setApellido1(String apellido1) {
+		this.apellido1 = apellido1;
+	}
 
-		public String getTipoDoc() {
-			return tipoDoc;
-		}
+	public String getApellido2() {
+		return apellido2;
+	}
 
-		public void setTipoDoc(String tipoDoc) {
-			this.tipoDoc = tipoDoc;
-		}
+	public void setApellido2(String apellido2) {
+		this.apellido2 = apellido2;
+	}
 
-		public String getCodDoc() {
-			return codDoc;
-		}
+	public String getTipoDoc() {
+		return tipoDoc;
+	}
 
-		public void setCodDoc(String codDoc) {
-			this.codDoc = codDoc;
-		}
+	public void setTipoDoc(String tipoDoc) {
+		this.tipoDoc = tipoDoc;
+	}
 
-		public String getNacionalidad() {
-			return nacionalidad;
-		}
+	public String getCodDoc() {
+		return codDoc;
+	}
 
-		public void setNacionalidad(String nacionalidad) {
-			this.nacionalidad = nacionalidad;
-		}
+	public void setCodDoc(String codDoc) {
+		this.codDoc = codDoc;
+	}
 
-		public String getDomicilio() {
-			return domicilio;
-		}
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
 
-		public void setDomicilio(String domicilio) {
-			this.domicilio = domicilio;
-		}
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
 
-		public String getNomUniv() {
-			return nomUniv;
-		}
+	public String getDomicilio() {
+		return domicilio;
+	}
 
-		public void setNomUniv(String nomUniv) {
-			this.nomUniv = nomUniv;
-		}
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
 
-		public String getCentroUniv() {
-			return centroUniv;
-		}
+	public String getNomUniv() {
+		return nomUniv;
+	}
 
-		public void setCentroUniv(String centroUniv) {
-			this.centroUniv = centroUniv;
-		}
+	public void setNomUniv(String nomUniv) {
+		this.nomUniv = nomUniv;
+	}
 
-		public String getCorreoUniv() {
-			return correoUniv;
-		}
+	public String getCentroUniv() {
+		return centroUniv;
+	}
 
-		public void setCorreoUniv(String correoUniv) {
-			this.correoUniv = correoUniv;
-		}
+	public void setCentroUniv(String centroUniv) {
+		this.centroUniv = centroUniv;
+	}
 
-		
-		public int getExpediente() {
-			return expediente;
-		}
+	public String getCorreoUniv() {
+		return correoUniv;
+	}
 
-		public void setExpediente(int expediente) {
-			this.expediente = expediente;
-		}
+	public void setCorreoUniv(String correoUniv) {
+		this.correoUniv = correoUniv;
+	}
 
-		public String getCategoria() {
-			return categoria;
-		}
+	public int getExpediente() {
+		return expediente;
+	}
 
-		public void setCategoria(String categoria) {
-			this.categoria = categoria;
-		}
+	public void setExpediente(int expediente) {
+		this.expediente = expediente;
+	}
 
-		public boolean isMonedero() {
-			return monedero;
-		}
+	public String getCategoria() {
+		return categoria;
+	}
 
-		public void setMonedero(boolean monedero) {
-			this.monedero = monedero;
-		}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 
-		public int getCuentaBan() {
-			return cuentaBan;
-		}
+	public boolean isMonedero() {
+		return monedero;
+	}
 
-		public void setCuentaBan(int cuentaBan) {
-			this.cuentaBan = cuentaBan;
-		}
+	public void setMonedero(boolean monedero) {
+		this.monedero = monedero;
+	}
 
-		public int getPin() {
-			return pin;
-		}
+	public int getCuentaBan() {
+		return cuentaBan;
+	}
 
-		public void setPin(int pin) {
-			this.pin = pin;
-		}
+	public void setCuentaBan(int cuentaBan) {
+		this.cuentaBan = cuentaBan;
+	}
 
-		public int getCv2() {
-			return cv2;
-		}
+	public int getPin() {
+		return pin;
+	}
 
-		public void setCv2(int cv2) {
-			this.cv2 = cv2;
-		}
+	public void setPin(int pin) {
+		this.pin = pin;
+	}
 
-		public int getNumTarjeta() {
-			return numTarjeta;
-		}
+	public int getCv2() {
+		return cv2;
+	}
 
-		public void setNumTarjeta(int numTarjeta) {
-			this.numTarjeta = numTarjeta;
-		}
+	public void setCv2(int cv2) {
+		this.cv2 = cv2;
+	}
 
-		public String getEstado() {
-			return estado;
-		}
+	public int getNumTarjeta() {
+		return numTarjeta;
+	}
 
-		public void setEstado(String estado) {
-			this.estado = estado;
-		}
+	public void setNumTarjeta(int numTarjeta) {
+		this.numTarjeta = numTarjeta;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 }

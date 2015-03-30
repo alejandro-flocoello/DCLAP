@@ -53,31 +53,30 @@
 	</header>
 
 
+	<section class="header-11-sub bg-azul-clarito">
+		<div class="background">&nbsp;</div>
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<h3>Valide sus datos para continuar con el proceso</h3>
+					<h6>Si algun dato no es correcto póngase en contacto con
+						bbdd@taruni.upm</h6>
+				</div>
 
-	<div class="container">
-		<div class="row clearfix">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
-				<h3>Valide sus datos para continuar con el proceso</h3>
-				<h6>Si algun dato no es correcto póngase en contacto con
-					bbdd@taruni.upm</h6>
+				<div class="col-md-3"></div>
 			</div>
 
-			<div class="col-md-3"></div>
-		</div>
-
-		<div class="row clearfix">
-			<div class="col-md-3"></div>
-			<div class="col-md-6 column">
+			<div class="row clearfix">
+				<div class="col-md-3"></div>
+				<div class="col-md-6 column">
 
 
-				<form method="post" action="">
-					<table class="table table-hover">
+					<form method="post" action="">
 
-						<tbody>
+						<table class="table table-hover">
 
-							<c:forEach items="${solicitudes}" var="solicitud">
-
+							<tbody>
 								<tr>
 									<td>Nombre</td>
 									<td><c:out value="${solicitud.nombre}" /></td>
@@ -87,7 +86,6 @@
 									<td>Apellido 1:</td>
 									<td><c:out value="${solicitud.apellido1}" /></td>
 								</tr>
-
 
 								<tr>
 									<td>Apellido 2:</td>
@@ -105,57 +103,37 @@
 								</tr>
 
 								<tr>
-									<td>Nacionalidad</td>
-									<td><c:out value="${solicitud.nacionalidad}" /></td>
-								</tr>
-
-								<tr>
 									<td>Domicilio</td>
 									<td><c:out value="${solicitud.domicilio}" /></td>
 								</tr>
 
 								<tr>
-									<td>Universidad</td>
-									<td><c:out value="${solicitud.nomUniv}" /></td>
-
-								</tr>
-
-								<tr>
 									<td>Escuela</td>
 									<td><c:out value="${solicitud.centroUniv}" /></td>
-
 								</tr>
 
 								<tr>
 									<td>Tipo Solicitud</td>
 									<td><c:out value="${solicitud.categoria}" /></td>
 								</tr>
-								
-								
-								<tr>
-									<td>Email</td>
-									<td><c:out value="${solicitud.correoUniv}" /></td>
-								</tr>
 
 								<tr>
 									<td>Número Expediente</td>
 									<td><c:out value="${solicitud.expediente}" /></td>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</form>
+							</tbody>
+						</table>
+					</form>
 
-				<div class="controls controls-row">
-					<input type="button" value="Validar"
-						class="btn btn-block btn-success"
-						onClick=" window.location.href='/Users/clara/Desktop/HTML/Usuario/usuario3.html' ">
-				</div>
-
-				<div class="controls controls-row">
-					<input type="button" value="Cancelar"
-						class="btn btn-block btn-danger" onClick="/main">
+					<form method="get" action="/changeState" class="controls controls-row">
+						<input type="submit" value="Validar" class="btn btn-block btn-success">
+					</form>
+					<form method="get" action="/main" class="controls controls-row">
+						<input type="submit" value="Cancelar" class="btn btn-block btn-danger">
+					</form>
 				</div>
 			</div>
+		</div>
+	</section>
 </body>
 </html>

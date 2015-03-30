@@ -4,29 +4,31 @@
 <%@page isELIgnored="false"%>
 <%@ page session="true"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
-<title>Empresa Estampadora</title>
+<title>FormularioUniversidad</title>
+
 <%
 	String usuario = "";
 	HttpSession sesionOk = request.getSession();
-	if (sesionOk.getAttribute("estampadora") == null) {
+	if (sesionOk.getAttribute("universidad") == null) {
 %>
 <jsp:forward page="interfazInicio.jsp">
 	<jsp:param name="error" value="Esobligatorio identificarse" />
 </jsp:forward>
 <%
 	} else {
-		usuario = (String) sesionOk.getAttribute("estampadora");
+		usuario = (String) sesionOk.getAttribute("universidad");
 	}
 %>
-
 </head>
 
+
 <body>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
@@ -54,73 +56,75 @@
 	<section class="header-11-sub bg-azul-clarito">
 		<div class="background">&nbsp;</div>
 		<div class="container">
+
 			<div class="row clearfix">
 
-				<div class="col-md-4 column">
-					<h3>Solicitudes pendientes de aprobar:</h3>
+				<div class="col-md-3"></div>
+				<div class="col-md-6 column">
+
+					<h3>Solicitud de Usuario</h3>
+					<h4>Valide los datos para avanzar en el proceso</h4>
+
 					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Apellido1</th>
-								<th>Apellido2</th>
-								<th>Estado</th>
-							</tr>
-						</thead>
 
 						<tbody>
+							<tr>
+								<td>Nombre</td>
+								<td><c:out value="${solicitud.nombre}" /></td>
+							</tr>
 
-							<tr class="success">
-								<c:forEach items="${solicitudes}" var="solicitud">
-									<td><c:out value="${solicitud.nombre}" /></td>
-									<td><c:out value="${solicitud.apellido1}" /></td>
-									<td><c:out value="${solicitud.apellido2}" /></td>
-									<td><c:out value="${solicitud.estado}" /></td>
-								</c:forEach>
+							<tr>
+								<td>Apellido 1:</td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+							</tr>
+
+							<tr>
+								<td>Apellido 2:</td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+							</tr>
+
+							<tr>
+								<td>Tipo de Documento:</td>
+								<td><c:out value="${solicitud.tipoDoc}" /></td>
+							</tr>
+
+							<tr>
+								<td>Código:</td>
+								<td><c:out value="${solicitud.codDoc}" /></td>
+							</tr>
+
+							<tr>
+								<td>Domicilio</td>
+								<td><c:out value="${solicitud.domicilio}" /></td>
+							</tr>
+
+							<tr>
+								<td>Escuela</td>
+								<td><c:out value="${solicitud.centroUniv}" /></td>
+							</tr>
+
+							<tr>
+								<td>Tipo Solicitud</td>
+								<td><c:out value="${solicitud.categoria}" /></td>
+							</tr>
+
+							<tr>
+								<td>Número Expediente</td>
+								<td><c:out value="${solicitud.expediente}" /></td>
 							</tr>
 						</tbody>
 					</table>
-				</div>
+					
+					<form method="get" class="controls controls-row">
+						<input type="submit" value="Validar" class="btn btn-block btn-success">
+					</form>
+					<form method="get" action=/main class="controls controls-row">
+						<input type="submit" value="Cancelar" class="btn btn-block btn-danger">
+					</form>
 
-
-				<div class="col-md-4 column">
-					<h3>Tarjetas pendientes de entregar:</h3>
-
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Apellido1</th>
-								<th>Apellido2</th>
-								<th>Estado</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="warning">
-								<c:forEach items="${solicitudes2}" var="solicitud">
-									<td><c:out value="${solicitud.nombre}" /></td>
-									<td><c:out value="${solicitud.apellido1}" /></td>
-									<td><c:out value="${solicitud.apellido2}" /></td>
-									<td><c:out value="${solicitud.estado}" /></td>
-								</c:forEach>
-							</tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</div>
 	</section>
-
-
-	<footer class="footer-2 bg-midnight-blue">
-		<div class="container">
-			<nav class="pull-left">
-				<ul>
-					<li class="active"><a href="/info">Home</a></li>
-					<li><a href="#">Contactar</a></li>
-				</ul>
-			</nav>
-	</footer>
-
 </body>
 </html>
