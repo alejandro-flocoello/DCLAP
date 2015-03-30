@@ -11,8 +11,6 @@
 <head>
 <meta charset="utf-8">
 <title>Universidad</title>
-
-
 <%
 	String usuario = "";
 	HttpSession sesionOk = request.getSession();
