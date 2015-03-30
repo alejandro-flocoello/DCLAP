@@ -2,7 +2,6 @@ package gtu.g12.model;
 
 import java.io.Serializable;
 
-import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +10,9 @@ import javax.persistence.Id;
 @Entity
 public class Solicitud implements Serializable {
 		private static final long serialVersionUID = 1L;
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		
-		@PrimaryKey
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private String correoUniv;
 		
 		private String nombre;
@@ -27,7 +26,7 @@ public class Solicitud implements Serializable {
 		private String nomUniv;
 		private String centroUniv;
 		
-		//private String password;
+		//private String password; //quiza no es conveniente que esté aquí
 		private String categoria; //alunmno, profeor, PAS
 		private int expediente;
 		private boolean monedero;
@@ -39,7 +38,7 @@ public class Solicitud implements Serializable {
 		//private String fotoFondo;
 		private int numTarjeta;
 		
-		private String estado; //NULO, SOLICITADA, ACEPTADA_UNIV, RECHAZADA_UNIV, ASOCIADA_BANCO, RECHAZADA_BANCO, IMPRESA_ESTAMP, RECHAZADA_ESTAMP, REMITIDA_BANCO, REMITIDA_UNIV, REMITIDA_USR
+		private String estado;
 		
 		public Solicitud(String nombre,String apellido1,String apellido2,String tipoDoc,String codDoc,
 				String nacionalidad,String domicilio,String nomUniv,String centroUniv,String correoUniv,String categoria, int expediente, boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado) {
@@ -210,4 +209,3 @@ public class Solicitud implements Serializable {
 			this.estado = estado;
 		}
 }
-

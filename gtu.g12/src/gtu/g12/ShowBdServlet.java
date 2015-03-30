@@ -16,23 +16,37 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
+import gtu.g12.dao.UsuarioDAO;
+import gtu.g12.dao.UsuarioDAOImpl;
 import gtu.g12.model.Solicitud;
+import gtu.g12.model.Usuario;
 
-public class UniversidadServlet extends HttpServlet {
+public class ShowBdServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
+		
+		
+		
+		UsuarioDAO daous = UsuarioDAOImpl.getInstance();
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
-		List<Solicitud> lista = dao.getSolPorEstado("SOLICITADA");
-		List<Solicitud> lista2 = dao.getSolPorEstado("REMITIDA_UNIV");
+		List<Usuario> listaUS = daous.listaUsuarios();
+		List<Solicitud> listaSol = dao.listSol();
 		
-		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
-		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
-		req.getSession().setAttribute("solicitudes2", new ArrayList<Solicitud>(lista2));
+		RequestDispatcher view = req.getRequestDispatcher("showBd.jsp");
+		req.getSession().setAttribute("usuarios", new ArrayList<Usuario>(listaUS));
+		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(listaSol));
         view.forward(req, resp);
+        
+   
 		
+		
+		
+ 
+        
 	}
+
 }

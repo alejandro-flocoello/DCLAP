@@ -25,6 +25,8 @@ public class BancoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
+		List<Solicitud> lista = dao.getSolPorEstadoYBanco("ACEPTADA_UNIV");
+		List<Solicitud> lista2 = dao.getSolPorEstadoYBanco("REMITIDA_BANCO");
 
 		/*UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
@@ -45,7 +47,9 @@ public class BancoServlet extends HttpServlet {
 		req.getSession().setAttribute("urlLinktext", urlLinktext);
 		*/
 		RequestDispatcher view = req.getRequestDispatcher("banco.jsp");
+		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
+		req.getSession().setAttribute("solicitudes2", new ArrayList<Solicitud>(lista2));
         view.forward(req, resp);
-		
+
 	}
 }

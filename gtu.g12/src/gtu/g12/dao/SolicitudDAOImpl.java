@@ -61,14 +61,14 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 
 	@Override
-	public List<Solicitud> getSolPorEstado(String estado) {
+	public List<Solicitud> getSolPorEstado(String estado2) {
 		synchronized (this) {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
 			
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery("select from Solicitud" + "where estado == estadoParam" + "parameters String estadoParam" + "order by id desc"); //query
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado2 + "'");
 			try{
-				soli = (List<Solicitud>) q.execute(estado);
+				soli = (List<Solicitud>)q.execute();
 			}
 			catch (Exception e){
 				return null;
@@ -78,17 +78,71 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	
-	public Solicitud getSol(String correo){
-		PersistenceManager pmf = PMF.get().getPersistenceManager();
-		Solicitud s = pmf.getObjectById(Solicitud.class, correo);
-		return s;        
+	
+	@Override
+	public List<Solicitud> getSolPorEstadoYBanco(String estado) {
+		synchronized (this) {
+			List<Solicitud> soli = new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "' & monedero == true");
+	
+			try{
+				soli = (List<Solicitud>)q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			// read the existing entries
+			return soli;
+			}
 	}
 	
 	@Override
-	public void changeEstadoSol(String correo, String estado) {
+	public List<Solicitud> getSolPorEstadoYNOBanco(String estado) {
+		synchronized (this) {
+			List<Solicitud> soli = new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "' & monedero == false");
+	
+			try{
+				soli = (List<Solicitud>)q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			// read the existing entries
+			return soli;
+			}
+	}
+	
+	
+
+	
+	
+	public List<Solicitud> getSol(long id){
+		synchronized (this) {
+			List<Solicitud> solId= new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery(Solicitud.class);
+			try{
+				solId = (List<Solicitud>) q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			// read the existing entries
+			return solId;
+			}
+	}
+	
+	@Override
+	public void changeEstadoSol(long id, String estado) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, correo );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
 	        sol.setEstado(estado);
 	       
 	    } finally {
@@ -97,10 +151,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 
 	@Override
-	public void addBan(String correo, int cuentaBan, int pin, int cv2) {
+	public void addBan(long id, int cuentaBan, int pin, int cv2) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, correo );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
 	        sol.setCuentaBan(cuentaBan);
 	        sol.setPin(pin);
 	        sol.setCv2(cv2);
@@ -111,10 +165,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 
 	@Override
-	public void addEstamp(String correo, int numTarjeta) {
+	public void addEstamp(long id, int numTarjeta) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, correo );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
 	        sol.setNumTarjeta(numTarjeta);
 	       
 	    } finally {
@@ -139,23 +193,18 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	@Override
-	public boolean removeSol() {
+	public boolean removeSol(long id) {
 		synchronized (this) {
-				PersistenceManager pmf = PMF.get().getPersistenceManager();
-				Query q = pmf.newQuery(Solicitud.class);
-				try {
-					q.deletePersistentAll();
-				} catch (Exception e) {
-					return false;
-				}
-				return true;
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery(Solicitud.class);
+			try{
+				q.deletePersistentAll();
 			}
-			
-	}
-
-	@Override
-	public boolean removeSol(String correo) {
-		// TODO Auto-generated method stub
-		return false;
+			catch (Exception e){
+				return false;
+			}
+			return true;
+		}
+		
 	}
 }

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@page isELIgnored="false"%>
+<%@ page isELIgnored="false"%>
 <%@ page session="true"%>
 
 
@@ -25,6 +25,8 @@
 		usuario = (String) sesionOk.getAttribute("usuario");
 	}
 %>
+
+
 </head>
 
 
@@ -71,17 +73,17 @@
 
 					<div class="signup-form">
 
-						<form method="post" action="/userSol">
+						<form method="post" action="/estadoCheckBox">
 
 							<div class="checkbox">
-								<label><input type="checkbox" name="tipoSolicitud"
-									value="SolicitudDual" style="font-weight: bold" /> Quiero
-									asociar mi tarjeta universitaria con una cuenta bancaria</label>
+								<label><input type="checkbox" name="checkbox"
+									value="Solicitud" style="font-weight: bold" /> Quiero asociar
+									mi tarjeta universitaria con una cuenta bancaria</label>
 							</div>
 
 
 							<div class="controls controls-row">
-								<input type="submit" value="Solicitar"
+								<input type="button" value="Solicitar"
 									class="btn btn-block btn-primary">
 							</div>
 						</form>

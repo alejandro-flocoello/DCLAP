@@ -53,20 +53,20 @@ public class LoginServlet extends HttpServlet {
 					
 					} else if (usIden.getRol().equals("universidad")) {
 						HttpSession session=request.getSession();  
-				        session.setAttribute("usuario",user);
+				        session.setAttribute("universidad",user);
 						response.sendRedirect("/universidad");
 					
 					} else if (usIden.getRol().equals("banco")) {
 						HttpSession session=request.getSession();  
-				        session.setAttribute("usuario",user);
+				        session.setAttribute("banco",user);
 						response.sendRedirect("/banco");
 					} else if (usIden.getRol().equals("estampadora")) {
 						HttpSession session=request.getSession();  
-				        session.setAttribute("usuario",user);
+				        session.setAttribute("estampadora",user);
 						response.sendRedirect("/estampadora");
 					} else if (usIden.getRol().equals("gestor")) {
 						HttpSession session=request.getSession();  
-				        session.setAttribute("usuario",user);
+				        session.setAttribute("gestor",user);
 						response.sendRedirect("/gestor");
 					}
 

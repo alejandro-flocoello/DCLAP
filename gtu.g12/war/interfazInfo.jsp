@@ -50,7 +50,7 @@
                         <p>
                             TEAM MEMBERS: <p>Alejandro Flores</p>
                                           <p>Laura Gómez</p>
-                                          <p> Clara Madrigal</p> 
+                                          <p>Clara Madrigal</p> 
                                          
                         </p>
                       
@@ -67,7 +67,7 @@
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li class="active"><a href="i/info">Home</a></li>
+                        <li class="active"><a href="/info">Home</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@page isELIgnored="false"%>
+ <%@ page session="true"%>
 
 
 <!DOCTYPE html>
@@ -9,6 +10,20 @@
   <head>
     <meta charset="utf-8">
     <title>Empresa Estampadora</title>
+    <%
+	String usuario = "";
+	HttpSession sesionOk = request.getSession();
+	if (sesionOk.getAttribute("estampadora") == null) {
+%>
+		<jsp:forward page="interfazInicio.jsp">
+			<jsp:param name="error" value="Esobligatorio identificarse" />
+		</jsp:forward>
+<%
+	} else {
+		usuario = (String) sesionOk.getAttribute("estampadora");
+	}
+%>
+   
   </head>
 
   <body>
@@ -39,6 +54,48 @@
                 <div class="row">
                     <div class="span4">
                         <h1>Empresa Estampadora</h1>
+                        <table class="table" style="width: 60%;" align="center">
+                        <p> Solicitudes pendientes de aprobar: </p>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+							<c:forEach items="${solicitudes}" var="solicitud">
+							<tr>
+								<td><c:out value="${solicitud.nombre}" /></td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+								<td><c:out value="${solicitud.estado}" /></td>
+							</tr>
+							</c:forEach>
+							<c:forEach items="${solicitudes2}" var="solicitud">
+							<tr>
+								<td><c:out value="${solicitud.nombre}" /></td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+								<td><c:out value="${solicitud.estado}" /></td>
+							</tr>
+							</c:forEach>
+						</table>  
+						<table class="table" style="width: 60%;" align="center">
+						<p> Tarjetas pendientes de entregar: </p>
+      						<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+							<c:forEach items="${solicitudes3}" var="solicitud">
+							<tr>
+								<td><c:out value="${solicitud.nombre}" /></td>
+								<td><c:out value="${solicitud.apellido1}" /></td>
+								<td><c:out value="${solicitud.apellido2}" /></td>
+								<td><c:out value="${solicitud.estado}" /></td>
+							</tr>
+							</c:forEach>
+						</table>
                         
                       
                     </div>
@@ -54,7 +111,7 @@
             <div class="container">
                 <nav class="pull-left">
                     <ul>
-                        <li class="active"><a href="i/info">Home</a></li>
+                        <li class="active"><a href="/info">Home</a></li>
                         <li><a href="#">Contactar</a></li>
                     </ul>
                 </nav>
