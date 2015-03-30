@@ -18,13 +18,15 @@ import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
 import gtu.g12.model.Solicitud;
 
-public class MainServlet extends HttpServlet {
+public class BancoServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
+		List<Solicitud> lista = dao.getSolPorEstadoYBanco("ACEPTADA_UNIV");
+		List<Solicitud> lista2 = dao.getSolPorEstadoYBanco("REMITIDA_BANCO");
 
 		/*UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
@@ -44,8 +46,10 @@ public class MainServlet extends HttpServlet {
 		req.getSession().setAttribute("url", url);
 		req.getSession().setAttribute("urlLinktext", urlLinktext);
 		*/
-		RequestDispatcher view = req.getRequestDispatcher("interfazInicio.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("banco.jsp");
+		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
+		req.getSession().setAttribute("solicitudes2", new ArrayList<Solicitud>(lista2));
         view.forward(req, resp);
-		
+
 	}
 }

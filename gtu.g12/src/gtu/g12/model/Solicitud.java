@@ -1,6 +1,7 @@
 package gtu.g12.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +10,10 @@ import javax.persistence.Id;
 @Entity
 public class Solicitud implements Serializable {
 		private static final long serialVersionUID = 1L;
+		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		
-		private Long id;
+		private String correoUniv;
 		
 		private String nombre;
 		private String apellido1;
@@ -24,9 +25,9 @@ public class Solicitud implements Serializable {
 		//private String fotografia;
 		private String nomUniv;
 		private String centroUniv;
-		private String correoUniv;
-		private String password; //quiza no es conveniente que esté aquí
-		private String categoria;
+		
+		//private String password; //quiza no es conveniente que esté aquí
+		private String categoria; //alunmno, profeor, PAS
 		private int expediente;
 		private boolean monedero;
 		
@@ -40,8 +41,7 @@ public class Solicitud implements Serializable {
 		private String estado;
 		
 		public Solicitud(String nombre,String apellido1,String apellido2,String tipoDoc,String codDoc,
-				String nacionalidad,String domicilio,String nomUniv,String centroUniv,String correoUniv,
-				String password,String categoria,int expediente, boolean monerdero) {
+				String nacionalidad,String domicilio,String nomUniv,String centroUniv,String correoUniv,String categoria, int expediente, boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado) {
 			this.setNombre(nombre);
 			this.setApellido1(apellido1);
 			this.setApellido2(apellido2);
@@ -52,16 +52,16 @@ public class Solicitud implements Serializable {
 			this.setNomUniv(nomUniv);
 			this.setCentroUniv(centroUniv);
 			this.setCorreoUniv(correoUniv);
-			this.setPassword(password);
+			//this.setPassword(password);
 			this.setCategoria(categoria);
 			this.setExpediente(expediente);
-			this.setMonedero(monerdero);
+			this.setMonedero(monedero);
 			
-			setCuentaBan(0);
-			setPin(0);
-			setCv2(0);
-			setNumTarjeta(0);
-			setEstado("SOLICITADA");
+			this.setCuentaBan(cuentaBan);
+			this.setPin(pin);
+			this.setCv2(cv2);
+			this.setNumTarjeta(numTarjeta);
+			this.setEstado(estado);
 		}
 
 		public String getNombre() {
@@ -144,14 +144,7 @@ public class Solicitud implements Serializable {
 			this.correoUniv = correoUniv;
 		}
 
-		public String getPassword() {
-			return password;
-		}
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
+		
 		public int getExpediente() {
 			return expediente;
 		}

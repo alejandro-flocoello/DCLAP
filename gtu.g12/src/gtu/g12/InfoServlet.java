@@ -18,12 +18,12 @@ import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
 import gtu.g12.model.Solicitud;
 
-public class MainServlet extends HttpServlet {
+public class InfoServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 
 		/*UserService userService = UserServiceFactory.getUserService();
@@ -44,7 +44,7 @@ public class MainServlet extends HttpServlet {
 		req.getSession().setAttribute("url", url);
 		req.getSession().setAttribute("urlLinktext", urlLinktext);
 		*/
-		RequestDispatcher view = req.getRequestDispatcher("interfazInicio.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("interfazInfo.jsp");
         view.forward(req, resp);
 		
 	}
