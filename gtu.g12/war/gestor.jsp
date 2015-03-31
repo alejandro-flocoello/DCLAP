@@ -23,7 +23,7 @@
                 <div class="navbar span12">
                     <div class="navbar-inner">
                         <button type="button" class="btn btn-navbar"> </button>
-                         <a class="brand"><img src="/img/logo@2.jpg" width="60" height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
+                         <a class="brand"><img src="/img/logo@2.jpg" width="60" height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS - GESTOR</a>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
                                 <li><a href="/main">HOME</a></li>
