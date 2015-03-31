@@ -31,10 +31,10 @@ public class userSolServlet extends HttpServlet {
 		
 		
 	    String[] solDual = req.getParameterValues("checkbox"); 
-	    System.out.println(solDual);
+	    //System.out.println(solDual);
 	    
 	    if(solDual != null){
-	    		    	dao.changeMonederoSol(email, true);	
+	    	dao.changeMonederoSol(email, true);	
 	    	//Solicitud solicitud2 = dao.getSol(email);
 	    	//Boolean estadoDual2 = solicitud2.isMonedero();
 			//System.out.println(estadoDual2); -----TRUE 

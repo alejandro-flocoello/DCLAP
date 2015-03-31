@@ -45,6 +45,7 @@
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/main">HOME</a></li>
+							<li><a href="/logout">LOGOUT</a></li>
 						</ul>
 					</div>
 				</div>
@@ -97,6 +98,11 @@
 								<td>Domicilio</td>
 								<td><c:out value="${solicitud.domicilio}" /></td>
 							</tr>
+							
+							<tr>
+								<td>Email</td>
+								<td><c:out value="${solicitud.correoUniv}" /></td>
+							</tr>
 
 							<tr>
 								<td>Escuela</td>
@@ -112,16 +118,22 @@
 								<td>Número Expediente</td>
 								<td><c:out value="${solicitud.expediente}" /></td>
 							</tr>
+							
+							<tr>
+								<td><a class="Validar" href="<c:url value="/changeState?correoUniv=${solicitud.correoUniv}"/>">Validar</a></td>
+								<td><a class="Cancelar" href="/logout">Cancelar</a></td>
+							</tr>
 						</tbody>
 					</table>
 					
-					<form method="get" class="controls controls-row">
-						<input type="submit" value="Validar" class="btn btn-block btn-success">
-					</form>
-					<form method="get" action=/main class="controls controls-row">
+					<!--  
+					<form method="get" action="/changeState" class="controls controls-row">
+						<input type="submit" name="Validar" value="${solicitud.correoUniv}" class="btn btn-block btn-success">
+					</form> 
+					
+					<form method="get" action="/main" class="controls controls-row">
 						<input type="submit" value="Cancelar" class="btn btn-block btn-danger">
-					</form>
-
+					</form>-->
 				</div>
 			</div>
 		</div>

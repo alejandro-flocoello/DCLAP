@@ -5,40 +5,43 @@ import gtu.g12.dao.SolicitudDAOImpl;
 import gtu.g12.model.Solicitud;
 
 import java.io.IOException;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class changeStateServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
-
+	
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
-		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
-		
-		String email = (String) req.getSession().getAttribute("usuario");
-		System.out.println(email); //-------->laura@alumnos.com
-		
-		
-		Solicitud solicitud = dao.getSol(email);	
-		String estadoDual = solicitud.getEstado();
-		System.out.println(estadoDual); //----------->""
-		
-		if(estadoDual.equals("")){
-			solicitud.setEstado("SOLICITADA");
-			Solicitud solicitud2 = dao.getSol(email);	
-			String estadoDual2 = solicitud2.getEstado();
-			System.out.println(estadoDual2);//---------->SOLICITUD
+
+		SolicitudDAO daoS = SolicitudDAOImpl.getInstance();
+
+		if (req.getSession().getAttribute("usuario") != null) {
+
+			String correoS = (String) req.getSession().getAttribute("usuario");
+
+			if ((daoS.getSol(correoS).getEstado()).equals("")) {
+				daoS.getSol(correoS).setEstado("SOLICITADA");
+			}
+			req.getSession().setAttribute("solicitud", daoS.getSol(correoS));
+			resp.sendRedirect("/viewState");
 		}
+
 		
-		Solicitud solicitud2 = dao.getSol(email);
-		req.getSession().setAttribute("solicitud", solicitud2); 
-		RequestDispatcher view = req.getRequestDispatcher("usuario3.jsp");
-	    view.forward(req, resp);
-	}	
+		if (req.getSession().getAttribute("universidad") != null) {
+			
+			String email = req.getParameter("correoUniv");
+		
+			if ((daoS.getSol(email).getEstado()).equals("SOLICITADA")) {
+				daoS.getSol(email).setEstado("ACEPTADA_UNIV");
+				System.out.println(daoS.getSol(email).getEstado());
+			}
+		}
+	}
 }

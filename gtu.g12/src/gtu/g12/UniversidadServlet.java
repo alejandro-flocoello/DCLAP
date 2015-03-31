@@ -21,6 +21,7 @@ public class UniversidadServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
+		
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
 		List<Solicitud> lista = dao.getSolPorEstado("SOLICITADA");

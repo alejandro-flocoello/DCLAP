@@ -24,9 +24,7 @@ public class Universidad2Servlet extends HttpServlet {
 		String email = req.getParameter("correoUniv");
 		
 		Solicitud solicitud = dao.getSol(email);	
-		System.out.println(solicitud);
-		
-		
+				
 		req.getSession().setAttribute("solicitud", solicitud);
 		RequestDispatcher view = req.getRequestDispatcher("universidad2.jsp");
 	    view.forward(req, resp);

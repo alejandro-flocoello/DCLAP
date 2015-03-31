@@ -1,6 +1,7 @@
 package gtu.g12;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,8 @@ public class LoginServlet extends HttpServlet {
 		// en funcion de ese rol, lo mandare a un servlet o a otro
 
 		UsuarioDAO daous = UsuarioDAOImpl.getInstance();
+		
+		
 
 		if (!(user.isEmpty()) || !(password.isEmpty())) {
 
@@ -35,26 +38,22 @@ public class LoginServlet extends HttpServlet {
 				Usuario usIden = daous.getUserPassword(user, password);
 
 				if (usIden != null) {
-					if (usIden.getRol().equals("solicitante")) {
-						HttpSession session= request.getSession();  
+					HttpSession session= request.getSession();
+					if (usIden.getRol().equals("solicitante") && (session.getAttribute("usuario") == null)) {
 				        session.setAttribute("usuario",user);  
 						response.sendRedirect("/usuario1");
 					
-					} else if (usIden.getRol().equals("universidad")) {
-						HttpSession session=request.getSession();  
+					} else if (usIden.getRol().equals("universidad")  && (session.getAttribute("universidad") == null)) { 
 				        session.setAttribute("universidad",user);
 						response.sendRedirect("/universidad");
 					
-					} else if (usIden.getRol().equals("banco")) {
-						HttpSession session=request.getSession();  
+					} else if (usIden.getRol().equals("banco") && (session.getAttribute("banco") == null)) {  
 				        session.setAttribute("banco",user);
 						response.sendRedirect("/banco");
-					} else if (usIden.getRol().equals("estampadora")) {
-						HttpSession session=request.getSession();  
+					} else if (usIden.getRol().equals("estampadora") && (session.getAttribute("estampadora") == null)) {
 				        session.setAttribute("estampadora",user);
 						response.sendRedirect("/estampadora");
-					} else if (usIden.getRol().equals("gestor")) {
-						HttpSession session=request.getSession();  
+					} else if (usIden.getRol().equals("gestor") && (session.getAttribute("gestor") == null)) { 
 				        session.setAttribute("gestor",user);
 						response.sendRedirect("/gestor");
 					}
