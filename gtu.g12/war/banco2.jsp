@@ -120,7 +120,7 @@
 					</form>
 
 					<button type="submit" class="btn btn-success">Aceptar</button>
-					<button type="submit" class="btn btn-danger" onClick=" window.location.href='/Users/clara/Desktop/HTML/Banco/bancoInicio.html'">Rechazar</button>
+					<button type="submit" class="btn btn-danger">Rechazar</button>
 				</div>
 			</div>
 		</div>
