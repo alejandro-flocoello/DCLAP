@@ -43,6 +43,7 @@
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/main">HOME</a></li>
+							<li><a href="/logout">LOGOUT</a></li>
 						</ul>
 					</div>
 				</div>
@@ -58,6 +59,7 @@
 				<div class="col-md-4 column">
 					<h3>Solicitudes pendientes de aprobar:</h3>
 					<table class="table table-hover">
+						
 						<thead>
 							<tr>
 								<th>Nombre</th>
@@ -71,10 +73,13 @@
 
 							<tr class="success">
 								<c:forEach items="${solicitudes}" var="solicitud">
+									<tr class="success">
 									<td><c:out value="${solicitud.nombre}" /></td>
 									<td><c:out value="${solicitud.apellido1}" /></td>
 									<td><c:out value="${solicitud.apellido2}" /></td>
 									<td><c:out value="${solicitud.estado}" /></td>
+									<td><a class="gestionar" href="<c:url value="/gestionB?correoUniv=${solicitud.correoUniv}"/>">Gestionar</a></td>
+									</tr>
 								</c:forEach>
 							</tr>
 						</tbody>
@@ -97,10 +102,12 @@
 						<tbody>
 							<tr class="warning">
 								<c:forEach items="${solicitudes2}" var="solicitud">
+									<tr class="warning">
 									<td><c:out value="${solicitud.nombre}" /></td>
 									<td><c:out value="${solicitud.apellido1}" /></td>
 									<td><c:out value="${solicitud.apellido2}" /></td>
 									<td><c:out value="${solicitud.estado}" /></td>
+									</tr>
 								</c:forEach>
 							</tr>
 						</tbody>

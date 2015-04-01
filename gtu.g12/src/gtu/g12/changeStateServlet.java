@@ -20,16 +20,16 @@ public class changeStateServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
-		SolicitudDAO daoS = SolicitudDAOImpl.getInstance();
+		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 
 		if (req.getSession().getAttribute("usuario") != null) {
 
 			String correoS = (String) req.getSession().getAttribute("usuario");
 
-			if ((daoS.getSol(correoS).getEstado()).equals("")) {
-				daoS.getSol(correoS).setEstado("SOLICITADA");
+			if ((dao.getSol(correoS).getEstado()).equals("")) {
+				dao.getSol(correoS).setEstado("SOLICITADA");
 			}
-			req.getSession().setAttribute("solicitud", daoS.getSol(correoS));
+			req.getSession().setAttribute("solicitud", dao.getSol(correoS));
 			resp.sendRedirect("/viewState");
 		}
 
@@ -38,9 +38,11 @@ public class changeStateServlet extends HttpServlet {
 			
 			String email = req.getParameter("correoUniv");
 		
-			if ((daoS.getSol(email).getEstado()).equals("SOLICITADA")) {
-				daoS.getSol(email).setEstado("ACEPTADA_UNIV");
-				System.out.println(daoS.getSol(email).getEstado());
+			if ((dao.getSol(email).getEstado()).equals("SOLICITADA")) {
+				dao.getSol(email).setEstado("ACEPTADA_UNIV");
+				req.getSession().setAttribute("universidad", req.getSession().getAttribute("universidad"));
+				req.getSession().setAttribute("solicitud", dao.getSol(email));
+				resp.sendRedirect("/viewState");
 			}
 		}
 	}

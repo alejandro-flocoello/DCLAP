@@ -55,11 +55,16 @@
 
 	<div class="container">
 		<div class="row clearfix">
-			<div class="col-md-6">
-				<h3>Bienvenido usuario <c:out value="${solicitud.nombre}"/></h3>
-				<h6><c:out value="${solicitud.nombre}"/> el estado de solicitud es <c:out value="${solicitud.estado}"/></h6>
-			</div>
 
+
+			<div class="col-md-6">
+				<h3>
+					Bienvenido usuario <c:out value="${solicitud.nombre}" />
+				</h3>
+				<h6>
+					<c:out value="${solicitud.nombre}" /> el estado de solicitud es <c:out value="${solicitud.estado}" />
+				</h6>
+			</div>
 		</div>
 	</div>
 </body>
