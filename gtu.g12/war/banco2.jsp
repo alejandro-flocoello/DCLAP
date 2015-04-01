@@ -63,18 +63,18 @@
 
 				<div class="col-md-3"></div>
 				<div class="col-md-6 column">
-				
+
 					<h3 class="text-center">Banco</h3>
 
 
-					<form role="form">
+					<form role="form" method="get" action="/changeState">
 						<div class="form-group">
 							<label for="inputNom">Nombre</label> 
 							<input type="text" class="form-control" value="${solicitud.nombre}" disabled>
 						</div>
 
 						<div class="form-group">
-							<label for="inputAp1">Apellido1</label>
+							<label for="inputAp1">Apellido1</label> 
 							<input type="text" class="form-control" value="${solicitud.apellido1}" disabled>
 						</div>
 
@@ -102,25 +102,30 @@
 							<label for="inputDom">Domicilio</label> 
 							<input type="text" class="form-control" value="${solicitud.domicilio}" disabled>
 						</div>
-			
+						
+						<div class="form-group">
+							<label for="inputAp1">Email</label> 
+							<input type="text" class="form-control" name=correoUniv value="${solicitud.correoUniv}">
+						</div>
+
 						<div class="form-group">
 							<label for="inputCuenta">Cuenta Bancaria</label> 
-							<input type="text" class="form-control" id="inputCuenta">
+							<input type="text" class="form-control" name="Cuenta" value="">
 						</div>
 
 						<div class="form-group">
 							<label for="inputPin">PIN</label> 
-							<input type="password" class="form-control" id="inputPin">
+							<input type="password" class="form-control" name="Pin" value="pin">
 						</div>
 
 						<div class="form-group">
 							<label for="inputCV2">CV2</label> 
-							<input type="text" class="form-control" id="inputCV2">
-						</div>
+							<input type="text" class="form-control" name="CV2" value="">
+						</div>		
+						
+						<input type="submit" class="btn btn-success" value="Validar">
+						<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '/logout' ">											
 					</form>
-
-					<button type="submit" class="btn btn-success">Aceptar</button>
-					<button type="submit" class="btn btn-danger">Rechazar</button>
 				</div>
 			</div>
 		</div>

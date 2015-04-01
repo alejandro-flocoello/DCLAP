@@ -117,23 +117,13 @@
 							<tr>
 								<td>Número Expediente</td>
 								<td><c:out value="${solicitud.expediente}" /></td>
-							</tr>
-							
-							<tr>
-								<td><a class="Validar" href="<c:url value="/changeState?correoUniv=${solicitud.correoUniv}"/>">Validar</a></td>
-								<td><a class="Cancelar" href="/logout">Cancelar</a></td>
-							</tr>
+							</tr>			
 						</tbody>
 					</table>
 					
-					<!--  
-					<form method="get" action="/changeState" class="controls controls-row">
-						<input type="submit" name="Validar" value="${solicitud.correoUniv}" class="btn btn-block btn-success">
-					</form> 
 					
-					<form method="get" action="/main" class="controls controls-row">
-						<input type="submit" value="Cancelar" class="btn btn-block btn-danger">
-					</form>-->
+					<input type="button" class="btn btn-success" value="Validar" onClick="location.href = '<c:url value="/changeState?correoUniv=${solicitud.correoUniv}"/>' ">
+					<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '/logout' ">
 				</div>
 			</div>
 		</div>
