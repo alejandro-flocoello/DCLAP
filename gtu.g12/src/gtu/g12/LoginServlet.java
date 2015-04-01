@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import gtu.g12.dao.SolicitudDAO;
+import gtu.g12.dao.SolicitudDAOImpl;
 import gtu.g12.dao.UsuarioDAO;
 import gtu.g12.dao.UsuarioDAOImpl;
+import gtu.g12.model.Solicitud;
 import gtu.g12.model.Usuario;
 
 public class LoginServlet extends HttpServlet {
@@ -26,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 		// en funcion de ese rol, lo mandare a un servlet o a otro
 
 		UsuarioDAO daous = UsuarioDAOImpl.getInstance();
-		
+		SolicitudDAO daoS = SolicitudDAOImpl.getInstance();
 		
 
 		if (!(user.isEmpty()) || !(password.isEmpty())) {
@@ -41,8 +44,15 @@ public class LoginServlet extends HttpServlet {
 					HttpSession session= request.getSession();
 					if (usIden.getRol().equals("solicitante") && (session.getAttribute("usuario") == null)) {
 				        session.setAttribute("usuario",user);  
-						response.sendRedirect("/usuario1");
-					
+				        
+				        String correo = nombreUser.getUsuario();
+			        
+				        if(daoS.getSol(correo).getEstado().equals("")){
+				        	response.sendRedirect("/usuario1");
+				        }else{
+				        	response.sendRedirect("/viewState");
+				        }
+						
 					} else if (usIden.getRol().equals("universidad")  && (session.getAttribute("universidad") == null)) { 
 				        session.setAttribute("universidad",user);
 						response.sendRedirect("/universidad");
