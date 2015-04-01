@@ -69,10 +69,10 @@
 
 			<div class="col-md-6">
 				<h3>
-					Bienvenido usuario <c:out value="${solicitud.nombre}" />
+					Bienvenido usuario <c:out value="${rol}" />
 				</h3>
 				<h6>
-					<c:out value="${solicitud.nombre}" /> el estado de solicitud es <c:out value="${solicitud.estado}" />
+					El estado de solicitud de <c:out value="${solicitud.nombre}" /> es <c:out value="${solicitud.estado}" />
 				</h6>
 			</div>
 		</div>

@@ -12,7 +12,6 @@ import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
 import gtu.g12.dao.UsuarioDAO;
 import gtu.g12.dao.UsuarioDAOImpl;
-import gtu.g12.model.Solicitud;
 import gtu.g12.model.Usuario;
 
 public class LoginServlet extends HttpServlet {
@@ -41,16 +40,23 @@ public class LoginServlet extends HttpServlet {
 				Usuario usIden = daous.getUserPassword(user, password);
 
 				if (usIden != null) {
+					
 					HttpSession session= request.getSession();
 					if (usIden.getRol().equals("solicitante") && (session.getAttribute("usuario") == null)) {
-				        session.setAttribute("usuario",user);  
+				        
+						session.setAttribute("usuario",user);  
 				        
 				        String correo = nombreUser.getUsuario();
 			        
 				        if(daoS.getSol(correo).getEstado().equals("")){
 				        	response.sendRedirect("/usuario1");
 				        }else{
+				        	
+				        	String correoS = (String) request.getSession().getAttribute("usuario");
+				    		request.getSession().setAttribute("solicitud", daoS.getSol(correoS));
+							request.getSession().setAttribute("rol", request.getSession().getAttribute("usuario"));
 				        	response.sendRedirect("/viewState");
+				        
 				        }
 						
 					} else if (usIden.getRol().equals("universidad")  && (session.getAttribute("universidad") == null)) { 

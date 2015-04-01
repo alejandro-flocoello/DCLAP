@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 public class changeStateServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -27,6 +28,7 @@ public class changeStateServlet extends HttpServlet {
 				dao.getSol(correoS).setEstado("SOLICITADA");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(correoS));
+			req.getSession().setAttribute("rol", req.getSession().getAttribute("usuario"));
 			resp.sendRedirect("/viewState");
 		}
 
@@ -40,7 +42,9 @@ public class changeStateServlet extends HttpServlet {
 
 			if ((dao.getSol(email).getEstado()).equals("SOLICITADA")) {
 				dao.getSol(email).setEstado("ACEPTADA_UNIV");
+				
 				req.getSession().setAttribute("solicitud", dao.getSol(email));
+				req.getSession().setAttribute("rol", req.getSession().getAttribute("universidad"));
 				resp.sendRedirect("/viewState");
 			}
 		}
@@ -69,6 +73,7 @@ public class changeStateServlet extends HttpServlet {
 				dao.getSol(email).setEstado("ASOCIADA_BANCO");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));
+			req.getSession().setAttribute("rol", req.getSession().getAttribute("banco"));
 			resp.sendRedirect("/viewState");
 		}
 		
@@ -78,7 +83,7 @@ public class changeStateServlet extends HttpServlet {
 		if (req.getSession().getAttribute("estampadora") != null) {
 			
 			String email = req.getParameter("correoUniv");
-			
+
 			String numTarjeta = req.getParameter("numTarjeta");
 			dao.getSol(email).setNumTarjeta(Integer.parseInt(numTarjeta));
 			System.out.println(dao.getSol(email).getNumTarjeta());
@@ -88,6 +93,7 @@ public class changeStateServlet extends HttpServlet {
 				dao.getSol(email).setEstado("IMPRESA_ESTAMP");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));
+			req.getSession().setAttribute("rol", req.getSession().getAttribute("estampadora"));
 			resp.sendRedirect("/viewState");
 		}
 	}
