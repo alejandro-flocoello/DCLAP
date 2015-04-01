@@ -14,8 +14,15 @@
 
 <%
 	String usuario = "";
+	String universidad="";
+	String banco="";
+	String estampadora="";
+	
 	HttpSession sesionOk = request.getSession();
-	if (sesionOk.getAttribute("usuario") == null) {
+	if ((sesionOk.getAttribute("usuario") == null) && 
+		(sesionOk.getAttribute("universidad") == null) && 
+		(sesionOk.getAttribute("banco") == null) &&
+		(sesionOk.getAttribute("estampadora") == null)) {
 %>
 <jsp:forward page="interfazInicio.jsp">
 	<jsp:param name="error" value="Esobligatorio identificarse" />
@@ -23,6 +30,9 @@
 <%
 	} else {
 		usuario = (String) sesionOk.getAttribute("usuario");
+		universidad = (String) sesionOk.getAttribute("universidad");
+		banco = (String) sesionOk.getAttribute("banco");
+		estampadora = (String) sesionOk.getAttribute("estampadora");
 	}
 %>
 </head>

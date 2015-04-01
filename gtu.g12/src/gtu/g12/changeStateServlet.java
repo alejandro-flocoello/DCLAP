@@ -40,6 +40,8 @@ public class changeStateServlet extends HttpServlet {
 
 			if ((dao.getSol(email).getEstado()).equals("SOLICITADA")) {
 				dao.getSol(email).setEstado("ACEPTADA_UNIV");
+				req.getSession().setAttribute("solicitud", dao.getSol(email));
+				resp.sendRedirect("/viewState");
 			}
 		}
 
@@ -67,6 +69,7 @@ public class changeStateServlet extends HttpServlet {
 				dao.getSol(email).setEstado("ASOCIADA_BANCO");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));
+			resp.sendRedirect("/viewState");
 		}
 		
 		
@@ -83,9 +86,9 @@ public class changeStateServlet extends HttpServlet {
 			
 			if ((dao.getSol(email).getEstado()).equals("ASOCIADA_BANCO")) {
 				dao.getSol(email).setEstado("IMPRESA_ESTAMP");
-				String estado = dao.getSol(email).getEstado();
-				System.out.println(estado);
 			}
+			req.getSession().setAttribute("solicitud", dao.getSol(email));
+			resp.sendRedirect("/viewState");
 		}
 	}
 }
