@@ -55,6 +55,7 @@
 							<li><a href="/info">INFO</a></li>
 							<li><a href="/main">HOME</a></li>
 							<li><a href="/logout">LOGOUT</a></li>
+							<li><a href="/volver">VOLVER</a></li>
 						</ul>
 					</div>
 				</div>

@@ -46,6 +46,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>Logout</servlet-name>
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>Volver</servlet-name>
+		<servlet-class>gtu.g12.volverServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Volver</servlet-name>
+		<url-pattern>/volver</url-pattern>
+	</servlet-mapping>
 
 
 

@@ -1,8 +1,5 @@
 package gtu.g12;
 
-import gtu.g12.dao.SolicitudDAO;
-import gtu.g12.dao.SolicitudDAOImpl;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
