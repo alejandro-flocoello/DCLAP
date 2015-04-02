@@ -46,7 +46,6 @@
 						<ul class="nav">
 							<li><a href="/main">HOME</a></li>
 							<li><a href="/logout">LOGOUT</a></li>
-							<li><a href="/volver">VOLVER</a></li>
 						</ul>
 					</div>
 				</div>
@@ -67,6 +66,7 @@
 					<h3>Solicitud de Usuario</h3>
 					<h4>Valide los datos para avanzar en el proceso</h4>
 
+					<form method="post" action="/changeState">
 					<table class="table table-hover">
 
 						<tbody>
@@ -102,6 +102,7 @@
 							
 							<tr>
 								<td>Email</td>
+								<input type="hidden" name="correoUniv" value="${solicitud.correoUniv}" />
 								<td><c:out value="${solicitud.correoUniv}" /></td>
 							</tr>
 
@@ -121,9 +122,9 @@
 							</tr>			
 						</tbody>
 					</table>
+					<input type="submit" class="btn btn-success" value="Validar">
+					</form>
 					
-					
-					<input type="button" class="btn btn-success" value="Validar" onClick="location.href = '<c:url value="/changeState?correoUniv=${solicitud.correoUniv}"/>' ">
 					<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '<c:url value="/rechazo?correoUniv=${solicitud.correoUniv}"/>' ">
 				</div>
 			</div>

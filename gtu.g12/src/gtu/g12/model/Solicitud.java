@@ -8,6 +8,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 
 
+
 @PersistenceCapable
 public class Solicitud implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -34,9 +35,9 @@ public class Solicitud implements Serializable {
 	private String nomUniv;
 	@Persistent
 	private String centroUniv;
-	
-	// private String fotografia;
-	// private String password; //quiza no es conveniente que esté aquí
+	@Persistent
+	private byte [] foto;
+
 	
 	@Persistent
 	private String categoria; // alunmno, profeor, PAS
@@ -64,7 +65,7 @@ public class Solicitud implements Serializable {
 	public Solicitud(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, String categoria, int expediente,
+			String correoUniv, byte[] foto,String categoria, int expediente,
 			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
 			String estado) {
 		this.setNombre(nombre);
@@ -77,6 +78,7 @@ public class Solicitud implements Serializable {
 		this.setNomUniv(nomUniv);
 		this.setCentroUniv(centroUniv);
 		this.setCorreoUniv(correoUniv);
+		this.setFoto(foto);
 		this.setCategoria(categoria);
 		this.setExpediente(expediente);
 		this.setMonedero(monedero);
@@ -167,6 +169,17 @@ public class Solicitud implements Serializable {
 	public void setCorreoUniv(String correoUniv) {
 		this.correoUniv = correoUniv;
 	}
+	
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+	
+	
+	
 
 	public int getExpediente() {
 		return expediente;

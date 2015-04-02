@@ -47,7 +47,6 @@
 						<ul class="nav">
 							<li><a href="/gestor">HOME-GESTOR</a></li>
 							<li><a href="/logout">LOGOUT</a></li>
-							<li><a href="/volver">VOLVER</a></li>
 						</ul>
 					</div>
 				</div>

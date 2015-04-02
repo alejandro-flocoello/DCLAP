@@ -47,7 +47,6 @@
 						<ul class="nav">
 							<li><a href="/main">HOME</a></li>
 							<li><a href="/logout">LOGOUT</a></li>
-							<li><a href="/volver">VOLVER</a></li>
 						</ul>
 					</div>
 				</div>
@@ -69,7 +68,7 @@
 					<h3 class="text-center">Empresa Estampadora</h3>
 				</div>
 
-				<form role="form" method="get" action="/changeState">
+				<form role="form" method="post" action="/changeState">
 
 					<div class="form-group">
 						<label for="inputNom">Nombre</label> 

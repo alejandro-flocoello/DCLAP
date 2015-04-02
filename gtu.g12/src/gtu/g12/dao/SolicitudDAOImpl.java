@@ -1,8 +1,10 @@
 package gtu.g12.dao;
 
 import gtu.g12.model.Solicitud;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +41,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	public boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, String categoria, int expediente,boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado ) {
+			String correoUniv, byte[] foto, String categoria, int expediente,boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado ) {
 		synchronized (this) {
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
+			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, foto, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
 					estado);
 			try{
 				pmf.makePersistent(solicitud);

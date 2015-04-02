@@ -46,7 +46,6 @@
 						<ul class="nav">
 							<li><a href="/main">HOME</a></li>
 							<li><a href="/logout">LOGOUT</a></li>
-							<li><a href="/volver">VOLVER</a></li>
 						</ul>
 					</div>
 				</div>
@@ -62,8 +61,7 @@
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
 					<h3>Valide sus datos para continuar con el proceso</h3>
-					<h6>Si algun dato no es correcto póngase en contacto con
-						bbdd@taruni.upm</h6>
+					<h6>Si algun dato no es correcto póngase en contacto con bbdd@taruni.upm</h6>
 				</div>
 
 				<div class="col-md-3"></div>
@@ -74,7 +72,7 @@
 				<div class="col-md-6 column">
 
 
-					<form method="post" action="">
+					<form method="post" action="/changeState" enctype="multipart/form-data">
 
 						<table class="table table-hover">
 
@@ -123,12 +121,16 @@
 									<td>Número Expediente</td>
 									<td><c:out value="${solicitud.expediente}" /></td>
 								</tr>
+								
+								<tr>
+									<td>Adjunte una foto actual por favor:</td>
+									<td><input type='file' class="form-control" name="foto" value=""></td>
+								</tr>		
 							</tbody>
 						</table>
-					</form>
-
-					<form method="get" action="/changeState" class="controls controls-row">
+						
 						<input type="submit" value="Validar" class="btn btn-block btn-success">
+					
 					</form>
 					<form method="get" action="/main" class="controls controls-row">
 						<input type="submit" value="Cancelar" class="btn btn-block btn-danger">

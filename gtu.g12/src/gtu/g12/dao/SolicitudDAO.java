@@ -2,14 +2,18 @@ package gtu.g12.dao;
 
 import java.util.List;
 
+
 import gtu.g12.model.Solicitud;
 
 public interface SolicitudDAO {
 		
 	//Usuario añade solicitud:
-	boolean addSol(String nombre, String apellido1, String apellido2, String tipoDoc, String codDoc, String nacionalidad,
-			String domicilio, String nomUniv, String centroUniv,String correoUniv, String categoria, int expediente,
-			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado);
+	boolean addSol(String nombre, String apellido1, String apellido2,
+			String tipoDoc, String codDoc, String nacionalidad,
+			String domicilio, String nomUniv, String centroUniv,
+			String correoUniv, byte[] foto, String categoria, int expediente,
+			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
+			String estado);
 	
 	//Lista de solicitudes dependiendo del estado:
 	List<Solicitud> getSolPorEstado(String estado);
@@ -39,10 +43,4 @@ public interface SolicitudDAO {
 	public List<Solicitud> listSol();
 	public boolean removeSol (long id);
 	boolean removeSolicitudes();
-
-
-
-	
-
-	
 }
