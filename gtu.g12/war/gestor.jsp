@@ -9,6 +9,20 @@
   <head>
     <meta charset="utf-8">
     <title>Gestor</title>
+    
+<%
+	String usuario = "";
+	HttpSession sesionOk = request.getSession();
+	if (sesionOk.getAttribute("gestor") == null) {
+%>
+<jsp:forward page="interfazInicio.jsp">
+	<jsp:param name="error" value="Es obligatorio identificarse" />
+</jsp:forward>
+<%
+	} else {
+		usuario = (String) sesionOk.getAttribute("gestor");
+	}
+%>
   </head>
 
   <body>
@@ -23,31 +37,83 @@
                 <div class="navbar span12">
                     <div class="navbar-inner">
                         <button type="button" class="btn btn-navbar"> </button>
-                         <a class="brand"><img src="/img/logo@2.jpg" width="60" height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
+                         <a class="brand"><img src="/img/logo@2.jpg" width="60" height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS - GESTOR</a>
                         <div class="nav-collapse collapse pull-right">
                             <ul class="nav">
                                 <li><a href="/main">HOME</a></li>
+                                <li><a href="/logout">LOGOUT</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <section class="header-11-sub bg-midnight-blue">
-            <div class="background">&nbsp;</div>
-            <div class="container">
-                <div class="row">
-                    <div class="span4">
-                        <h1>Gestor</h1>
-                        
-                      
-                    </div>
-                        <div class="span6" "offset10" href='#' >
-                        <img src="/img/equipo.png" width="400" height="1000" align="right">
-                        </div>
-                    </div>
-            </div>
-        </section>
+<section class="header-11-sub bg-azul-clarito">
+		<div class="background">&nbsp;</div>
+		<div class="container">
+			<div class="row clearfix">
+
+				<div class="col-md-4 column">
+					<h3>Solicitudes en curso</h3>
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+						
+							<tr class="success">	
+													
+								<c:forEach items="${solicitudes}" var="solicitud">	
+										<tr class="success">
+										<td><c:out value="${solicitud.nombre}" /></td>
+										<td><c:out value="${solicitud.apellido1}" /></td>
+										<td><c:out value="${solicitud.apellido2}" /></td>
+										<td><c:out value="${solicitud.estado}" /></td>
+										<td><a class="gestionar" href="<c:url value="/gestionG?correoUniv=${solicitud.correoUniv}"/>">ELIMINAR</a></td>
+										</tr>
+								</c:forEach>
+							</tr>	
+						</tbody>
+					</table>
+				</div>
+
+
+
+				<div class="col-md-4 column">
+					<h3>Solicitudes eliminadas</h3>
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido1</th>
+								<th>Apellido2</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="warning">
+								<c:forEach items="${solicitudes2}" var="solicitud">
+										<tr class="warning">
+										<td><c:out value="${solicitud.nombre}" /></td>
+										<td><c:out value="${solicitud.apellido1}" /></td>
+										<td><c:out value="${solicitud.apellido2}" /></td>
+										<td><c:out value="${solicitud.estado}" /></td>
+										</tr>
+								</c:forEach>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
         <footer class="footer-2 bg-midnight-blue">

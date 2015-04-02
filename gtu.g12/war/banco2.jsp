@@ -115,7 +115,7 @@
 
 						<div class="form-group">
 							<label for="inputPin">PIN</label> 
-							<input type="password" class="form-control" name="Pin" value="pin">
+							<input type="password" class="form-control" name="Pin" value="">
 						</div>
 
 						<div class="form-group">
@@ -124,7 +124,7 @@
 						</div>		
 						
 						<input type="submit" class="btn btn-success" value="Validar">
-						<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '/logout' ">											
+						<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '/logout' ">											 -->
 					</form>
 				</div>
 			</div>

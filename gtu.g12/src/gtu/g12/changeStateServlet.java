@@ -96,5 +96,27 @@ public class changeStateServlet extends HttpServlet {
 			req.getSession().setAttribute("rol", req.getSession().getAttribute("estampadora"));
 			resp.sendRedirect("/viewState");
 		}
+		
+		
+		
+		
+		
+		if (req.getSession().getAttribute("gestor") != null) {
+			
+			String email = req.getParameter("correoUniv");
+			
+			if ((dao.getSol(email).getEstado()).equals("ELIMINADA")){
+				dao.getSol(email).setEstado("");
+			}
+			
+			else {
+				dao.getSol(email).setEstado("ELIMINADA");
+			}
+			
+			req.getSession().setAttribute("solicitud", dao.getSol(email));
+			req.getSession().setAttribute("rol", req.getSession().getAttribute("gestor"));
+			resp.sendRedirect("/gestor");
+			
+		}
 	}
 }

@@ -39,7 +39,7 @@
 				<div class="navbar-inner">
 					<button type="button" class="btn btn-navbar"></button>
 					<a class="brand"><img src="/img/logo@2.jpg" width="60"
-						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
+						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS - EMPRESA ESTAMPADORA</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/main">HOME</a></li>
@@ -72,15 +72,29 @@
 						<tbody>
 
 							<tr class="success">
-								<c:forEach items="${solicitudes}" var="solicitud">
+								<c:forEach items="${solicitudes1}" var="solicitud">
 									<tr class="success">
 									<td><c:out value="${solicitud.nombre}" /></td>
 									<td><c:out value="${solicitud.apellido1}" /></td>
 									<td><c:out value="${solicitud.apellido2}" /></td>
 									<td><c:out value="${solicitud.estado}" /></td>
+									<td><a class="gestionar" href="<c:url value="/gestionE?correoUniv=${solicitud.correoUniv}"/>">Gestionar</a></td>
 									</tr>
 								</c:forEach>
 							</tr>
+							
+							<tr class="success">
+								<c:forEach items="${solicitudes2}" var="solicitud">
+									<tr class="success">
+									<td><c:out value="${solicitud.nombre}" /></td>
+									<td><c:out value="${solicitud.apellido1}" /></td>
+									<td><c:out value="${solicitud.apellido2}" /></td>
+									<td><c:out value="${solicitud.estado}" /></td>
+									<td><a class="gestionar" href="<c:url value="/gestionE?correoUniv=${solicitud.correoUniv}"/>">Gestionar</a></td>
+									</tr>
+								</c:forEach>
+							</tr>
+						
 						</tbody>
 					</table>
 				</div>
@@ -100,13 +114,12 @@
 						</thead>
 						<tbody>
 							<tr class="warning">
-								<c:forEach items="${solicitudes2}" var="solicitud">
+								<c:forEach items="${solicitudes3}" var="solicitud">
 									<tr class="warning">
 									<td><c:out value="${solicitud.nombre}" /></td>
 									<td><c:out value="${solicitud.apellido1}" /></td>
 									<td><c:out value="${solicitud.apellido2}" /></td>
 									<td><c:out value="${solicitud.estado}" /></td>
-									<td><a class="gestionar" href="<c:url value="/gestionE?correoUniv=${solicitud.correoUniv}"/>">Gestionar</a></td>
 									</tr>
 								</c:forEach>
 							</tr>
