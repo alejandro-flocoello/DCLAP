@@ -40,7 +40,7 @@ public class changeStateServlet extends HttpServlet {
 
 			String email = req.getParameter("correoUniv");
 
-			if ((dao.getSol(email).getEstado()).equals("SOLICITADA")) {
+			if ((dao.getSol(email).getEstado()).equals("SOLICITADA") || (dao.getSol(email).getEstado()).equals("REMITIDA_UNIV")){
 				dao.getSol(email).setEstado("ACEPTADA_UNIV");
 				
 				req.getSession().setAttribute("solicitud", dao.getSol(email));
@@ -69,7 +69,7 @@ public class changeStateServlet extends HttpServlet {
 			dao.getSol(email).setCuentaBan(Integer.parseInt(pin));
 			
 	
-			if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV")) {
+			if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV") || (dao.getSol(email).getEstado()).equals("REMITIDA_BANCO")) {
 				dao.getSol(email).setEstado("ASOCIADA_BANCO");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));

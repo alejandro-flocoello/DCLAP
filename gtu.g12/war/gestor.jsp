@@ -10,13 +10,13 @@
     <meta charset="utf-8">
     <title>Gestor</title>
     
-<%
+    <%
 	String usuario = "";
 	HttpSession sesionOk = request.getSession();
 	if (sesionOk.getAttribute("gestor") == null) {
 %>
 <jsp:forward page="interfazInicio.jsp">
-	<jsp:param name="error" value="Es obligatorio identificarse" />
+	<jsp:param name="error" value="Esobligatorio identificarse" />
 </jsp:forward>
 <%
 	} else {
@@ -56,7 +56,7 @@
 				<div class="col-md-4 column">
 					<h3>Solicitudes en curso</h3>
 
-					<table class="table table-hover">
+					<table class="table table-hover" id="solicitudesAeliminar">
 						<thead>
 							<tr>
 								<th>Nombre</th>

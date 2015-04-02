@@ -124,7 +124,7 @@
 						</div>		
 						
 						<input type="submit" class="btn btn-success" value="Validar">
-						<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '/logout' ">											 -->
+						<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '<c:url value="/rechazo?correoUniv=${solicitud.correoUniv}"/>' ">
 					</form>
 				</div>
 			</div>

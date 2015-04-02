@@ -116,7 +116,7 @@
 					</div>
 
 					<input type="submit" class="btn btn-danger" value="ELIMINAR">
-					<input type="button" onclick="location.href = '/gestor';" class="btn btn-success" value="NO HACER NADA">
+					<input type="button" onclick="location.href = '/gestor';" class="btn btn-success" value="CANCELAR">
 				</form>
 			</div>
 		</div>

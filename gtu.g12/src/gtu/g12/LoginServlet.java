@@ -63,12 +63,17 @@ public class LoginServlet extends HttpServlet {
 				        session.setAttribute("universidad",user);
 						response.sendRedirect("/universidad");
 					
+					
 					} else if (usIden.getRol().equals("banco") && (session.getAttribute("banco") == null)) {  
 				        session.setAttribute("banco",user);
 						response.sendRedirect("/banco");
+					
+					
 					} else if (usIden.getRol().equals("estampadora") && (session.getAttribute("estampadora") == null)) {
 				        session.setAttribute("estampadora",user);
 						response.sendRedirect("/estampadora");
+					
+					
 					} else if (usIden.getRol().equals("gestor") && (session.getAttribute("gestor") == null)) { 
 				        session.setAttribute("gestor",user);
 						response.sendRedirect("/gestor");

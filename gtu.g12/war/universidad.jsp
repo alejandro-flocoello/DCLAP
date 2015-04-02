@@ -91,8 +91,7 @@
 
 
 				<div class="col-md-4 column">
-					<h3>Tarjetas pendientes de entregar:</h3>
-
+					<h3>Solicitudes remitidas:</h3>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -110,6 +109,7 @@
 										<td><c:out value="${solicitud.apellido1}" /></td>
 										<td><c:out value="${solicitud.apellido2}" /></td>
 										<td><c:out value="${solicitud.estado}" /></td>
+										<td><a class="revisar" href="<c:url value="/gestionU?correoUniv=${solicitud.correoUniv}"/>">Revisar</a></td>
 										</tr>
 								</c:forEach>
 							</tr>

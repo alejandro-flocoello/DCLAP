@@ -123,7 +123,7 @@
 					
 					
 					<input type="button" class="btn btn-success" value="Validar" onClick="location.href = '<c:url value="/changeState?correoUniv=${solicitud.correoUniv}"/>' ">
-					<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '/logout' ">
+					<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '<c:url value="/rechazo?correoUniv=${solicitud.correoUniv}"/>' ">
 				</div>
 			</div>
 		</div>
