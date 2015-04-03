@@ -14,6 +14,14 @@ public class MainServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
+		if(req.getSession() != null){
+			
+			resp.setHeader("Cache-Control", "no-cache, no-store");
+			resp.setHeader("Pragma", "no-cache");
+
+			req.getSession().invalidate();
+		}
+		
 		RequestDispatcher view = req.getRequestDispatcher("interfazInicio.jsp");
         view.forward(req, resp);
 		

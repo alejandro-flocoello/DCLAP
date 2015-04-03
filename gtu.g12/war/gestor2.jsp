@@ -45,7 +45,7 @@
 						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
-							<li><a href="/gestor">HOME-GESTOR</a></li>
+							<li><a href="/gestor">VOLVER</a></li>
 							<li><a href="/logout">LOGOUT</a></li>
 						</ul>
 					</div>
