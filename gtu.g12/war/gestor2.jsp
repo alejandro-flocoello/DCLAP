@@ -68,7 +68,7 @@
 					<h3 class="text-center">Gestor</h3>
 				</div>
 
-				<form role="form" method="get" action="/changeState">
+				<form role="form" method="post" action="/changeState">
 
 					<div class="form-group">
 						<label for="inputNom">Nombre</label> 
