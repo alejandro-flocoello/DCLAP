@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<servlet-class>gtu.g12.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Main</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Info</servlet-name>
+		<servlet-class>gtu.g12.InfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Info</servlet-name>
+		<url-pattern>/info</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>gtu.g12.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>gtu.g12.LogOutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>Error</servlet-name>
+		<servlet-class>gtu.g12.ErrorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Error</servlet-name>
+		<url-pattern>/error</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+	<servlet>
+		<servlet-name>Usuario</servlet-name>
+		<servlet-class>gtu.g12.UsuarioServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Usuario</servlet-name>
+		<url-pattern>/usuario1</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Usuario2</servlet-name>
+		<servlet-class>gtu.g12.Usuario2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Usuario2</servlet-name>
+		<url-pattern>/solUser</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>Universidad</servlet-name>
+		<servlet-class>gtu.g12.UniversidadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Universidad</servlet-name>
+		<url-pattern>/universidad</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Universidad2</servlet-name>
+		<servlet-class>gtu.g12.Universidad2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Universidad2</servlet-name>
+		<url-pattern>/gestionU</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>Banco</servlet-name>
+		<servlet-class>gtu.g12.BancoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Banco</servlet-name>
+		<url-pattern>/banco</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Banco2</servlet-name>
+		<servlet-class>gtu.g12.Banco2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Banco2</servlet-name>
+		<url-pattern>/gestionB</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>Estampadora</servlet-name>
+		<servlet-class>gtu.g12.EstampadoraServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Estampadora</servlet-name>
+		<url-pattern>/estampadora</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Estampadora2</servlet-name>
+		<servlet-class>gtu.g12.Estampadora2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Estampadora2</servlet-name>
+		<url-pattern>/gestionE</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>Gestor</servlet-name>
+		<servlet-class>gtu.g12.GestorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Gestor</servlet-name>
+		<url-pattern>/gestor</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Gestor2</servlet-name>
+		<servlet-class>gtu.g12.Gestor2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Gestor2</servlet-name>
+		<url-pattern>/gestionG</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>InitBd</servlet-name>
+		<servlet-class>gtu.g12.InitBdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitBd</servlet-name>
+		<url-pattern>/initBd</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ShowBd</servlet-name>
+		<servlet-class>gtu.g12.ShowBdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowBd</servlet-name>
+		<url-pattern>/showBd</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+
+
+	<servlet>
+		<servlet-name>ChangeState</servlet-name>
+		<servlet-class>gtu.g12.changeStateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangeState</servlet-name>
+		<url-pattern>/changeState</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>RechazoSol</servlet-name>
+		<servlet-class>gtu.g12.RechazosServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RechazoSol</servlet-name>
+		<url-pattern>/rechazo</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+
+	<servlet>
+		<servlet-name>viewState</servlet-name>
+		<servlet-class>gtu.g12.viewStateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>viewState</servlet-name>
+		<url-pattern>/viewState</url-pattern>
+	</servlet-mapping>
+
+	
+
+
+
+	<welcome-file-list>
+		<welcome-file>main</welcome-file>
+	</welcome-file-list>
+</web-app>
