@@ -109,7 +109,7 @@
 										<td><c:out value="${solicitud.apellido1}" /></td>
 										<td><c:out value="${solicitud.apellido2}" /></td>
 										<td><c:out value="${solicitud.estado}" /></td>
-										<td><a class="revisar" href="<c:url value="/gestionU?correoUniv=${solicitud.correoUniv}"/>">Revisar</a></td>
+										<td><a class="gestionar" href="<c:url value="/gestionNotU?correoUniv=${solicitud.correoUniv}"/>">Gestionar</a></td>
 										</tr>
 								</c:forEach>
 							</tr>

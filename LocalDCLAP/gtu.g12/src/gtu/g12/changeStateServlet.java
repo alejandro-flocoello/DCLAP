@@ -49,11 +49,12 @@ public class changeStateServlet extends HttpServlet {
 
 			if ((dao.getSol(email).getEstado()).equals("SOLICITADA")){
 				dao.getSol(email).setEstado("ACEPTADA_UNIV");
-				
+			}else if ((dao.getSol(email).getEstado()).equals("REMITIDA_UNIV")){
+				dao.getSol(email).setEstado("REMITIDA_USR");
+			}
 				req.getSession().setAttribute("solicitud", dao.getSol(email));
 				req.getSession().setAttribute("rol", req.getSession().getAttribute("universidad"));
 				resp.sendRedirect("/viewState");
-			}
 		}
 
 		
@@ -78,6 +79,8 @@ public class changeStateServlet extends HttpServlet {
 	
 			if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV")) {
 				dao.getSol(email).setEstado("ASOCIADA_BANCO");
+			}else if ((dao.getSol(email).getEstado()).equals("REMITIDA_BANCO")){
+				dao.getSol(email).setEstado("REMITIDA_UNIV");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));
 			req.getSession().setAttribute("rol", req.getSession().getAttribute("banco"));
@@ -98,6 +101,12 @@ public class changeStateServlet extends HttpServlet {
 			
 			if ((dao.getSol(email).getEstado()).equals("ASOCIADA_BANCO")) {
 				dao.getSol(email).setEstado("IMPRESA_ESTAMP");
+			}else if ((dao.getSol(email).getEstado()).equals("IMPRESA_ESTAMP")){
+				if ((dao.getSol(email).isMonedero())){
+					dao.getSol(email).setEstado("REMITIDA_BANCO");
+				}else{
+					dao.getSol(email).setEstado("REMITIDA_UNIV");
+				}
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));
 			req.getSession().setAttribute("rol", req.getSession().getAttribute("estampadora"));

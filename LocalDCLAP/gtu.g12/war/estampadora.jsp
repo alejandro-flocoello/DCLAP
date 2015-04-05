@@ -120,6 +120,7 @@
 									<td><c:out value="${solicitud.apellido1}" /></td>
 									<td><c:out value="${solicitud.apellido2}" /></td>
 									<td><c:out value="${solicitud.estado}" /></td>
+									<td><a class="gestionar" href="<c:url value="/gestionNotE?correoUniv=${solicitud.correoUniv}"/>">Gestionar</a></td>
 									</tr>
 								</c:forEach>
 							</tr>

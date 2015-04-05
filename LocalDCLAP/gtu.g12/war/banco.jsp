@@ -86,11 +86,10 @@
 					</table>
 				</div>
 
-
 				<div class="col-md-4 column">
 					<h3>Solicitudes remitidas:</h3>
-
 					<table class="table table-hover">
+						
 						<thead>
 							<tr>
 								<th>Nombre</th>
@@ -99,15 +98,17 @@
 								<th>Estado</th>
 							</tr>
 						</thead>
+
 						<tbody>
-							<tr class="warning">
+
+							<tr class="success">
 								<c:forEach items="${solicitudes2}" var="solicitud">
-									<tr class="warning">
+									<tr class="success">
 									<td><c:out value="${solicitud.nombre}" /></td>
 									<td><c:out value="${solicitud.apellido1}" /></td>
 									<td><c:out value="${solicitud.apellido2}" /></td>
 									<td><c:out value="${solicitud.estado}" /></td>
-									<td><a class="revisar" href="<c:url value="/gestionB?correoUniv=${solicitud.correoUniv}"/>">Revisar</a></td>
+									<td><a class="gestionar" href="<c:url value="/gestionNotB?correoUniv=${solicitud.correoUniv}"/>">Gestionar</a></td>
 									</tr>
 								</c:forEach>
 							</tr>

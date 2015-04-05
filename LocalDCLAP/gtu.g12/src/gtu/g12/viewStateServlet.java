@@ -1,5 +1,8 @@
 package gtu.g12;
 
+import gtu.g12.dao.SolicitudDAO;
+import gtu.g12.dao.SolicitudDAOImpl;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -14,8 +17,7 @@ public class viewStateServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
-		RequestDispatcher view = req.getRequestDispatcher("viewState.jsp");
-        view.forward(req, resp);
-		
+			RequestDispatcher view = req.getRequestDispatcher("viewState.jsp");
+        	view.forward(req, resp);
 	}
 }

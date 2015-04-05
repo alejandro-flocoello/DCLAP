@@ -103,7 +103,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/gestionU</url-pattern>
 	</servlet-mapping>
 
-
+	<servlet>
+		<servlet-name>Universidad3</servlet-name>
+		<servlet-class>gtu.g12.Universidad3Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Universidad3</servlet-name>
+		<url-pattern>/gestionNotU</url-pattern>
+	</servlet-mapping>
 
 
 	<servlet>
@@ -124,6 +131,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/gestionB</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>Banco3</servlet-name>
+		<servlet-class>gtu.g12.Banco3Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Banco3</servlet-name>
+		<url-pattern>/gestionNotB</url-pattern>
+	</servlet-mapping>
 
 
 
@@ -145,6 +160,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/gestionE</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>Estampadora3</servlet-name>
+		<servlet-class>gtu.g12.Estampadora3Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Estampadora3</servlet-name>
+		<url-pattern>/gestionNotE</url-pattern>
+	</servlet-mapping>
 
 
 
@@ -215,6 +238,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/rechazo</url-pattern>
 	</servlet-mapping>
 	
+	
+	
+	
+	<servlet>
+		<servlet-name>NotificationSol</servlet-name>
+		<servlet-class>gtu.g12.NotificationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NotificationSol</servlet-name>
+		<url-pattern>/not</url-pattern>
+	</servlet-mapping>
 	
 	
 	
