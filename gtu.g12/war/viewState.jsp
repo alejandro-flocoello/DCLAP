@@ -52,8 +52,7 @@
 						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
-							<li><a href="/info">INFO</a></li>
-							<li><a href="/main">HOME</a></li>
+							<li><a href="javascript:history.go(-1)">VOLVER</a>
 							<li><a href="/logout">LOGOUT</a></li>
 						</ul>
 					</div>
@@ -80,7 +79,7 @@
 					<c:when test="${solicitud.estado != 'REMITIDA_USR'}">
 					
 					<h3>Bienvenido usuario<c:out value="${rol}" /></h3>
-					<h6>El estado de solicitud de<c:out value="${solicitud.nombre}" /> es <c:out value="${solicitud.estado}" /></h6>
+					<h6>El estado de solicitud de <c:out value="${solicitud.nombre}" /> es <c:out value="${solicitud.estado}" /></h6>
      				 </c:when>
 				</c:choose>			
 				
