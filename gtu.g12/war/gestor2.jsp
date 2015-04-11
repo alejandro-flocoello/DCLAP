@@ -42,7 +42,7 @@
 				<div class="navbar-inner">
 					<button type="button" class="btn btn-navbar"></button>
 					<a class="brand"><img src="/img/logo@2.jpg" width="60"
-						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
+						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS - GESTOR</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/gestor">VOLVER</a></li>
@@ -114,9 +114,10 @@
 						<label for="inputEstadoActual">Estado Actual</label> 
 						<input type="text" class="form-control" value="${solicitud.estado}" disabled>
 					</div>
-
-					<input type="submit" class="btn btn-danger" value="ELIMINAR">
-					<input type="button" onclick="location.href = '/gestor';" class="btn btn-success" value="CANCELAR">
+					
+						<input type="submit" class="btn btn-danger" value="ELIMINAR/REINICIAR">
+						<input type="button" onclick="location.href = '/gestor';" class="btn btn-success" value="CANCELAR">
+				
 				</form>
 			</div>
 		</div>

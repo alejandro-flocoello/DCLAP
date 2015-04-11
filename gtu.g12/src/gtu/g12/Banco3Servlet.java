@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Universidad2Servlet extends HttpServlet {
+public class Banco3Servlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
@@ -26,7 +25,7 @@ public class Universidad2Servlet extends HttpServlet {
 		Solicitud solicitud = dao.getSol(email);	
 				
 		req.getSession().setAttribute("solicitud", solicitud);
-		RequestDispatcher view = req.getRequestDispatcher("universidad2.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("banco3.jsp");
 	    view.forward(req, resp);
-	}	
+	}
 }

@@ -119,13 +119,23 @@
 							<tr>
 								<td>Número Expediente</td>
 								<td><c:out value="${solicitud.expediente}" /></td>
-							</tr>			
+							</tr>
+							
+							<tr>
+								<td>Cuenta bancaria</td>
+								<td><c:out value="${solicitud.cuentaBan}" /></td>
+							</tr>
+							
+							<tr>
+								<td>Número de tarjeta</td>
+								<td><c:out value="${solicitud.numTarjeta}" /></td>
+							</tr>
+									
 						</tbody>
 					</table>
-					<input type="submit" class="btn btn-success" value="Validar">
+					<input type="button" class="btn btn-success" value="Notificar Solicitante" onClick="location.href = '<c:url value="/not?correoUniv=${solicitud.correoUniv}"/>' ">
 					</form>
 					
-					<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '<c:url value="/rechazo?correoUniv=${solicitud.correoUniv}"/>' ">
 				</div>
 			</div>
 		</div>

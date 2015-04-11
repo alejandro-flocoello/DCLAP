@@ -14,14 +14,14 @@
 <%
 	String usuario = "";
 	HttpSession sesionOk = request.getSession();
-	if (sesionOk.getAttribute("universidad") == null) {
+	if (sesionOk.getAttribute("banco") == null) {
 %>
 <jsp:forward page="interfazInicio.jsp">
 	<jsp:param name="error" value="Esobligatorio identificarse" />
 </jsp:forward>
 <%
 	} else {
-		usuario = (String) sesionOk.getAttribute("universidad");
+		usuario = (String) sesionOk.getAttribute("banco");
 	}
 %>
 </head>
@@ -41,7 +41,7 @@
 				<div class="navbar-inner">
 					<button type="button" class="btn btn-navbar"></button>
 					<a class="brand"><img src="/img/logo@2.jpg" width="60"
-						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS - UNIVERSIDAD</a>
+						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS - BANCO</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/universidad">VOLVER</a></li>
@@ -96,36 +96,46 @@
 							</tr>
 
 							<tr>
-								<td>Domicilio</td>
+								<td>Domicilio:</td>
 								<td><c:out value="${solicitud.domicilio}" /></td>
 							</tr>
 							
 							<tr>
-								<td>Email</td>
+								<td>Email:</td>
 								<input type="hidden" name="correoUniv" value="${solicitud.correoUniv}" />
 								<td><c:out value="${solicitud.correoUniv}" /></td>
 							</tr>
 
 							<tr>
-								<td>Escuela</td>
+								<td>Escuela:</td>
 								<td><c:out value="${solicitud.centroUniv}" /></td>
 							</tr>
 
 							<tr>
-								<td>Tipo Solicitud</td>
+								<td>Tipo Solicitud:</td>
 								<td><c:out value="${solicitud.categoria}" /></td>
 							</tr>
 
 							<tr>
-								<td>Número Expediente</td>
+								<td>Número Expediente:</td>
 								<td><c:out value="${solicitud.expediente}" /></td>
-							</tr>			
+							</tr>
+							
+							<tr>
+								<td>Cuenta bancaria:</td>
+								<td><c:out value="${solicitud.cuentaBan}" /></td>
+							</tr>
+							
+							<tr>
+								<td>Número de tarjeta:</td>
+								<td><c:out value="${solicitud.numTarjeta}" /></td>
+							</tr>
+									
 						</tbody>
 					</table>
-					<input type="submit" class="btn btn-success" value="Validar">
+					<input type="button" class="btn btn-success" value="Notificar Universidad" onClick="location.href = '<c:url value="/not?correoUniv=${solicitud.correoUniv}"/>' ">
 					</form>
 					
-					<input type="button" class="btn btn-danger" value="Rechazar" onClick="location.href = '<c:url value="/rechazo?correoUniv=${solicitud.correoUniv}"/>' ">
 				</div>
 			</div>
 		</div>

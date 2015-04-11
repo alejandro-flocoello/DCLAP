@@ -23,24 +23,23 @@ public class Usuario2Servlet extends HttpServlet {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
 		String email = (String) req.getSession().getAttribute("usuario");
-		//System.out.println(email); -------->laura@alumnos.com
-		
-		//Solicitud solicitud = dao.getSol(email);
-		//Boolean estadoDual = solicitud.isMonedero();
-		//System.out.println(estadoDual); -----> FALSE
-		
-		
+				
 	    String[] solDual = req.getParameterValues("checkbox"); 
-	    //System.out.println(solDual);
 	    
 	    if(solDual != null){
 	    	dao.changeMonederoSol(email, true);	
-	    	//Solicitud solicitud2 = dao.getSol(email);
-	    	//Boolean estadoDual2 = solicitud2.isMonedero();
-			//System.out.println(estadoDual2); -----TRUE 
 	    }else{
 	    	dao.changeMonederoSol(email, false);		
 	    }
+	    
+	    /*
+	    String[] bancos= req.getParameterValues("bancos");
+	    
+	    	if( bancos != null){
+	    		for(String banco: bancos){
+	    			dao.changeBancoSol(email, banco);
+	    		}	
+	    	}*/
 
 	    Solicitud solicitud = dao.getSol(email);
 		req.getSession().setAttribute("solicitud", solicitud); 

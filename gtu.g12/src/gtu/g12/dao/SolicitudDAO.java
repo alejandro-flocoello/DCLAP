@@ -2,7 +2,6 @@ package gtu.g12.dao;
 
 import java.util.List;
 
-
 import gtu.g12.model.Solicitud;
 
 public interface SolicitudDAO {
@@ -11,7 +10,7 @@ public interface SolicitudDAO {
 	boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, byte[] foto, String categoria, int expediente,
+			String correoUniv, byte[] foto, String banco, String categoria, int expediente,
 			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
 			String estado);
 	
@@ -28,19 +27,22 @@ public interface SolicitudDAO {
 	public List<Solicitud> getSolPorEstadoYNOBanco(String estado);
 		
 	//Cambiar estado solicitud:
-	public void changeEstadoSol (long id, String estado);
+	public void changeEstadoSol (String correo, String estado);
 	
 	//Añadir datos bancanrios solicitud:
-	public void addBan (long id, int cuentaBan, int pin, int cv2);
+	public void addBan (String correo, int cuentaBan, int pin, int cv2);
 	
 	//Añadir datos estampacion solicitud:
-	public void addEstamp (long id, int numTarjeta);
+	public void addEstamp (String correo, int numTarjeta);
 	
 	//Modifica el campo del servicio dual a true si el usuario lo solicita o a false si no lo hace.
 	public void changeMonederoSol(String correo, boolean dual);
+	//Modifica el campo de banco dependiendo de la selección del usuario.
+	public void changeBancoSol(String correo, String banco);
 	
 	//Administrador:
 	public List<Solicitud> listSol();
 	public boolean removeSol (long id);
 	boolean removeSolicitudes();
 }
+

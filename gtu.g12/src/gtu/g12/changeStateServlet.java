@@ -23,14 +23,9 @@ public class changeStateServlet extends HttpServlet {
 		if (req.getSession().getAttribute("usuario") != null) {
 
 			String correoS = (String) req.getSession().getAttribute("usuario");
-			
-			 resp.setContentType("text/html;charset=UTF-8");
-			 
-		        
-			//dao.getSol(correoS).setImage(foto)
-			
+						 
 			if ((dao.getSol(correoS).getEstado()).equals("")) {
-				dao.getSol(correoS).setEstado("SOLICITADA");
+				dao.changeEstadoSol(correoS, "SOLICITADA");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(correoS));
 			req.getSession().setAttribute("rol", req.getSession().getAttribute("usuario"));
@@ -43,17 +38,16 @@ public class changeStateServlet extends HttpServlet {
 		
 		if (req.getSession().getAttribute("universidad") != null) {
 
-			String email = req.getParameter("correoUniv");
-			System.out.println(email);
-			 
+			String email = req.getParameter("correoUniv");			 
 
-			if ((dao.getSol(email).getEstado()).equals("SOLICITADA") || (dao.getSol(email).getEstado()).equals("REMITIDA_UNIV")){
-				dao.getSol(email).setEstado("ACEPTADA_UNIV");
-				
+			if ((dao.getSol(email).getEstado()).equals("SOLICITADA")){
+				dao.changeEstadoSol(email, "ACEPTADA_UNIV");
+			}else if ((dao.getSol(email).getEstado()).equals("REMITIDA_UNIV")){
+				dao.changeEstadoSol(email, "REMITIDA_USR");
+			}
 				req.getSession().setAttribute("solicitud", dao.getSol(email));
 				req.getSession().setAttribute("rol", req.getSession().getAttribute("universidad"));
 				resp.sendRedirect("/viewState");
-			}
 		}
 
 		
@@ -64,20 +58,21 @@ public class changeStateServlet extends HttpServlet {
 			String email = req.getParameter("correoUniv");
 			
 			String cv2 = req.getParameter("CV2");
-			dao.getSol(email).setCv2(Integer.parseInt(cv2));
-			
+			int cv = Integer.parseInt(cv2);
 			
 			String cuenta = req.getParameter("Cuenta");
-			dao.getSol(email).setCuentaBan(Integer.parseInt(cuenta));
+			int cuentaB = Integer.parseInt(cuenta);
 			
+			String Pin = req.getParameter("Pin");
+			int pin =Integer.parseInt(Pin);
 			
-			
-			String pin = req.getParameter("Pin");
-			dao.getSol(email).setCuentaBan(Integer.parseInt(pin));
+			dao.addBan(email, cuentaB, pin, cv);
 			
 	
-			if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV") || (dao.getSol(email).getEstado()).equals("REMITIDA_BANCO")) {
-				dao.getSol(email).setEstado("ASOCIADA_BANCO");
+			if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV")) {
+				dao.changeEstadoSol(email, "ASOCIADA_BANCO");
+			}else if ((dao.getSol(email).getEstado()).equals("REMITIDA_BANCO")){
+				dao.changeEstadoSol(email, "REMITIDA_UNIV");
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));
 			req.getSession().setAttribute("rol", req.getSession().getAttribute("banco"));
@@ -92,32 +87,34 @@ public class changeStateServlet extends HttpServlet {
 			String email = req.getParameter("correoUniv");
 
 			String numTarjeta = req.getParameter("numTarjeta");
-			dao.getSol(email).setNumTarjeta(Integer.parseInt(numTarjeta));
-			System.out.println(dao.getSol(email).getNumTarjeta());
-			
+			int numero = Integer.parseInt(numTarjeta);
+			dao.addEstamp(email, numero);			
 			
 			if ((dao.getSol(email).getEstado()).equals("ASOCIADA_BANCO")) {
-				dao.getSol(email).setEstado("IMPRESA_ESTAMP");
+				dao.changeEstadoSol(email, "IMPRESA_ESTAMP");
+			}else if ((dao.getSol(email).getEstado()).equals("IMPRESA_ESTAMP")){
+				if ((dao.getSol(email).isMonedero())){
+					dao.changeEstadoSol(email, "REMITIDA_BANCO");
+				}else{
+					dao.changeEstadoSol(email, "REMITIDA_UNIV");
+				}
 			}
 			req.getSession().setAttribute("solicitud", dao.getSol(email));
 			req.getSession().setAttribute("rol", req.getSession().getAttribute("estampadora"));
 			resp.sendRedirect("/viewState");
 		}
-		
-		
-		
-		
+			
 		
 		if (req.getSession().getAttribute("gestor") != null) {
 			
 			String email = req.getParameter("correoUniv");
 			
 			if ((dao.getSol(email).getEstado()).equals("ELIMINADA")){
-				dao.getSol(email).setEstado("");
+				dao.changeEstadoSol(email, "");
 			}
 			
 			else {
-				dao.getSol(email).setEstado("ELIMINADA");
+				dao.changeEstadoSol(email, "ELIMINADA");
 			}
 			
 			req.getSession().setAttribute("solicitud", dao.getSol(email));

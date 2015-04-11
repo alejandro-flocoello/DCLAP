@@ -42,7 +42,8 @@
 				<div class="navbar-inner">
 					<button type="button" class="btn btn-navbar"></button>
 					<a class="brand"><img src="/img/logo@2.jpg" width="60"
-						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
+						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS -
+						SOLICITANTE</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/main">HOME</a></li>
@@ -62,26 +63,35 @@
 		<div class="container">
 			<div class="row clearfix">
 				<div class="span15">
-					
+
 					<h1 class="text-center">Bienvenido Usuario</h1>
 
 					<p>No existe solicitud en proceso</p>
 
-					<p><h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5></p>
 
 					<div class="signup-form">
-					<form method="post" action="/solUser">
-							
-							<div class="checkbox">
-								<label><input type="checkbox" name="checkbox"
-									value="Solicitud" style="font-weight: bold" /> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
-							</div>
+						<form method="post" action="/solUser">
 						
+							<p><h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5>
+
+							<div class="checkbox">
+								<label><input type="checkbox" name="checkbox" value="Solicitud" style="font-weight: bold" /> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
+							</div> </p>
+				
+							<!--<p><h5>Indique el banco al que quiere asociar la cuenta bancaria</h5>
+
+							<select name="bancos" class="selectpicker" data-style="btn-primary">
+								<option value="Santander">Santander</option>
+								<option value="BBVA">BBVA</option>
+								<option value="La Caixa">La Caixa</option>
+							</select>
+							</p> -->
+
 							<div class="controls controls-row">
-								<input type="submit" value="Solicitar" class="btn btn-block btn-primary">
+								<input type="submit" value="Solicitar"
+									class="btn btn-block btn-primary">
 							</div>
 						</form>
-
 					</div>
 				</div>
 			</div>
@@ -89,5 +99,6 @@
 	</section>
 </body>
 </html>
+
 
 

@@ -41,10 +41,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	public boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, byte[] foto, String categoria, int expediente,boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado ) {
+			String correoUniv, byte[] foto, String banco, String categoria, int expediente,boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta, String estado ) {
 		synchronized (this) {
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, foto, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
+			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, foto,banco, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
 					estado);
 			try{
 				pmf.makePersistent(solicitud);
@@ -109,19 +109,6 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	
-	@Override
-	public void changeMonederoSol(String correo, boolean monedero) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
-	        sol.setMonedero(monedero);
-	       
-	    } catch (Exception e) {
-	    	pm.close();
-	    }
-	}
-	
-	@Override
 	public List<Solicitud> getSolPorEstadoYNOBanco(String estado) {
 		synchronized (this) {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
@@ -140,27 +127,50 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	
-		
-	
+	@Override
+	public void changeMonederoSol(String correo, boolean monedero) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
+	        sol.setMonedero(monedero);
+	       
+	    } catch (Exception e) {
+	    	pm.close();
+	    }
+	}
 	
 	
 	@Override
-	public void changeEstadoSol(long id, String estado) {
+	public void changeEstadoSol(String correo, String estado) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
 	        sol.setEstado(estado);
 	       
 	    } finally {
 	        pm.close();
 	    }
 	}
-
+	
+	
 	@Override
-	public void addBan(long id, int cuentaBan, int pin, int cv2) {
+	public void changeBancoSol(String correo, String banco) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
+	        sol.setBanco(banco);
+	       
+	    } catch (Exception e) {
+	    	pm.close();
+	    }
+	}
+
+
+	@Override
+	public void addBan(String correo, int cuentaBan, int pin, int cv2) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
 	        sol.setCuentaBan(cuentaBan);
 	        sol.setPin(pin);
 	        sol.setCv2(cv2);
@@ -171,10 +181,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 
 	@Override
-	public void addEstamp(long id, int numTarjeta) {
+	public void addEstamp(String correo, int numTarjeta) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	        Solicitud sol = pm.getObjectById(Solicitud.class, id );
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
 	        sol.setNumTarjeta(numTarjeta);
 	       
 	    } finally {

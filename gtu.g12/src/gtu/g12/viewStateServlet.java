@@ -14,8 +14,7 @@ public class viewStateServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
-		RequestDispatcher view = req.getRequestDispatcher("viewState.jsp");
-        view.forward(req, resp);
-		
+			RequestDispatcher view = req.getRequestDispatcher("viewState.jsp");
+        	view.forward(req, resp);
 	}
 }

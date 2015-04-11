@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Universidad2Servlet extends HttpServlet {
+public class Estampadora3Servlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public class Universidad2Servlet extends HttpServlet {
 		Solicitud solicitud = dao.getSol(email);	
 				
 		req.getSession().setAttribute("solicitud", solicitud);
-		RequestDispatcher view = req.getRequestDispatcher("universidad2.jsp");
+		RequestDispatcher view = req.getRequestDispatcher("estampadora3.jsp");
 	    view.forward(req, resp);
-	}	
-}
+	}
+}	

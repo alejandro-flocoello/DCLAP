@@ -41,7 +41,7 @@
 				<div class="navbar-inner">
 					<button type="button" class="btn btn-navbar"></button>
 					<a class="brand"><img src="/img/logo@2.jpg" width="80"
-						height="80"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
+						height="80"> GESTIÓN DE TARJETAS UNIVERSITARIAS - SOLICITANTE</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
 							<li><a href="/usuario1">VOLVER</a></li>
@@ -121,6 +121,11 @@
 									<td>Número Expediente</td>
 									<td><c:out value="${solicitud.expediente}" /></td>
 								</tr>
+								
+								<!--<tr>
+									<td>Banco</td>
+									<td><c:out value="${solicitud.banco}" /></td>
+								</tr>  -->
 								
 								<tr>
 									<td>Adjunte una foto actual por favor:</td>

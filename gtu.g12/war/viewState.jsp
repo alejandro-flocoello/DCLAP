@@ -14,15 +14,15 @@
 
 <%
 	String usuario = "";
-	String universidad="";
-	String banco="";
-	String estampadora="";
-	
+	String universidad = "";
+	String banco = "";
+	String estampadora = "";
+
 	HttpSession sesionOk = request.getSession();
-	if ((sesionOk.getAttribute("usuario") == null) && 
-		(sesionOk.getAttribute("universidad") == null) && 
-		(sesionOk.getAttribute("banco") == null) &&
-		(sesionOk.getAttribute("estampadora") == null)) {
+	if ((sesionOk.getAttribute("usuario") == null)
+			&& (sesionOk.getAttribute("universidad") == null)
+			&& (sesionOk.getAttribute("banco") == null)
+			&& (sesionOk.getAttribute("estampadora") == null)) {
 %>
 <jsp:forward page="interfazInicio.jsp">
 	<jsp:param name="error" value="Esobligatorio identificarse" />
@@ -68,12 +68,23 @@
 
 
 			<div class="col-md-6">
-				<h3>
-					Bienvenido usuario <c:out value="${rol}" />
-				</h3>
-				<h6>
-					El estado de solicitud de <c:out value="${solicitud.nombre}" /> es <c:out value="${solicitud.estado}" />
-				</h6>
+
+
+				<c:if test="${solicitud.estado == 'REMITIDA_USR'}">
+
+					<jsp:include page="final.jsp" />
+				</c:if>
+				
+				
+				
+				<c:choose>
+					<c:when test="${solicitud.estado != 'REMITIDA_USR'}">
+					
+					<h3>Bienvenido usuario<c:out value="${rol}" /></h3>
+					<h6>El estado de solicitud de<c:out value="${solicitud.nombre}" /> es <c:out value="${solicitud.estado}" /></h6>
+     				 </c:when>
+				</c:choose>			
+				
 			</div>
 		</div>
 	</div>
