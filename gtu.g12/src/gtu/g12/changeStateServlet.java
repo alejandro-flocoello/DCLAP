@@ -92,6 +92,8 @@ public class changeStateServlet extends HttpServlet {
 			
 			if ((dao.getSol(email).getEstado()).equals("ASOCIADA_BANCO")) {
 				dao.changeEstadoSol(email, "IMPRESA_ESTAMP");
+			}else if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV")){
+				dao.changeEstadoSol(email, "IMPRESA_ESTAMP");
 			}else if ((dao.getSol(email).getEstado()).equals("IMPRESA_ESTAMP")){
 				if ((dao.getSol(email).isMonedero())){
 					dao.changeEstadoSol(email, "REMITIDA_BANCO");
