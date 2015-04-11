@@ -111,6 +111,7 @@ public class changeStateServlet extends HttpServlet {
 			
 			if ((dao.getSol(email).getEstado()).equals("ELIMINADA")){
 				dao.changeEstadoSol(email, "");
+				//dao.removeSol(email);
 			}
 			
 			else {

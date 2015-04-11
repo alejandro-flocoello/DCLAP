@@ -5,7 +5,6 @@ import gtu.g12.model.Solicitud;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +70,7 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 	
 	//Extrae la solicitud por el estado
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Solicitud> getSolPorEstado(String estado) {
 		synchronized (this) {
@@ -90,6 +90,7 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Solicitud> getSolPorEstadoYBanco(String estado) {
 		synchronized (this) {
@@ -109,6 +110,7 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Solicitud> getSolPorEstadoYNOBanco(String estado) {
 		synchronized (this) {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
@@ -192,6 +194,7 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	    }
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Solicitud> listSol() {
 		synchronized (this) {
@@ -209,12 +212,11 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			}
 	}
 	@Override
-	public boolean removeSol(long id) {
+	public boolean removeSol(String correo) {
 		synchronized (this) {
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery(Solicitud.class);
 			try{
-				q.deletePersistentAll();
+				pmf.deletePersistent(correo);
 			}
 			catch (Exception e){
 				return false;

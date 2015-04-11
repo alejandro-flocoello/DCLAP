@@ -29,7 +29,7 @@ public interface SolicitudDAO {
 	//Cambiar estado solicitud:
 	public void changeEstadoSol (String correo, String estado);
 	
-	//Añadir datos bancanrios solicitud:
+	//Añadir datos bancarios solicitud:
 	public void addBan (String correo, int cuentaBan, int pin, int cv2);
 	
 	//Añadir datos estampacion solicitud:
@@ -42,7 +42,7 @@ public interface SolicitudDAO {
 	
 	//Administrador:
 	public List<Solicitud> listSol();
-	public boolean removeSol (long id);
+	public boolean removeSol (String correo);
 	boolean removeSolicitudes();
 }
 

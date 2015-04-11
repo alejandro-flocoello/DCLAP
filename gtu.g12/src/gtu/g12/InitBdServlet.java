@@ -43,6 +43,7 @@ public class InitBdServlet extends HttpServlet {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
 		dao.removeSolicitudes();
+		
 		dao.addSol("Laura", "Gomez", "Rodriguez", "DNI", "52901938", "España", "Calle", "UPM", "ETSIT", "laura@alumnos.com", null, "", "alumno", 123412342, false,0,0,0,0,"");
 		dao.addSol("Laura2", "Gomez2", "Rodriguez2", "DNI", "52901932", "España", "Calle", "UPM", "ETSIT", "laura2@alumnos.com", null, "", "alumno", 123412340, false,0,0,0,0,"");
 	
@@ -54,7 +55,6 @@ public class InitBdServlet extends HttpServlet {
 		dao.addSol("Laura4", "Gomez4", "Rodriguez4", "DNI4", "472340464", "Esp4", "Gomar4", "UPM4", "ETSIT4", "laura4@alumnos.com", null, "", "alumno", 123412342, false,0,0,0,0,"REMITIDA_UNIV");
 		dao.addSol("Laura5", "Gomez5", "Rodriguez5", "DNI5", "472340465", "Esp5", "Gomar5", "UPM5", "ETSIT5", "laura5@alumnos.com", null, "", "alumno", 123412342, false,0,0,0,0,"REMITIDA_BANCO");
 		dao.addSol("Laura6", "Gomez6", "Rodriguez6", "DNI6", "472340466", "Esp6", "Gomar6", "UPM6", "ETSIT6", "laura6@alumnos.com", null, "", "alumno", 123412346, false,0,0,0,0,"IMPRESA_ESTAMP");
-		
 		
 		resp.sendRedirect("/showBd");
 	}

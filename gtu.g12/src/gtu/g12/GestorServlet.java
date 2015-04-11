@@ -28,9 +28,11 @@ public class GestorServlet extends HttpServlet {
 		List<Solicitud> lista1 = dao.listSol();
 		List<Solicitud> lista2 = dao.getSolPorEstado("ELIMINADA");
 		
-		RequestDispatcher view = req.getRequestDispatcher("gestor.jsp");
+		
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista1));
 		req.getSession().setAttribute("solicitudes2", new ArrayList<Solicitud>(lista2));
+		
+		RequestDispatcher view = req.getRequestDispatcher("gestor.jsp");
         view.forward(req, resp);
 		
 	}

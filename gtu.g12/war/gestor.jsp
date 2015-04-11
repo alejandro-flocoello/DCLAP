@@ -68,8 +68,9 @@
 						<tbody>
 						
 							<tr class="success">	
-													
+								
 								<c:forEach items="${solicitudes}" var="solicitud">	
+								<c:if test="${solicitud.estado != 'ELIMINADA'}">
 										<tr class="success">
 										<td><c:out value="${solicitud.nombre}" /></td>
 										<td><c:out value="${solicitud.apellido1}" /></td>
@@ -77,12 +78,12 @@
 										<td><c:out value="${solicitud.estado}" /></td>
 										<td><a class="gestionar" href="<c:url value="/gestionG?correoUniv=${solicitud.correoUniv}"/>">ELIMINAR</a></td>
 										</tr>
+								</c:if>
 								</c:forEach>
 							</tr>	
 						</tbody>
 					</table>
 				</div>
-
 
 
 				<div class="col-md-4 column">

@@ -71,7 +71,6 @@
 
 
 				<c:if test="${solicitud.estado == 'REMITIDA_USR'}">
-
 					<jsp:include page="final.jsp" />
 				</c:if>
 				
