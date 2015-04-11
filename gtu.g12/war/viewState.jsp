@@ -67,17 +67,13 @@
 
 
 			<div class="col-md-6">
-
-
-				<c:if test="${solicitud.estado == 'REMITIDA_USR'}">
+ 
+				<c:if test="${(solicitud.estado == 'REMITIDA_USR') && ( rol != universidad)}">
 					<jsp:include page="final.jsp" />
 				</c:if>
-				
-				
-				
+						
 				<c:choose>
-					<c:when test="${solicitud.estado != 'REMITIDA_USR'}">
-					
+					<c:when test="${solicitud.estado != 'REMITIDA_USR' || ((solicitud.estado == 'REMITIDA_USR') && ( rol == universidad))}">
 					<h3>Bienvenido usuario<c:out value="${rol}" /></h3>
 					<h6>El estado de solicitud de <c:out value="${solicitud.nombre}" /> es <c:out value="${solicitud.estado}" /></h6>
      				 </c:when>
