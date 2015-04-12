@@ -19,7 +19,7 @@
 	if (sesionOk.getAttribute("universidad") == null) {
 %>
 		<jsp:forward page="interfazInicio.jsp">
-			<jsp:param name="error" value="Es obligatorio identificarse" />
+			<jsp:param name="error" value="Esobligatorio identificarse" />
 		</jsp:forward>
 <%
 	} else {
@@ -91,7 +91,7 @@
 
 
 				<div class="col-md-4 column">
-					<h3>Solicitudes remitidas</h3>
+					<h3>Solicitudes remitidas:</h3>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -118,7 +118,7 @@
 				</div>
 				
 				<div class="col-md-4 column">
-					<h3>Solicitudes rechazadas</h3>
+					<h3>Solicitudes rechazadas:</h3>
 					<table class="table table-hover">
 						<thead>
 							<tr>

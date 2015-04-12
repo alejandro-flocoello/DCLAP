@@ -65,6 +65,7 @@
 				<div class="col-md-6 column">
 
 					<h3 class="text-center">Banco</h3>
+					
 
 
 					<form role="form" method="post" action="/changeState">
@@ -110,17 +111,17 @@
 
 						<div class="form-group">
 							<label for="inputCuenta">Cuenta Bancaria</label> 
-							<input type="text" class="form-control" name="Cuenta" value="">
+							<input type="text" class="form-control" name="Cuenta" value="" maxlength="20">
 						</div>
 
 						<div class="form-group">
 							<label for="inputPin">PIN</label> 
-							<input type="password" class="form-control" name="Pin" value="">
+							<input type="password" class="form-control" name="Pin" value="" maxlength="4">
 						</div>
 
 						<div class="form-group">
 							<label for="inputCV2">CV2</label> 
-							<input type="text" class="form-control" name="CV2" value="">
+							<input type="text" class="form-control" name="CV2" value="" maxlength="3">
 						</div>		
 						
 						<input type="submit" class="btn btn-success" value="Validar">

@@ -25,7 +25,7 @@
 			&& (sesionOk.getAttribute("estampadora") == null)) {
 %>
 <jsp:forward page="interfazInicio.jsp">
-	<jsp:param name="error" value="Es obligatorio identificarse" />
+	<jsp:param name="error" value="Esobligatorio identificarse" />
 </jsp:forward>
 <%
 	} else {
@@ -74,7 +74,7 @@
 						
 				<c:choose>
 					<c:when test="${solicitud.estado != 'REMITIDA_USR' || ((solicitud.estado == 'REMITIDA_USR') && ( rol == universidad))}">
-					<h3>Bienvenido <c:out value="${rol}" /></h3>
+					<h3>Bienvenido usuario <c:out value="${rol}" /></h3>
 					<h6>El estado de solicitud de <c:out value="${solicitud.nombre}" /> es <c:out value="${solicitud.estado}" /></h6>
      				 </c:when>
 				</c:choose>			

@@ -22,10 +22,12 @@ public class BancoServlet extends HttpServlet {
 			throws IOException, ServletException {
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
-		
-		List<Solicitud> lista = dao.getSolPorEstadoYBanco("ACEPTADA_UNIV");
-		List<Solicitud> lista2 = dao.getSolPorEstado("REMITIDA_BANCO");
-		List<Solicitud> lista3 = dao.getSolPorEstadoYBanco("RECHAZADA_ESTAMP");
+		String banco = (String) req.getSession().getAttribute("banco");
+				
+				
+		List<Solicitud> lista = dao.getSolPorEstadoYBanco(banco, "ACEPTADA_UNIV");
+		List<Solicitud> lista2 = dao.getSolEstadoBanco(banco, "REMITIDA_BANCO");
+		List<Solicitud> lista3 = dao.getSolPorEstadoYBanco(banco, "RECHAZADA_ESTAMP");
 
 		RequestDispatcher view = req.getRequestDispatcher("banco.jsp");
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));

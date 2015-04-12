@@ -107,7 +107,7 @@
 
 					<div class="form-group">
 						<label for="inputNumInterno">Número Tarjeta Interna</label> 
-						<input type="text" class="form-control" name="numTarjeta" value="">
+						<input type="text" class="form-control" name="numTarjeta" value="" maxlength="16">
 					</div>
 
 					<input type="submit" class="btn btn-success" value="Validar">

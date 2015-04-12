@@ -32,15 +32,15 @@ public class Usuario2Servlet extends HttpServlet {
 	    	dao.changeMonederoSol(email, false);		
 	    }
 	    
-	    /*
+
 	    String[] bancos= req.getParameterValues("bancos");
 	    
 	    	if( bancos != null){
 	    		for(String banco: bancos){
 	    			dao.changeBancoSol(email, banco);
 	    		}	
-	    	}*/
-
+	    	}
+	    	
 	    Solicitud solicitud = dao.getSol(email);
 		req.getSession().setAttribute("solicitud", solicitud); 
 	    RequestDispatcher view = req.getRequestDispatcher("usuario2.jsp");

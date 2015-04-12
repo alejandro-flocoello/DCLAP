@@ -1,6 +1,7 @@
 package gtu.g12;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 public class changeStateServlet extends HttpServlet {
 
@@ -34,9 +34,6 @@ public class changeStateServlet extends HttpServlet {
 			resp.sendRedirect("/viewState");
 		}
 
-		
-		
-		
 		
 		if (req.getSession().getAttribute("universidad") != null) {
 
@@ -63,19 +60,24 @@ public class changeStateServlet extends HttpServlet {
 			String cv2 = req.getParameter("CV2");
 			
 			String cuenta = req.getParameter("Cuenta");
+			System.out.println(cuenta);
 			
 			String Pin = req.getParameter("Pin");
+			
+			
 			if (cuenta.equals("")){
 				
 				session.setAttribute("error","Introduzca el número de cuenta");
 				resp.sendRedirect("/error");
 				return;
 			}
-			else if (cuenta.length()!=20 || !cv2.matches("\\d+")){
+			else if (cuenta.length()!=20 || Pattern.matches("\\d+", (CharSequence) cuenta)==false){
 				
 				session.setAttribute("error","Introduzca un número de cuenta de 20 dígitos");
 				resp.sendRedirect("/error");
 				return;
+			
+			
 			}
 			else if (Pin.equals("")){
 				
@@ -83,19 +85,26 @@ public class changeStateServlet extends HttpServlet {
 				resp.sendRedirect("/error");
 				return;
 			}
-			else if (Pin.length()!=4 || !cv2.matches("\\d+")){
+			else if (Pin.length()!=4){
 				
 				session.setAttribute("error","Introduzca un pin de 4 dígitos");
 				resp.sendRedirect("/error");
 				return;
 			}
+			else if (Pattern.matches("\\d+", (CharSequence) Pin)==false){
+				
+				session.setAttribute("error","Introduzca un pin de 4 dígitos");
+				resp.sendRedirect("/error");
+				return;
+			}
+			
 			else if (cv2.equals("")){
 				
 				session.setAttribute("error","Introduzca el CV2");
 				resp.sendRedirect("/error");
 				return;
 			}
-			else if (cv2.length()!=3 || !cv2.matches("\\d+")){
+			else if (cv2.length()!=3 || Pattern.matches("\\d+", (CharSequence) cv2)==false){
 				
 				session.setAttribute("error","Introduzca un CV2 de 3 dígitos");
 				resp.sendRedirect("/error");
@@ -103,9 +112,12 @@ public class changeStateServlet extends HttpServlet {
 			}
 			else {
 				int cv = Integer.parseInt(cv2);
-				int cuentaB = Integer.parseInt(cuenta);
+				//float cuentaB = Float.parseFloat(cuenta);
+				//System.out.println(cuentaB);
+				//String s = String.valueOf(cuentaB);
+				//System.out.println(s);
 				int pin =Integer.parseInt(Pin);
-				dao.addBan(email, cuentaB, pin, cv);
+				dao.addBan(email, cuenta, pin, cv);
 			}
 	
 			if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV")) {
@@ -126,15 +138,28 @@ if (req.getSession().getAttribute("estampadora") != null) {
 			String email = req.getParameter("correoUniv");
 
 			String numTarjeta = req.getParameter("numTarjeta");
+			
 			if (numTarjeta.equals("")){
-				resp.sendRedirect("/errorCamposVacios");
+				
+				session.setAttribute("error","Introduzca el número de tarjeta");
+				resp.sendRedirect("/error");
 				return;
 			}
-			else{
-			int numero = Integer.parseInt(numTarjeta);
-			dao.addEstamp(email, numero);			
+			else if (numTarjeta.length()!=16 || Pattern.matches("\\d+", (CharSequence) numTarjeta)==false){
+				
+				session.setAttribute("error","Introduzca un número de cuenta de 16 dígitos");
+				resp.sendRedirect("/error");
+				return;
+			
+			}else {
+				//int numero = Integer.parseInt(numTarjeta);
+				dao.addEstamp(email, numTarjeta);		
 			}
+					
+			
 			if ((dao.getSol(email).getEstado()).equals("ASOCIADA_BANCO")) {
+				dao.changeEstadoSol(email, "IMPRESA_ESTAMP");
+			}else if ((dao.getSol(email).getEstado()).equals("ACEPTADA_UNIV")){
 				dao.changeEstadoSol(email, "IMPRESA_ESTAMP");
 			}else if ((dao.getSol(email).getEstado()).equals("IMPRESA_ESTAMP")){
 				if ((dao.getSol(email).isMonedero())){

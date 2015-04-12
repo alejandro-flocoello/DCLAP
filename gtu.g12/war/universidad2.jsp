@@ -119,9 +119,12 @@
 							<tr>
 								<td>Número Expediente</td>
 								<td><c:out value="${solicitud.expediente}" /></td>
-							</tr>			
+							</tr>		
 						</tbody>
 					</table>
+					
+					<input type="hidden" name="banco" value="${solicitud.banco}"> 
+					
 					<input type="submit" class="btn btn-success" value="Validar">
 					</form>
 					

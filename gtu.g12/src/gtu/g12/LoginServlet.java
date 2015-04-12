@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 
 				if (usIden != null) {
 					
-					
 					if (usIden.getRol().equals("solicitante") && (session.getAttribute("usuario") == null)) {
 				        
 						session.setAttribute("usuario",user);  

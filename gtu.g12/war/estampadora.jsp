@@ -16,7 +16,7 @@
 	if (sesionOk.getAttribute("estampadora") == null) {
 %>
 <jsp:forward page="interfazInicio.jsp">
-	<jsp:param name="error" value="Es obligatorio identificarse" />
+	<jsp:param name="error" value="Esobligatorio identificarse" />
 </jsp:forward>
 <%
 	} else {
@@ -58,7 +58,7 @@
 			<div class="row clearfix">
 
 				<div class="col-md-4 column">
-					<h3>Solicitudes pendientes de impresión</h3>
+					<h3>Solicitudes pendientes para la impresión:</h3>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -101,7 +101,7 @@
 
 
 				<div class="col-md-4 column">
-					<h3>Tarjetas impresas</h3>
+					<h3>Tarjetas impresas:</h3>
 
 					<table class="table table-hover">
 						<thead>

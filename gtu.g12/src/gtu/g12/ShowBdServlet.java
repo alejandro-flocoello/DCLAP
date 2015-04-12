@@ -34,13 +34,6 @@ public class ShowBdServlet extends HttpServlet {
 		req.getSession().setAttribute("usuarios", new ArrayList<Usuario>(listaUS));
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(listaSol));
         view.forward(req, resp);
-        
-   
-		
-		
-		
- 
-        
+              
 	}
-
 }

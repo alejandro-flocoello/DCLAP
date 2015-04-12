@@ -49,8 +49,10 @@ public class Solicitud implements Serializable {
 	private boolean monedero;
 	
 	
+	//@Persistent
+	//private float cuentaBan;
 	@Persistent
-	private int cuentaBan;
+	private String cuentaBan;
 	@Persistent
 	private int pin;
 	@Persistent
@@ -58,8 +60,12 @@ public class Solicitud implements Serializable {
 	
 	// private String fotoFondo;
 	
+	/*
 	@Persistent
-	private int numTarjeta;
+	private int numTarjeta;*/
+	
+	@Persistent
+	private String numTarjeta;
 	@Persistent
 	private String estado;
 	
@@ -68,7 +74,7 @@ public class Solicitud implements Serializable {
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
 			String correoUniv, byte[] foto, String banco, String categoria, int expediente,
-			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
+			boolean monedero, String cuentaBan, int pin, int cv2, String numTarjeta,
 			String estado) {
 		this.setNombre(nombre);
 		this.setApellido1(apellido1);
@@ -217,14 +223,25 @@ public class Solicitud implements Serializable {
 		this.monedero = monedero;
 	}
 
-	public int getCuentaBan() {
+	/*
+	public float getCuentaBan() {
 		return cuentaBan;
 	}
-
-	public void setCuentaBan(int cuentaBan) {
-		this.cuentaBan = cuentaBan;
+	public void setCuentaBan(float cuentaBan2) {
+		this.cuentaBan = cuentaBan2;
+		
+	}*/
+	
+	
+	public String getCuentaBan() {
+		return cuentaBan;
 	}
-
+	public void setCuentaBan(String cuentaBan2) {
+		this.cuentaBan = cuentaBan2;
+		
+	}
+	
+	
 	public int getPin() {
 		return pin;
 	}
@@ -240,12 +257,20 @@ public class Solicitud implements Serializable {
 	public void setCv2(int cv2) {
 		this.cv2 = cv2;
 	}
-
+	/*
 	public int getNumTarjeta() {
 		return numTarjeta;
 	}
 
 	public void setNumTarjeta(int numTarjeta) {
+		this.numTarjeta = numTarjeta;
+	}*/
+	
+	public String getNumTarjeta() {
+		return numTarjeta;
+	}
+
+	public void setNumTarjeta(String numTarjeta) {
 		this.numTarjeta = numTarjeta;
 	}
 
@@ -256,4 +281,7 @@ public class Solicitud implements Serializable {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	
 }
+

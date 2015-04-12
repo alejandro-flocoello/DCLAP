@@ -57,7 +57,7 @@
 			<div class="row clearfix">
 
 				<div class="col-md-4 column">
-					<h3>Solicitudes pendientes de aprobar</h3>
+					<h3>Solicitudes pendientes de aprobar:</h3>
 					<table class="table table-hover">
 						
 						<thead>
@@ -87,7 +87,7 @@
 				</div>
 
 				<div class="col-md-4 column">
-					<h3>Solicitudes remitidas</h3>
+					<h3>Solicitudes remitidas:</h3>
 					<table class="table table-hover">
 						
 						<thead>
@@ -117,7 +117,7 @@
 				</div>
 				
 				<div class="col-md-4 column">
-					<h3>Solicitudes rechazadas</h3>
+					<h3>Solicitudes rechazadas:</h3>
 
 					<table class="table table-hover">
 						<thead>

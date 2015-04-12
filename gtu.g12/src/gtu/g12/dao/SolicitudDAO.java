@@ -11,7 +11,7 @@ public interface SolicitudDAO {
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
 			String correoUniv, byte[] foto, String banco, String categoria, int expediente,
-			boolean monedero, int cuentaBan, int pin, int cv2, int numTarjeta,
+			boolean monedero, String cuentaBan, int pin, int cv2, String numTarjeta,
 			String estado);
 	
 	//Lista de solicitudes dependiendo del estado:
@@ -21,7 +21,10 @@ public interface SolicitudDAO {
 	public Solicitud getSol(String email);
 	
 	//Lista de solicitudes
-	public List<Solicitud> getSolPorEstadoYBanco(String estado);
+	public List<Solicitud> getSolEstadoBanco(String banco, String estado);
+	
+	//Lista de solicitudes
+	public List<Solicitud> getSolPorEstadoYBanco(String banco, String estado);
 	
 	//Lista de solicitudes
 	public List<Solicitud> getSolPorEstadoYNOBanco(String estado);
@@ -30,10 +33,10 @@ public interface SolicitudDAO {
 	public void changeEstadoSol (String correo, String estado);
 	
 	//Añadir datos bancarios solicitud:
-	public void addBan (String correo, int cuentaBan, int pin, int cv2);
+	public void addBan(String email, String cuentaB, int pin, int cv);
 	
 	//Añadir datos estampacion solicitud:
-	public void addEstamp (String correo, int numTarjeta);
+	public void addEstamp (String correo, String numTarjeta);
 	
 	//Modifica el campo del servicio dual a true si el usuario lo solicita o a false si no lo hace.
 	public void changeMonederoSol(String correo, boolean dual);
@@ -45,4 +48,3 @@ public interface SolicitudDAO {
 	public boolean removeSol (String correo);
 	boolean removeSolicitudes();
 }
-

@@ -75,18 +75,18 @@
 							<p><h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5>
 
 							<div class="checkbox">
-								<label><input type="checkbox" name="checkbox" value="Solicitud" style="font-weight: bold" /> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
+								<label><input type="checkbox" onclick="bancos.disabled = !this.checked" name="checkbox" value="Solicitud" style="font-weight: bold" /> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
 							</div> </p>
 				
-							<!--<p><h5>Indique el banco al que quiere asociar la cuenta bancaria</h5>
+							<p><h5>Indique el banco al que quiere asociar la cuenta bancaria</h5>
 
-							<select name="bancos" class="selectpicker" data-style="btn-primary">
-								<option value="Santander">Santander</option>
-								<option value="BBVA">BBVA</option>
-								<option value="La Caixa">La Caixa</option>
+							<select name="bancos"  class="selectpicker" data-style="btn-primary">
+								<option value="santander@banco.com">Santander</option>
+								<option value="bbva@banco.com">BBVA</option>
+								<option value="caixa@banco.com">La Caixa</option>
 							</select>
-							</p> -->
-
+							</p> 
+							
 							<div class="controls controls-row">
 								<input type="submit" value="Solicitar"
 									class="btn btn-block btn-primary">
@@ -99,6 +99,3 @@
 	</section>
 </body>
 </html>
-
-
-

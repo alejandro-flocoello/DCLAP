@@ -36,6 +36,8 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			return true;
 		}
 	}
+	
+	/*
 	@Override
 	public boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
@@ -55,7 +57,31 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 			pmf.close();
 			return true;
 		}
+	}*/
+	
+	
+	@Override
+	public boolean addSol(String nombre, String apellido1, String apellido2,
+			String tipoDoc, String codDoc, String nacionalidad,
+			String domicilio, String nomUniv, String centroUniv,
+			String correoUniv, byte[] foto, String banco, String categoria, int expediente,boolean monedero, String cuentaBan, int pin, int cv2, String numTarjeta, String estado ) {
+		synchronized (this) {
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, foto,banco, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
+					estado);
+			try{
+				pmf.makePersistent(solicitud);
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+				return false;
+			}
+			pmf.close();
+			return true;
+		}
 	}
+	
+	
 	
 	
 	@Override
@@ -91,13 +117,33 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	
 	
 	@SuppressWarnings("unchecked")
-	@Override
-	public List<Solicitud> getSolPorEstadoYBanco(String estado) {
+	public List<Solicitud> getSolEstadoBanco(String banco, String estado) {
 		synchronized (this) {
 			List<Solicitud> soli = new ArrayList<Solicitud>();
 			
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "' & monedero == true");
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "' & banco == '" + banco + "' ");
+	
+			try{
+				soli = (List<Solicitud>)q.execute();
+			}
+			catch (Exception e){
+				return null;
+			}
+			// read the existing entries
+			return soli;
+			}
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Solicitud> getSolPorEstadoYBanco(String banco, String estado) {
+		synchronized (this) {
+			List<Solicitud> soli = new ArrayList<Solicitud>();
+			
+			PersistenceManager pmf = PMF.get().getPersistenceManager();
+			Query q = pmf.newQuery("select from " + "gtu.g12.model.Solicitud where estado == '" + estado + "' & monedero == true & banco == '" + banco + "' ");
 	
 			try{
 				soli = (List<Solicitud>)q.execute();
@@ -169,7 +215,7 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 
 
 	@Override
-	public void addBan(String correo, int cuentaBan, int pin, int cv2) {
+	public void addBan(String correo, String cuentaBan, int pin, int cv2) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
 	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
@@ -181,9 +227,37 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	        pm.close();
 	    }
 	}
+	
+	/*
+	@Override
+	public void addBan(String correo, Float cuentaBan, int pin, int cv2) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
+	        sol.setCuentaBan(cuentaBan);
+	        sol.setPin(pin);
+	        sol.setCv2(cv2);
+	       
+	    } finally {
+	        pm.close();
+	    }
+	}*/
 
+	/*
 	@Override
 	public void addEstamp(String correo, int numTarjeta) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+	    try {
+	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
+	        sol.setNumTarjeta(numTarjeta);
+	       
+	    } finally {
+	        pm.close();
+	    }
+	}*/
+	
+	@Override
+	public void addEstamp(String correo, String numTarjeta) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
 	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
