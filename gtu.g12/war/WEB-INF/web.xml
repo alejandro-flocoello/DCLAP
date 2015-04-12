@@ -58,11 +58,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>Error</servlet-name>
 		<url-pattern>/error</url-pattern>
 	</servlet-mapping>
-
-
-
-
-
+	
 	<servlet>
 		<servlet-name>Usuario</servlet-name>
 		<servlet-class>gtu.g12.UsuarioServlet</servlet-class>

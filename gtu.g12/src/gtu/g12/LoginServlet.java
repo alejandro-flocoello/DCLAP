@@ -29,11 +29,12 @@ public class LoginServlet extends HttpServlet {
 
 		UsuarioDAO daous = UsuarioDAOImpl.getInstance();
 		SolicitudDAO daoS = SolicitudDAOImpl.getInstance();
-		
+		HttpSession session= request.getSession();
 
 		if (!(user.isEmpty()) || !(password.isEmpty())) {
 
 			Usuario nombreUser = daous.getUserName(user);
+			
 
 			if (nombreUser != null) {
 
@@ -41,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 
 				if (usIden != null) {
 					
-					HttpSession session= request.getSession();
+					
 					if (usIden.getRol().equals("solicitante") && (session.getAttribute("usuario") == null)) {
 				        
 						session.setAttribute("usuario",user);  
@@ -79,10 +80,16 @@ public class LoginServlet extends HttpServlet {
 						response.sendRedirect("/gestor");
 					}
 
-				} else { response.sendRedirect("/error"); }
+				} else { 
+					session.setAttribute("error","Contraseña incorrecta");
+					response.sendRedirect("/error"); }
 			
-			} else{ response.sendRedirect("/error"); }
+			} else{ 
+				session.setAttribute("error","El usuario introducido no existe");
+				response.sendRedirect("/error"); }
 
-		} else { response.sendRedirect("/error"); }
+		} else { 
+			session.setAttribute("error","Rellene todos los campos");
+			response.sendRedirect("/error"); }
 	}
 }

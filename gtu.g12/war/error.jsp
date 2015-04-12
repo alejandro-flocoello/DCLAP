@@ -48,8 +48,8 @@
 	</section>
 
 	<script>
-		alert("ERROR:\n Introduce tus datos correctamente ");
-		window.location = ("/main")
+		alert("${error}");
+		history.back();
 	</script>
 
 	<footer class="footer-2 bg-midnight-blue">
