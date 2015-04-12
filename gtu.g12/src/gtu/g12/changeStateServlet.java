@@ -60,7 +60,6 @@ public class changeStateServlet extends HttpServlet {
 			String cv2 = req.getParameter("CV2");
 			
 			String cuenta = req.getParameter("Cuenta");
-			System.out.println(cuenta);
 			
 			String Pin = req.getParameter("Pin");
 			

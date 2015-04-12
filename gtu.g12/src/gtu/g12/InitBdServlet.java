@@ -31,7 +31,6 @@ public class InitBdServlet extends HttpServlet {
 		daous.addUsuario("laura@alumnos.com", "lauraisst", "solicitante");
 		daous.addUsuario("laura2@alumnos.com", "laura2isst", "solicitante");
 		daous.addUsuario("alejandro@alumnos.com", "alejandroisst", "universidad");
-		//daous.addUsuario("clara@alumnos.com", "claraisst", "banco");
 		
 		daous.addUsuario("bbva@banco.com", "bbva", "banco");
 		daous.addUsuario("caixa@banco.com", "caixa", "banco");

@@ -75,7 +75,7 @@
 							<p><h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5>
 
 							<div class="checkbox">
-								<label><input type="checkbox" onclick="bancos.disabled = !this.checked" name="checkbox" value="Solicitud" style="font-weight: bold" /> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
+								<label><input type="checkbox" onclick="bancos.disabled = !this.checked" name="checkbox" checked value="Solicitud" style="font-weight: bold" /> Quiero asociar mi tarjeta universitaria con una cuenta bancaria</label>
 							</div> </p>
 				
 							<p><h5>Indique el banco al que quiere asociar la cuenta bancaria</h5>
