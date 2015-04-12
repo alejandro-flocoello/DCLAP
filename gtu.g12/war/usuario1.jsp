@@ -80,7 +80,8 @@
 				
 							<p><h5>Indique el banco al que quiere asociar la cuenta bancaria</h5>
 
-							<select name="bancos"  class="selectpicker" data-style="btn-primary">
+							<select name="bancos" class="selectpicker" data-style="btn-primary">
+								<option selected>--- Elija banco ---</option>
 								<option value="santander@banco.com">Santander</option>
 								<option value="bbva@banco.com">BBVA</option>
 								<option value="caixa@banco.com">La Caixa</option>
