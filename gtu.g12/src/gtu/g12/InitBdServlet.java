@@ -26,33 +26,39 @@ public class InitBdServlet extends HttpServlet {
 		//elimina todos los datos de la bd
 		daous.removeUsuarios();
 	
+		daous.addUsuario("laura@alumnos.com", "laura", "solicitante");
+		daous.addUsuario("alejandro@alumnos.com", "alejandro", "solicitante");
+		daous.addUsuario("daniel@alumnos.com", "daniel", "solicitante");
+		daous.addUsuario("paula@alumnos.com", "paula", "solicitante");
+		daous.addUsuario("clara@alumnos.com", "clara", "solicitante");
 		
-		daous.addUsuario("paula@alumnos.com", "paulaisst", "estampadora");
-		daous.addUsuario("laura@alumnos.com", "lauraisst", "solicitante");
-		daous.addUsuario("laura2@alumnos.com", "laura2isst", "solicitante");
-		daous.addUsuario("alejandro@alumnos.com", "alejandroisst", "universidad");
+		daous.addUsuario("dueñas@empleado.com", "dueñas", "solicitante");
+		daous.addUsuario("yelmo@empleado.com", "yelmo", "solicitante");
+		
+		daous.addUsuario("universidad@universidad.com", "uni", "universidad");
 		
 		daous.addUsuario("bbva@banco.com", "bbva", "banco");
 		daous.addUsuario("caixa@banco.com", "caixa", "banco");
 		daous.addUsuario("santander@banco.com", "santander", "banco");
-		daous.addUsuario("daniel@alumnos.com", "danielisst", "gestor");
 		
-		  
+		daous.addUsuario("estampadora@estampadora.com", "estampadora", "estampadora");
+		
+		daous.addUsuario("gestor@gestor.com", "gestor", "gestor");
+		
+		
      
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
 		dao.removeSolicitudes();
 		
-		dao.addSol("Laura", "Gomez", "Rodriguez", "DNI", "52901938", "España", "Calle", "UPM", "ETSIT", "laura@alumnos.com", null, "", "alumno", 123412342, false,"",0,0,"","");
-		dao.addSol("Laura2", "Gomez2", "Rodriguez2", "DNI", "52901932", "España", "Calle", "UPM", "ETSIT", "laura2@alumnos.com", null, "", "alumno", 123412340, false,"",0,0,"","");
+		dao.addSol("Laura", "Gomez", "Rodriguez", "DNI", "52901938", "España", "Calle A", "UPM", "ETSIT", "laura@alumnos.com", "", "alumno", 123412342, false,"",0,0,"","");
+		dao.addSol("Alejandro", "Flores", "Coello", "DNI", "58967412", "España", "Calle B", "UPM", "ETSIT", "alejandro@alumnos.com", "", "alumno", 456789123, false,"",0,0,"","");
+		dao.addSol("Daniel", "Gordo", "Tevar", "DNI", "12345678", "España", "Calle C", "UPM", "ETSIT", "daniel@alumnos.com", "", "alumno", 789456123, false,"",0,0,"","");
+		dao.addSol("Paula", "Fernández", "Pérez", "DNI", "98765432", "España", "Calle D", "UPM", "ETSIT", "paula@alumnos.com", "", "alumno", 654987321, false,"",0,0,"","");
+		dao.addSol("Clara", "Madrigal", "González", "DNI", "56897412", "España", "Calle E", "UPM", "ETSIT", "clara@alumnos.com", "", "alumno", 897564231, false,"",0,0,"","");
+		dao.addSol("Juan Carlos", "Dueñas", "López", "DNI", "235689", "España", "Calle F", "UPM", "ETSIT", "dueñas@empleado.com", "", "empleado", 897896789, false,"",0,0,"","");
+		dao.addSol("Juan Carlos", "Yelmo", "García", "DNI", "89562374", "España", "Calle G", "UPM", "ETSIT", "yelmo@empleado.com", "", "empleado", 125689741, false,"",0,0,"","");
 	
-		
-		dao.addSol("Paula", "Fernandez", "Perez", "DNI", "53654635", "Esp", "Gomar", "UPM", "ETSIT", "paula@alumnos.com", null, "", "estampadora", 12341234, true,"",0,0,"","SOLICITADA");
-		dao.addSol("Paula2", "Fernandez2", "Perez2", "DNI2", "536546352", "Esp2", "Gomar2", "UPM2", "ETSIT2", "paula2@alumnos.com", null, "", "alumno", 123412342, true,"",0,0,"","ACEPTADA_UNIV");
-		dao.addSol("Laura3", "Gomez3", "Rodriguez3", "DNI3", "472340463", "Esp3", "Gomar3", "UPM3", "ETSIT3", "laura3@alumnos.com", null, "bbva", "alumno", 123412342, false,"",0,0,"","ASOCIADA_BANCO");
-		dao.addSol("Laura4", "Gomez4", "Rodriguez4", "DNI4", "472340464", "Esp4", "Gomar4", "UPM4", "ETSIT4", "laura4@alumnos.com", null, "", "alumno", 123412342, false,"",0,0,"","REMITIDA_UNIV");
-		dao.addSol("Laura5", "Gomez5", "Rodriguez5", "DNI5", "472340465", "Esp5", "Gomar5", "UPM5", "ETSIT5", "laura5@alumnos.com", null, "", "alumno", 123412342, false,"",0,0,"","REMITIDA_BANCO");
-		dao.addSol("Laura6", "Gomez6", "Rodriguez6", "DNI6", "472340466", "Esp6", "Gomar6", "UPM6", "ETSIT6", "laura6@alumnos.com", null, "caixa", "alumno", 123412346, false,"",0,0,"","IMPRESA_ESTAMP");
 		
 		resp.sendRedirect("/showBd");
 	}

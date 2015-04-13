@@ -10,7 +10,7 @@ public interface SolicitudDAO {
 	boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, byte[] foto, String banco, String categoria, int expediente,
+			String correoUniv, String banco, String categoria, int expediente,
 			boolean monedero, String cuentaBan, int pin, int cv2, String numTarjeta,
 			String estado);
 	

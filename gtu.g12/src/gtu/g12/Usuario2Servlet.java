@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -26,6 +27,8 @@ public class Usuario2Servlet extends HttpServlet {
 				
 	    String[] solDual = req.getParameterValues("checkbox"); 
 	    
+	    HttpSession session= req.getSession();
+	    
 	    if(solDual != null){
 	    	dao.changeMonederoSol(email, true);	
 	    }else{
@@ -35,11 +38,18 @@ public class Usuario2Servlet extends HttpServlet {
 
 	    String[] bancos= req.getParameterValues("bancos");
 	    
-	    	if( bancos != null){
-	    		for(String banco: bancos){
-	    			dao.changeBancoSol(email, banco);
-	    		}	
+	    
+
+	    	for(String banco: bancos){
+	    		if (banco.equals("--- Elija banco ---")){
+	    			session.setAttribute("error","Seleccione un banco");
+					resp.sendRedirect("/error");
+					return;
+	    		}
+	    		dao.changeBancoSol(email, banco);
 	    	}
+	    	
+
 	    	
 	    Solicitud solicitud = dao.getSol(email);
 		req.getSession().setAttribute("solicitud", solicitud); 

@@ -86,6 +86,9 @@
 								<option value="bbva@banco.com">BBVA</option>
 								<option value="caixa@banco.com">La Caixa</option>
 							</select>
+							<!-- if(banco==null){
+									alert()1
+								} -->
 							</p> 
 							
 							<div class="controls controls-row">

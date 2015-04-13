@@ -64,10 +64,10 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	public boolean addSol(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, byte[] foto, String banco, String categoria, int expediente,boolean monedero, String cuentaBan, int pin, int cv2, String numTarjeta, String estado ) {
+			String correoUniv, String banco, String categoria, int expediente,boolean monedero, String cuentaBan, int pin, int cv2, String numTarjeta, String estado ) {
 		synchronized (this) {
 			PersistenceManager pmf = PMF.get().getPersistenceManager();
-			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, foto,banco, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
+			Solicitud solicitud = new Solicitud(nombre, apellido1, apellido2, tipoDoc, codDoc, nacionalidad, domicilio, nomUniv, centroUniv, correoUniv, banco, categoria, expediente, monedero, cuentaBan, pin, cv2, numTarjeta,
 					estado);
 			try{
 				pmf.makePersistent(solicitud);

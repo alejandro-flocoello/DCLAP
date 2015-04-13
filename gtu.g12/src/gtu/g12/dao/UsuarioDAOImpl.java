@@ -82,7 +82,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return null;
 	}
 	
+	
 	//Muestra una lista con todos los usuarios de la BD
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> listaUsuarios() {
 		synchronized (this) {

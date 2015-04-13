@@ -52,7 +52,19 @@
 						height="60"> GESTIÓN DE TARJETAS UNIVERSITARIAS</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
-							<li><a href="javascript:history.go(-1)">VOLVER</a>
+							<!-- <li><a href="javascript:history.go(-1)">VOLVER</a>-->
+							
+							<%
+							if (sesionOk.getAttribute("universidad") != null){
+								%><li><a href="/universidad">VOLVER</a></li><%
+							}else if (sesionOk.getAttribute("banco") != null){
+								%><li><a href="/banco">VOLVER</a></li><%
+							}else if (sesionOk.getAttribute("estampadora") != null){
+								%><li><a href="/estampadora">VOLVER</a></li><%
+							}else {
+								%><li><a href="/main">HOME</a></li><%
+							}
+							%>
 							<li><a href="/logout">LOGOUT</a></li>
 						</ul>
 					</div>

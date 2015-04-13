@@ -36,8 +36,6 @@ public class Solicitud implements Serializable {
 	@Persistent
 	private String centroUniv;
 	@Persistent
-	private byte [] foto;
-	@Persistent
 	private String banco;
 
 	
@@ -73,7 +71,7 @@ public class Solicitud implements Serializable {
 	public Solicitud(String nombre, String apellido1, String apellido2,
 			String tipoDoc, String codDoc, String nacionalidad,
 			String domicilio, String nomUniv, String centroUniv,
-			String correoUniv, byte[] foto, String banco, String categoria, int expediente,
+			String correoUniv, String banco, String categoria, int expediente,
 			boolean monedero, String cuentaBan, int pin, int cv2, String numTarjeta,
 			String estado) {
 		this.setNombre(nombre);
@@ -86,7 +84,6 @@ public class Solicitud implements Serializable {
 		this.setNomUniv(nomUniv);
 		this.setCentroUniv(centroUniv);
 		this.setCorreoUniv(correoUniv);
-		this.setFoto(foto);
 		this.setBanco(banco);
 		this.setCategoria(categoria);
 		this.setExpediente(expediente);
@@ -178,16 +175,7 @@ public class Solicitud implements Serializable {
 	public void setCorreoUniv(String correoUniv) {
 		this.correoUniv = correoUniv;
 	}
-	
-	public byte[] getFoto() {
-		return foto;
-	}
-
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
-	}
-	
-	
+		
 	public String getBanco() {
 		return banco;
 	}

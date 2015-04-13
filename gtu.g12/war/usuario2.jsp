@@ -120,12 +120,7 @@
 								<tr>
 									<td>Número Expediente</td>
 									<td><c:out value="${solicitud.expediente}" /></td>
-								</tr>
-								
-								<tr>
-									<td>Adjunte una foto actual por favor:</td>
-									<td><input type='file' class="form-control" name="foto" value=""></td>
-								</tr>		
+								</tr>	
 							</tbody>
 						</table>
 						
