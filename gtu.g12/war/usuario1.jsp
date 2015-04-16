@@ -70,7 +70,7 @@
 
 
 					<div class="signup-form">
-						<form method="post" action="/solUser">
+						<form method="post" action="/usuario">
 						
 							<p><h5>Marque la casilla si quiere asociar su tarjeta universitaria a una cuenta bancaria</h5>
 
@@ -86,14 +86,10 @@
 								<option value="bbva@banco.com">BBVA</option>
 								<option value="caixa@banco.com">La Caixa</option>
 							</select>
-							<!-- if(banco==null){
-									alert()1
-								} -->
 							</p> 
 							
 							<div class="controls controls-row">
-								<input type="submit" value="Solicitar"
-									class="btn btn-block btn-primary">
+								<input type="submit" value="Solicitar" class="btn btn-block btn-primary">
 							</div>
 						</form>
 					</div>

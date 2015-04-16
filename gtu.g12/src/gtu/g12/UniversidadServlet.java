@@ -29,12 +29,12 @@ public class UniversidadServlet extends HttpServlet {
 		List<Solicitud> lista3 = dao.getSolPorEstado("RECHAZADA_BANCO");
 		List<Solicitud> lista4 = dao.getSolPorEstadoYNOBanco("RECHAZADA_ESTAMP");
 		
-		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
+		
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
 		req.getSession().setAttribute("solicitudes2", new ArrayList<Solicitud>(lista2));
 		req.getSession().setAttribute("solicitudes3", new ArrayList<Solicitud>(lista3));
 		req.getSession().setAttribute("solicitudes4", new ArrayList<Solicitud>(lista4));
-        view.forward(req, resp);
-		
+		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
+        view.forward(req, resp);	
 	}
 }

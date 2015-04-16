@@ -56,6 +56,7 @@
 				<div class="col-md-4 column">
 					<h3>Solicitudes en curso</h3>
 
+					
 					<table class="table table-hover" id="solicitudesAeliminar">
 						<thead>
 							<tr>

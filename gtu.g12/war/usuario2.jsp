@@ -44,7 +44,7 @@
 						height="80"> GESTIÓN DE TARJETAS UNIVERSITARIAS - SOLICITANTE</a>
 					<div class="nav-collapse collapse pull-right">
 						<ul class="nav">
-							<li><a href="/usuario1">VOLVER</a></li>
+							<li><a href="/usuario">VOLVER</a></li>
 							<li><a href="/logout">LOGOUT</a></li>
 						</ul>
 					</div>
@@ -73,9 +73,7 @@
 
 
 					<form method="post" action="/changeState" enctype="multipart/form-data">
-
 						<table class="table table-hover">
-
 							<tbody>
 								<tr>
 									<td>Nombre</td>
