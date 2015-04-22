@@ -26,14 +26,14 @@ public class InitBdServlet extends HttpServlet {
 		//elimina todos los datos de la bd
 		daous.removeUsuarios();
 	
-		daous.addUsuario("laura@alumnos.com", "laura", "solicitante");
-		daous.addUsuario("alejandro@alumnos.com", "alejandro", "solicitante");
-		daous.addUsuario("daniel@alumnos.com", "daniel", "solicitante");
-		daous.addUsuario("paula@alumnos.com", "paula", "solicitante");
-		daous.addUsuario("clara@alumnos.com", "clara", "solicitante");
+		daous.addUsuario("l.gomezr@alumnos.upm.es", "laura", "solicitante");
+		daous.addUsuario("alejandro.flocoello@alumnos.upm.es", "alejandro", "solicitante");
+		daous.addUsuario("d.g.tevar@alumnos.upm.es", "daniel", "solicitante");
+		daous.addUsuario("paula.fernandez.perez@alumnos.upm.es", "paula", "solicitante");
+		daous.addUsuario("clara.madrigal.gonzalez@alumnos.upm.es", "clara", "solicitante");
 		
-		daous.addUsuario("dueñas@empleado.com", "dueñas", "solicitante");
-		daous.addUsuario("yelmo@empleado.com", "yelmo", "solicitante");
+		daous.addUsuario("jcduenas@dit.upm.com", "dueñas", "solicitante");
+		daous.addUsuario("yelmogar@dit.upm.es", "yelmo", "solicitante");
 		
 		daous.addUsuario("universidad@universidad.com", "uni", "universidad");
 		
@@ -51,13 +51,13 @@ public class InitBdServlet extends HttpServlet {
 		
 		dao.removeSolicitudes();
 		
-		dao.addSol("Laura", "Gomez", "Rodriguez", "DNI", "52901938", "España", "Calle A", "UPM", "ETSIT", "laura@alumnos.com", "", "alumno", 123412342, false,"",0,0,"","");
-		dao.addSol("Alejandro", "Flores", "Coello", "DNI", "58967412", "España", "Calle B", "UPM", "ETSIT", "alejandro@alumnos.com", "", "alumno", 456789123, false,"",0,0,"","");
-		dao.addSol("Daniel", "Gordo", "Tevar", "DNI", "12345678", "España", "Calle C", "UPM", "ETSIT", "daniel@alumnos.com", "", "alumno", 789456123, false,"",0,0,"","");
-		dao.addSol("Paula", "Fernández", "Pérez", "DNI", "98765432", "España", "Calle D", "UPM", "ETSIT", "paula@alumnos.com", "", "alumno", 654987321, false,"",0,0,"","");
-		dao.addSol("Clara", "Madrigal", "González", "DNI", "56897412", "España", "Calle E", "UPM", "ETSIT", "clara@alumnos.com", "", "alumno", 897564231, false,"",0,0,"","");
-		dao.addSol("Juan Carlos", "Dueñas", "López", "DNI", "235689", "España", "Calle F", "UPM", "ETSIT", "dueñas@empleado.com", "", "empleado", 897896789, false,"",0,0,"","");
-		dao.addSol("Juan Carlos", "Yelmo", "García", "DNI", "89562374", "España", "Calle G", "UPM", "ETSIT", "yelmo@empleado.com", "", "empleado", 125689741, false,"",0,0,"","");
+		dao.addSol("Laura", "Gomez", "Rodriguez", "DNI", "52901938", "España", "Calle A", "UPM", "ETSIT", "l.gomezr@alumnos.upm.es", "", "alumno", 123412342, false,"",0,0,"","");
+		dao.addSol("Alejandro", "Flores", "Coello", "DNI", "58967412", "España", "Calle B", "UPM", "ETSIT", "alejandro.flocoello@alumnos.upm.es", "", "alumno", 456789123, false,"",0,0,"","");
+		dao.addSol("Daniel", "Gordo", "Tevar", "DNI", "12345678", "España", "Calle C", "UPM", "ETSIT", "d.g.tevar@alumnos.upm.es", "", "alumno", 789456123, false,"",0,0,"","");
+		dao.addSol("Paula", "Fernández", "Pérez", "DNI", "98765432", "España", "Calle D", "UPM", "ETSIT", "paula.fernandez.perez@alumnos.upm.es", "", "alumno", 654987321, false,"",0,0,"","");
+		dao.addSol("Clara", "Madrigal", "González", "DNI", "56897412", "España", "Calle E", "UPM", "ETSIT", "clara.madrigal.gonzalez@alumnos.upm.es", "", "alumno", 897564231, false,"",0,0,"","");
+		dao.addSol("Juan Carlos", "Dueñas", "López", "DNI", "235689", "España", "Calle F", "UPM", "ETSIT", "jcduenas@dit.upm.com", "", "empleado", 897896789, false,"",0,0,"","");
+		dao.addSol("Juan Carlos", "Yelmo", "García", "DNI", "89562374", "España", "Calle G", "UPM", "ETSIT", "yelmogar@dit.upm.es", "", "empleado", 125689741, false,"",0,0,"","");
 	
 		
 		resp.sendRedirect("/showBd");

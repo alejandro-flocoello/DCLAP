@@ -4,9 +4,19 @@ import gtu.g12.model.Solicitud;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import javax.mail.Message;
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class SolicitudDAOImpl implements SolicitudDAO {
 	
@@ -194,13 +204,43 @@ public class SolicitudDAOImpl implements SolicitudDAO {
 	    try {
 	        Solicitud sol = pm.getObjectById(Solicitud.class, correo);
 	        sol.setEstado(estado);
-	       
+	        sendEmail(sol);
 	    } finally {
 	        pm.close();
 	    }
 	}
 	
 	
+	private void sendEmail(Solicitud sol) {
+		final String username = "dclap.gtu12@gmail.com";
+		Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+        Message simpleMessage = new MimeMessage(session);
+        
+		InternetAddress fromAddress = null;
+		InternetAddress toAddress = null;
+		try {
+			fromAddress = new InternetAddress(username);
+			toAddress = new InternetAddress(sol.getCorreoUniv());
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			simpleMessage.setFrom(fromAddress);
+			simpleMessage.setRecipient(RecipientType.TO, toAddress);
+			simpleMessage.setSubject("Su solicitud ha cambiado de estado");
+			simpleMessage.setText("El estado de su solicitud es: " + sol.getEstado());
+
+			Transport.send(simpleMessage);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 	@Override
 	public void changeBancoSol(String correo, String banco) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
