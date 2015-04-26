@@ -47,7 +47,8 @@
 					<p>Introduzca sus datos para acceder al sistema</p>
 					<p>
 					<div class="signup-form">
-						<form method="post" action="/login">
+						
+						<form method="post" action="/logout">
 
 							<div class="controls controls-row">
 								<input class="span4" type="text" placeholder="E-mail" name="usuario">

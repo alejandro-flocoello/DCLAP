@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 
 import gtu.g12.dao.SolicitudDAO;
 import gtu.g12.dao.SolicitudDAOImpl;
@@ -24,15 +21,20 @@ public class UniversidadServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
+		
 		SolicitudDAO dao = SolicitudDAOImpl.getInstance();
 		
 		List<Solicitud> lista = dao.getSolPorEstado("SOLICITADA");
 		List<Solicitud> lista2 = dao.getSolPorEstado("REMITIDA_UNIV");
+		List<Solicitud> lista3 = dao.getSolPorEstado("RECHAZADA_BANCO");
+		List<Solicitud> lista4 = dao.getSolPorEstadoYNOBanco("RECHAZADA_ESTAMP");
 		
-		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
+		
 		req.getSession().setAttribute("solicitudes", new ArrayList<Solicitud>(lista));
 		req.getSession().setAttribute("solicitudes2", new ArrayList<Solicitud>(lista2));
-        view.forward(req, resp);
-		
+		req.getSession().setAttribute("solicitudes3", new ArrayList<Solicitud>(lista3));
+		req.getSession().setAttribute("solicitudes4", new ArrayList<Solicitud>(lista4));
+		RequestDispatcher view = req.getRequestDispatcher("universidad.jsp");
+        view.forward(req, resp);	
 	}
 }

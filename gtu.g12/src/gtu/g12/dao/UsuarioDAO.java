@@ -1,8 +1,6 @@
 package gtu.g12.dao;
 
 import java.util.List;
-
-import gtu.g12.model.Solicitud;
 import gtu.g12.model.Usuario;
 
 public interface UsuarioDAO {

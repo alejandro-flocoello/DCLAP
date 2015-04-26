@@ -56,7 +56,7 @@
                       
                     </div>
                         <div class="span6" "offset10" href='#' >
-                        <img src="/img/equipo.png" width="400" height="1000" align="right">
+                        <img src="/img/info.png" width="400" height="1000" align="right">
                         </div>
                     </div>
             </div>

@@ -1,12 +1,9 @@
 package gtu.g12.dao;
 
-import gtu.g12.model.Solicitud;
 import gtu.g12.model.Usuario;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
-import javax.persistence.EntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +36,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 	}
 
-	// Añade un usuario a la base de datos. Si no encuentra ningun problema
-	// devuelve true.
+	// Añade un usuario a la base de datos. Si no encuentra ningun problema devuelve true.
 	@Override
 	public boolean addUsuario(String username, String password, String rol) {
 		synchronized (this) {
@@ -83,15 +79,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		if (u.getPassword().equals(password)) {
 			return u;
 		}
-		
 		return null;
 	}
-
-
-	
 	
 	
 	//Muestra una lista con todos los usuarios de la BD
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> listaUsuarios() {
 		synchronized (this) {
